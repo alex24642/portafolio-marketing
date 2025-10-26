@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentos de Marketing Gastronómico | Recursos Académicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero" id="inicio" style="min-height: 40vh;">
+    <nav class="navbar">
+      <a href="index.html" class="logo">Sabores<span> con estrategia</span></a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="#">Portafolio</a></li>
+        <li><a href="index.html#recursos">Recursos</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content" style="margin-top: 2rem;">
+      <div class="hero-text">
+        <h1>Biblioteca de Marketing Gastronómico</h1>
+        <p>Accede a documentos, guías y recursos especializados en marketing para el sector gastronómico.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="documents-section">
+      <div class="section-header">
+        <span class="eyebrow">Recursos académicos</span>
+        <h2>Documentos y Materiales de Estudio</h2>
+        <p>Explora nuestra colección de recursos especializados en marketing gastronómico.</p>
+      </div>
+
+      <div class="documents-grid">
+        <!-- Documento 1 -->
+        <article class="document-card">
+          <div class="document-icon">PDF</div>
+          <div class="document-content">
+            <h3>Material de Marketing Digital Gastronómico</h3>
+            <p>Manual completo sobre estrategias digitales para restaurantes y negocios gastronómicos. Incluye casos de estudio y mejores prácticas.</p>
+            <ul class="document-meta">
+              <li>PDF - 2.5 MB</li>
+              <li>Actualizado: Oct 2025</li>
+            </ul>
+            <div class="document-actions">
+              <a href="documento/materia/materia1.pdf" class="button secondary" target="_blank">Vista previa</a>
+              <a href="documento/materia/materia1.pdf" class="button primary" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Documento 2 -->
+        <article class="document-card">
+          <div class="document-icon">PDF</div>
+          <div class="document-content">
+            <h3>Deberes y Ejercicios Prácticos</h3>
+            <p>Guía práctica y ejercicios para reforzar los conceptos de marketing gastronómico. Incluye plantillas y actividades.</p>
+            <ul class="document-meta">
+              <li>PDF - 1.8 MB</li>
+              <li>Actualizado: Oct 2025</li>
+            </ul>
+            <div class="document-actions">
+              <a href="documento/debres/deberes1.pdf" class="button secondary" target="_blank">Vista previa</a>
+              <a href="documento/debres/deberes1.pdf" class="button primary" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Documento 3 -->
+        <article class="document-card">
+          <div class="document-icon">PDF</div>
+          <div class="document-content">
+            <h3>Presentaciones del Curso</h3>
+            <p>Presentaciones y diapositivas de las clases de marketing gastronómico. Material visual y ejemplos prácticos.</p>
+            <ul class="document-meta">
+              <li>PDF - 3.2 MB</li>
+              <li>Actualizado: Oct 2025</li>
+            </ul>
+            <div class="document-actions">
+              <a href="documento/presentaciones/presentacion1.pdf" class="button secondary" target="_blank">Vista previa</a>
+              <a href="documento/presentaciones/presentacion1.pdf" class="button primary" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h2>Sabores con estrategia</h2>
+        <p>Recursos educativos y materiales de estudio para profesionales del marketing gastronómico.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul class="contact-info">
+          <li><strong>Email:</strong> biblioteca@saboresconestrategia.com</li>
+          <li><strong>Tel:</strong> +34 910 000 123</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year"></span> Sabores con estrategia · Biblioteca de recursos</p>
+    </div>
+  </footer>
+
+  <script>
+    // Actualizar año actual
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Funcionalidad del menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle?.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Actualizar año en el footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
