@@ -407,6 +407,91 @@ button {
   gap: 0.9rem;
 }
 
+.uploaded-resources {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: 2rem;
+}
+
+.uploaded-resources-header h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.uploaded-resources-header p {
+  color: var(--text-muted);
+}
+
+.uploaded-resources-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.uploaded-resources-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.uploaded-resource-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: stretch;
+  background: rgba(16, 16, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+}
+
+.uploaded-resource-info {
+  flex: 1 1 260px;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.uploaded-resource-info h4 {
+  font-size: 1.05rem;
+}
+
+.uploaded-resource-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.uploaded-resource-meta li::before {
+  content: '\2022';
+  margin-right: 0.4rem;
+  color: var(--secondary);
+}
+
+.uploaded-resource-meta li:first-child::before {
+  content: '';
+  margin-right: 0;
+}
+
+.uploaded-resource-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 1 auto;
+}
+
+.button.ghost {
+  background: transparent;
+  border: 1px dashed rgba(240, 138, 36, 0.4);
+  color: var(--secondary);
+}
+
+.button.ghost:hover {
+  border-style: solid;
+  background: rgba(240, 138, 36, 0.12);
+}
+
 .upload-form {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 1.5rem;
@@ -669,6 +754,131 @@ textarea {
   transform: translateY(-4px);
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
+.resource-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 6, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  z-index: 1000;
+}
+
+.resource-preview.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.resource-preview-dialog {
+  background: rgba(18, 18, 24, 0.98);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: min(900px, 100%);
+  max-height: 90vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+}
+
+.resource-preview-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text);
+  font-size: 1.75rem;
+  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.resource-preview-close:hover {
+  background: rgba(240, 138, 36, 0.35);
+}
+
+.resource-preview-header {
+  padding: 2.5rem 2.5rem 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.resource-preview-header p {
+  color: var(--text-muted);
+}
+
+.resource-preview-meta {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.resource-preview-meta li::before {
+  content: '\2022';
+  margin-right: 0.35rem;
+  color: var(--secondary);
+}
+
+.resource-preview-meta li:first-child::before {
+  content: '';
+  margin-right: 0;
+}
+
+.resource-preview-body {
+  padding: 0 2.5rem 2rem;
+  overflow: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.resource-preview-unavailable {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.resource-preview-render {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.resource-preview-render img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resource-preview-render iframe {
+  width: 100%;
+  min-height: 420px;
+  border: none;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.resource-preview-actions {
+  padding: 0 2.5rem 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -714,5 +924,29 @@ textarea {
 
   .newsletter-form .form-row {
     flex-direction: column;
+  }
+
+  .uploaded-resource-card {
+    flex-direction: column;
+  }
+
+  .uploaded-resource-actions {
+    justify-content: flex-start;
+  }
+
+  .resource-preview {
+    padding: 1.25rem;
+  }
+
+  .resource-preview-dialog {
+    border-radius: 1rem;
+  }
+
+  .resource-preview-body {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .resource-preview-actions {
+    padding: 0 1.5rem 1.75rem;
   }
 }

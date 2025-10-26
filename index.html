@@ -188,6 +188,14 @@
           <a href="#" class="button secondary">Descargar Doc</a>
         </article>
       </div>
+      <div class="uploaded-resources" aria-live="polite">
+        <div class="uploaded-resources-header">
+          <h3>Biblioteca personalizada</h3>
+          <p>Todos los materiales que subas quedarán disponibles aquí para consulta rápida, vista previa y descarga.</p>
+        </div>
+        <div class="uploaded-resources-list" role="list"></div>
+        <p class="uploaded-resources-empty" hidden>Aún no has cargado documentos. Sube tu primer recurso para verlo listado aquí.</p>
+      </div>
       <form class="upload-form" aria-label="Formulario para subir recursos">
         <h3>Comparte tus propios recursos</h3>
         <p>Sube fotografías, recetarios o notas de prensa para mantener tu portafolio actualizado.</p>
@@ -307,6 +315,23 @@
   </footer>
 
   <button class="back-to-top" aria-label="Volver al inicio">&#8593;</button>
+
+  <div class="resource-preview" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="resource-preview-dialog" role="document">
+      <button class="resource-preview-close" aria-label="Cerrar vista previa">&times;</button>
+      <div class="resource-preview-header">
+        <h3 class="resource-preview-title"></h3>
+        <p class="resource-preview-description"></p>
+        <ul class="resource-preview-meta"></ul>
+      </div>
+      <div class="resource-preview-body">
+        <p class="resource-preview-unavailable" hidden>Este tipo de archivo no cuenta con vista previa, pero puedes descargarlo para revisarlo en tu dispositivo.</p>
+      </div>
+      <div class="resource-preview-actions">
+        <a class="button primary resource-preview-download" download>Descargar recurso</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
