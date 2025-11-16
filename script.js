@@ -185,6 +185,41 @@
     contactForm?.addEventListener('submit', (event) => { event.preventDefault(); alert('¡Mensaje enviado! Nos pondremos en contacto contigo para planear la degustación.'); contactForm.reset(); });
   }
 
+  // Notes / Deberes functions: save and load notes with localStorage
+  window.saveNotes = function(elementId) {
+    const textarea = document.getElementById(elementId);
+    if (textarea) {
+      localStorage.setItem(elementId, textarea.value);
+      alert('✓ Notas guardadas correctamente');
+    }
+  };
+
+  window.clearNotes = function(elementId) {
+    const textarea = document.getElementById(elementId);
+    if (textarea) {
+      if (confirm('¿Estás seguro de que deseas limpiar las notas?')) {
+        textarea.value = '';
+        localStorage.removeItem(elementId);
+        alert('✓ Notas eliminadas');
+      }
+    }
+  };
+
+  // Load notes from localStorage on page load
+  function loadNotesFromStorage() {
+    const notesIds = ['notes-contacto', 'notes-practico', 'notes-autonomo'];
+    notesIds.forEach(id => {
+      const textarea = document.getElementById(id);
+      if (textarea) {
+        const saved = localStorage.getItem(id);
+        if (saved) textarea.value = saved;
+      }
+    });
+  }
+
   // initial run
-  document.addEventListener('DOMContentLoaded', initMain);
+  document.addEventListener('DOMContentLoaded', function() {
+    initMain();
+    loadNotesFromStorage();
+  });
 })();
