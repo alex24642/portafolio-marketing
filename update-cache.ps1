@@ -1,4 +1,4 @@
-# Script para actualizar automaticamente el cache-bust del CSS y hacer deploy
+ej# Script para actualizar automaticamente el cache-bust del CSS y hacer deploy
 # Uso: .\update-cache.ps1
 
 Write-Host "====================================================" -ForegroundColor Cyan
