@@ -56,58 +56,18 @@
     var index = (typeof state.index === 'number') ? state.index : 0;
     var vol = (typeof state.volume === 'number') ? state.volume : 0.7;
 
-    // BroadcastChannel for persistent player window communication
-    var bc = null;
-    try{ bc = new BroadcastChannel('music-player'); }catch(e){ bc = null; }
-
-    function openPlayerPopup(){
-      try{
-        var width = 360, height = 90;
-        var availW = (screen && screen.availWidth) ? screen.availWidth : window.screen.width;
-        var availH = (screen && screen.availHeight) ? screen.availHeight : window.screen.height;
-        var left = Math.max(0, availW - width - 20);
-        var top = Math.max(0, availH - height - 40);
-        var features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',toolbar=0,location=0,menubar=0,status=0,scrollbars=0,resizable=0';
-        var w = window.open('player-window.html?v=1.1', 'music-player', features);
-        if(w) try{ w.focus(); }catch(e){}
-        return w;
-      }catch(e){ return null; }
-    }
-    function sendToPlayer(msg){ if(bc) try{ bc.postMessage(msg); }catch(e){} }
-    function formatTime(seconds){ var t = Math.floor(seconds||0); return Math.floor(t/60)+':' + (''+ (t%60)).padStart(2,'0'); }
-
     function setTrack(i, autoplay){
       index = ((i % PLAYLIST.length) + PLAYLIST.length) % PLAYLIST.length;
       ui.select.value = index;
       try{ ui.audio.src = PLAYLIST[index].url; ui.audio.load(); }catch(e){ console.warn('setTrack error', e); }
-      if(autoplay){
-        if(bc){ openPlayerPopup(); sendToPlayer({ type: 'SET_TRACK', index: index, autoplay: true }); }
-        else { var p = ui.audio.play(); if(p && p.catch) p.catch(function(err){ console.warn('play blocked', err); }); }
-      }
+      if(autoplay){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(err){ console.warn('play blocked', err); }); }
       saveState({ index: index, volume: ui.audio.volume });
     }
 
     ui.volume.value = Math.round(vol * 100);
     ui.audio.volume = vol;
 
-    // If there's a persistent player, announce playlist and request current state
-    if(bc){
-      sendToPlayer({ type: 'SET_PLAYLIST', playlist: PLAYLIST });
-      setTimeout(function(){ sendToPlayer({ type: 'REQUEST_STATE' }); }, 150);
-      bc.onmessage = function(ev){ var m = ev.data; if(!m || !m.type) return; if(m.type === 'STATE'){
-        try{
-          ui.select.value = (typeof m.index === 'number') ? m.index : ui.select.value;
-          ui.volume.value = (typeof m.volume === 'number') ? Math.round(m.volume*100) : ui.volume.value;
-          ui.progress.max = isFinite(m.duration) ? m.duration : ui.progress.max;
-          ui.progress.value = m.currentTime || ui.progress.value;
-          ui.time.textContent = formatTime(m.currentTime || 0);
-          ui.play.textContent = m.playing ? '⏸' : '▶';
-          try{ if(m.playing) ui.audio.pause(); }catch(e){}
-        }catch(e){}
-      } };
-    }
-
-    // initialize local fallback
+    // initialize
     setTrack(index, false);
 
     // --- PJAX navigation: intercept internal link clicks and load <main> via fetch
@@ -175,23 +135,20 @@
     updatePlayButton();
 
     ui.play.addEventListener('click', function(){
-      if(bc){ openPlayerPopup(); sendToPlayer({ type: 'TOGGLE_PLAY' }); }
-      else {
-        if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); updatePlayButton(); }
-        else { ui.audio.pause(); updatePlayButton(); }
-      }
+      if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); updatePlayButton(); }
+      else { ui.audio.pause(); updatePlayButton(); }
     });
 
-    ui.select.addEventListener('change', function(){ var idx = parseInt(this.value,10); if(bc){ openPlayerPopup(); sendToPlayer({ type: 'SET_TRACK', index: idx, autoplay: true }); } else { setTrack(idx, true); updatePlayButton(); } });
+    ui.select.addEventListener('change', function(){ var idx = parseInt(this.value,10); setTrack(idx, true); updatePlayButton(); });
 
-    ui.volume.addEventListener('input', function(){ var v = parseInt(this.value,10)/100; if(bc){ sendToPlayer({ type: 'SET_VOLUME', volume: v }); } else { ui.audio.volume = v; saveState({ index: index, volume: v }); } });
+    ui.volume.addEventListener('input', function(){ var v = parseInt(this.value,10)/100; ui.audio.volume = v; saveState({ index: index, volume: v }); });
 
     ui.progress.addEventListener('input', function(){ try{ ui.audio.currentTime = parseFloat(this.value); }catch(e){} });
 
     ui.audio.addEventListener('timeupdate', function(){ ui.progress.max = isFinite(ui.audio.duration) ? ui.audio.duration : 100; ui.progress.value = ui.audio.currentTime || 0; var t = Math.floor(ui.audio.currentTime||0); ui.time.textContent = Math.floor(t/60)+':' + (''+ (t%60)).padStart(2,'0'); });
 
     ui.audio.addEventListener('ended', function(){ // auto next
-      var next = (index+1) % PLAYLIST.length; if(bc){ sendToPlayer({ type: 'SET_TRACK', index: next, autoplay: true }); } else { setTrack(next, true); updatePlayButton(); } });
+      var next = (index+1) % PLAYLIST.length; setTrack(next, true); updatePlayButton(); });
 
     ui.audio.addEventListener('play', function(){ updatePlayButton(); });
     ui.audio.addEventListener('pause', function(){ updatePlayButton(); });
