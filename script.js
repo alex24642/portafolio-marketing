@@ -187,6 +187,4 @@
 
   // initial run
   document.addEventListener('DOMContentLoaded', initMain);
-  // PJAX loaded
-  document.addEventListener('pjax:loaded', function(){ try{ initMain(); }catch(e){ console.error('Error re-initializing after PJAX', e); } });
 })();

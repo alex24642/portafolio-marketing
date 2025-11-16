@@ -70,66 +70,8 @@
     // initialize
     setTrack(index, false);
 
-    // --- PJAX navigation: intercept internal link clicks and load <main> via fetch
-    function isInternalLink(a){
-      if(!a || !a.href) return false;
-      try{
-        var u = new URL(a.href, location.href);
-        return u.origin === location.origin && (u.pathname.endsWith('.html') || u.pathname === '/' || u.pathname.indexOf('.') === -1);
-      }catch(e){return false;}
-    }
-
-    function runScriptsFromFragment(fragment){
-      // execute inline and external scripts inside the fragment
-      var scripts = fragment.querySelectorAll('script');
-      scripts.forEach(function(s){
-        var el = document.createElement('script');
-        if(s.src){ el.src = s.src; el.async = false; }
-        else { el.textContent = s.textContent; }
-        document.body.appendChild(el);
-        // remove appended script after load to keep DOM clean
-        el.addEventListener('load', function(){ setTimeout(function(){ el.parentNode && el.parentNode.removeChild(el); },1000); });
-      });
-    }
-
-    function ajaxNavigateTo(url, addToHistory){
-      fetch(url, { credentials: 'same-origin' }).then(function(resp){ if(!resp.ok) throw new Error('Network response not ok'); return resp.text(); }).then(function(html){
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(html, 'text/html');
-        var newMain = doc.querySelector('main');
-        if(newMain){
-          var oldMain = document.querySelector('main');
-          if(oldMain){ oldMain.innerHTML = newMain.innerHTML; }
-          else { document.body.appendChild(newMain); }
-          // update title
-          if(doc.title) document.title = doc.title;
-          // run scripts found in new main
-          runScriptsFromFragment(newMain);
-          window.scrollTo(0,0);
-          if(addToHistory) history.pushState({ pjax: true }, doc.title || '', url);
-          // notify other scripts
-          document.dispatchEvent(new CustomEvent('pjax:loaded', { detail: { url: url } }));
-        } else { window.location.href = url; }
-      }).catch(function(err){ console.warn('PJAX load failed, falling back to full navigation', err); window.location.href = url; });
-    }
-
-    // global click handler to intercept internal links
-    document.addEventListener('click', function(e){
-      var a = e.target;
-      while(a && a.tagName !== 'A') a = a.parentNode;
-      if(!a) return;
-      if(a.target && a.target !== '' && a.target !== '_self') return; // allow external targets
-      if(a.hasAttribute('download') || a.rel === 'external') return;
-      if(isInternalLink(a)){
-        e.preventDefault();
-        var href = a.getAttribute('href');
-        if(href.indexOf('#') === 0){ location.hash = href; return; }
-        ajaxNavigateTo(href, true);
-      }
-    }, true);
-
-    // handle back/forward
-    window.addEventListener('popstate', function(e){ if(e.state && e.state.pjax){ ajaxNavigateTo(location.href, false); } else { /* for safety, do full load */ ajaxNavigateTo(location.href, false); } });
+    // Note: PJAX navigation disabled to prevent issues with GitHub Pages deployments
+    // Music player state is restored from localStorage on each page load via readState()
 
     function updatePlayButton(){ ui.play.textContent = ui.audio.paused ? '▶' : '⏸'; }
     updatePlayButton();
