@@ -25,9 +25,10 @@
       '#music-bar{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:12px;background:rgba(20,20,25,0.95);padding:12px 16px;border-radius:12px;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 12px rgba(0,0,0,0.3);}'+
       '#music-bar button{background:rgba(100,150,255,0.2);border:1px solid rgba(100,150,255,0.4);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.2s;min-width:36px;text-align:center;}'+
       '#music-bar button:hover{background:rgba(100,150,255,0.35);border-color:rgba(100,150,255,0.6);}'+
-      '#music-bar select{background:rgba(30,30,40,0.8);color:#fff;border:1px solid rgba(100,150,255,0.3);padding:8px 10px;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer;transition:all 0.2s;min-width:200px;}'+
-      '#music-bar select:hover,#music-bar select:focus{outline:none;background:rgba(40,40,55,0.9);border-color:rgba(100,150,255,0.6);}'+
-      '#music-bar select option{background:#1a1a25;color:#fff;padding:8px;}'+
+      '#music-bar select{background:rgba(15,15,20,0.95);color:#fff;border:1px solid rgba(100,150,255,0.5);padding:8px 10px;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer;transition:all 0.2s;min-width:220px;appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:30px;background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23fff%27 d=%27M0 0l6 8 6-8z%27/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}'+
+      '#music-bar select:hover,#music-bar select:focus{outline:none;background-color:rgba(25,25,35,0.95);border-color:rgba(100,150,255,0.8);}'+
+      '#music-bar select option{background:#0a0a0f;color:#fff;padding:10px;border:none;}'+
+      '#music-bar select option:checked{background:rgba(100,150,255,0.6);color:#fff;}'+
       '#music-bar input[type=range]{cursor:pointer;accent-color:rgba(100,150,255,0.8);}'+
       '#music-bar .time{font-size:11px;color:#aaa;min-width:30px;text-align:center;font-weight:500;}';
     var s = document.createElement('style'); s.appendChild(document.createTextNode(css)); document.head.appendChild(s);
