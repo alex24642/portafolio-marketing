@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2.4">
+  <link rel="stylesheet" href="styles.css?v=2.5">
 </head>
 <body>
   <header class="hero hero--compact" id="inicio">
@@ -32,13 +32,45 @@
       <p>Descripción general de la asignatura, objetivos, contenidos y cronograma.</p>
     </section>
 
-    <div style="margin: 2rem 0; border-radius: 1.5rem; overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-      <img src="https://via.placeholder.com/800x400?text=Información+de+la+Asignatura" alt="Información de la asignatura" style="width: 100%; height: auto; display: block;">
+    <!-- Genially Embed - Sílabo de la asignatura -->
+    <div style="display: flex; justify-content: space-between; gap: 2rem; margin: 2rem 0; flex-wrap: wrap;">
+      <div style="flex: 0 1 600px;">
+        <iframe src="https://view.genially.com/67e02936659fe04cdcbcbba2" style="width: 100%; height: 600px; border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem;" allowfullscreen="" allow="autoplay; picture-in-picture"></iframe>
+      </div>
+
+      <!-- Documentos PDF -->
+      <div style="flex: 1 1 300px; display: grid; gap: 1.5rem;">
+        <h2 style="margin-top: 0;">Documentos del Sílabo</h2>
+
+        <!-- PDF 1: Silabo Legalizado -->
+        <article style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.2rem; padding: 1.5rem; display: grid; gap: 1rem;">
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem;">Sílabo Legalizado</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Marketing Gastronómico - Documento oficial</p>
+          </div>
+          <iframe src="Información%20de%20la%20Asignatura/Silabo%20Legalizado%20Marketing%20Gastronómico.pdf" style="width: 100%; height: 250px; border-radius: 0.8rem; border: none;"></iframe>
+          <a href="Información%20de%20la%20Asignatura/Silabo%20Legalizado%20Marketing%20Gastronómico.pdf" download class="button" style="text-align: center; text-decoration: none; display: inline-block; padding: 0.8rem 1.5rem; background: var(--primary); color: #0d0d0f; border: none; border-radius: 0.8rem; cursor: pointer; font-weight: 600;">
+            Descargar PDF
+          </a>
+        </article>
+
+        <!-- PDF 2: Socialización del Sílabo -->
+        <article style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.2rem; padding: 1.5rem; display: grid; gap: 1rem;">
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem;">Socialización del Sílabo</h3>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Instrucciones generales y normas</p>
+          </div>
+          <iframe src="Información%20de%20la%20Asignatura/Socialización%20del%20Sílabo%20-%20Instrucciones%20generales%20-%20Normas.pdf" style="width: 100%; height: 250px; border-radius: 0.8rem; border: none;"></iframe>
+          <a href="Información%20de%20la%20Asignatura/Socialización%20del%20Sílabo%20-%20Instrucciones%20generales%20-%20Normas.pdf" download class="button" style="text-align: center; text-decoration: none; display: inline-block; padding: 0.8rem 1.5rem; background: var(--primary); color: #0d0d0f; border: none; border-radius: 0.8rem; cursor: pointer; font-weight: 600;">
+            Descargar PDF
+          </a>
+        </article>
+      </div>
     </div>
 
-    <section class="profile-card">
-      <h2>Detalles de la asignatura</h2>
-      <p>Aquí puedes añadir el sílabo, criterios de evaluación y bibliografía recomendada.</p>
+    <section class="profile-card" style="margin-top: 3rem;">
+      <h2>Acerca de la Asignatura</h2>
+      <p>Marketing Gastronómico es una asignatura fundamental que combina estrategias de marketing con la industria gastronómica. Desarrollarás habilidades en comunicación, branding, digital marketing y gestión de proyectos culinarios.</p>
     </section>
 
     <section style="margin-top:2rem; text-align:center;">
