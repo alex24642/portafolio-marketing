@@ -1387,3 +1387,112 @@ body.modal-open {
 @media (max-width:480px) {
   .pdf-frame { height: 220px; }
 }
+
+/* Notes/Deberes Section */
+.notes-section {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notes-section h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.notes-section p {
+  margin: 0;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.05);
+}
+
+.notes-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.notes-buttons .button {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Image Section (DarkEat-style 2 column layout) */
+.image-section {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.image-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.image-section-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.image-section-content p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.image-section-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.image-section-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive: stack columns on tablet */
+@media (max-width: 900px) {
+  .image-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .image-section-content h3 {
+    font-size: 1.25rem;
+  }
+}
