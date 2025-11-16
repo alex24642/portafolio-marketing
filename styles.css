@@ -47,9 +47,15 @@ button {
   padding: 2.5rem clamp(1.5rem, 3vw, 4rem) 5rem;
   min-height: 100vh;
   background: linear-gradient(160deg, rgba(13, 13, 15, 0.95) 60%, rgba(20, 20, 28, 0.85)),
-              url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1500&q=80') center/cover;
+              url('images/1.png') center/cover;
   display: flex;
   flex-direction: column;
+}
+
+/* Compact hero variant for personal info page */
+.hero--compact {
+  padding: 1.5rem clamp(1.0rem, 2.5vw, 3rem) 3rem;
+  min-height: 60vh;
 }
 
 .navbar {
@@ -179,6 +185,22 @@ button {
   object-fit: cover;
   border-radius: 1rem;
   margin-bottom: 1.5rem;
+}
+
+/* Profile avatar and image constraints for informacion-personal page */
+.profile-avatar {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+.profile-card img {
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin-bottom: 0.75rem;
 }
 
 .hero-card::after {
@@ -719,6 +741,34 @@ textarea {
 .social-links a {
   color: var(--secondary);
   font-weight: 600;
+}
+
+/* LinkedIn badge / icon styles */
+.linkedin-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: #0A66C2; /* LinkedIn blue */
+  background: rgba(10,102,194,0.06);
+  border: 1px solid rgba(10,102,194,0.12);
+  transition: background var(--transition), transform var(--transition);
+}
+.linkedin-badge svg { display: block; width: 18px; height: 18px; }
+.linkedin-badge:hover { background: rgba(10,102,194,0.12); transform: translateY(-2px); }
+
+.footer .social-links a.linkedin-badge {
+  width: auto;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--secondary);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .contact-info {
