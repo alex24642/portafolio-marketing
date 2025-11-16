@@ -1,6 +1,7 @@
-// Music Selector - Reproductor flotante con selector visual
+// Music Selector - Reproductor flotante con reproducción continua entre páginas
 (function(){
   var STORAGE_KEY = 'music_player_state';
+  var UPDATE_KEY = 'music_player_update';
   
   var playlist = [
     { title: 'Sueño Fugaz', file: 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3' },
@@ -11,125 +12,95 @@
 
   function saveState(trackIndex, isPlaying, currentTime, volume){
     try{
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      var state = {
         trackIndex: trackIndex,
         playing: isPlaying,
         time: currentTime,
-        volume: volume
-      }));
+        volume: volume,
+        timestamp: Date.now()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(UPDATE_KEY, JSON.stringify({updated: Date.now()}));
     }catch(e){}
   }
 
   function loadState(){
     try{
       var s = localStorage.getItem(STORAGE_KEY);
-      return s ? JSON.parse(s) : {trackIndex: 0, playing: false, time: 0, volume: 0.7};
+      return s ? JSON.parse(s) : {trackIndex: 0, playing: false, time: 0, volume: 0.7, timestamp: 0};
     }catch(e){
-      return {trackIndex: 0, playing: false, time: 0, volume: 0.7};
+      return {trackIndex: 0, playing: false, time: 0, volume: 0.7, timestamp: 0};
     }
   }
 
   function injectCSS(){
     var css = `
-#music-player-widget {
+#floating-audio-player {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  background: linear-gradient(135deg, rgba(20,20,30,0.95), rgba(40,40,60,0.95));
-  border: 1px solid rgba(100,150,255,0.3);
-  border-radius: 12px;
-  padding: 1rem;
-  width: 320px;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background: rgba(30, 30, 45, 0.92);
+  border: 1px solid rgba(125,211,252,0.35);
+  border-radius: 50px;
+  padding: 0.6rem 0.9rem;
+  width: auto;
+  max-width: 520px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   z-index: 9999;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: nowrap;
 }
 
-#music-player-widget h3 {
-  margin: 0 0 0.8rem 0;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #7dd3fc;
-  font-weight: 600;
-}
-
-.music-current-track {
-  background: rgba(100,150,255,0.1);
-  border-left: 3px solid #7dd3fc;
-  padding: 0.8rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  min-height: 40px;
+.music-selector-group {
+  margin: 0;
   display: flex;
   align-items: center;
 }
 
-.music-current-track .track-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #fff;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.music-current-track .track-time {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin-top: 0.3rem;
-}
-
-.music-selector-group {
-  margin-bottom: 1rem;
-}
-
 .music-selector-group label {
-  display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #aaa;
-  margin-bottom: 0.5rem;
+  display: none;
 }
 
 #music-track-select {
-  width: 100%;
-  padding: 0.6rem;
+  padding: 0.4rem 0.6rem;
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(100,150,255,0.2);
+  border: 1px solid rgba(125,211,252,0.25);
   color: #fff;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
+  min-width: 140px;
 }
 
-#music-track-select:hover {
-  border-color: rgba(100,150,255,0.5);
-}
-
+#music-track-select:hover,
 #music-track-select:focus {
   outline: none;
   border-color: #7dd3fc;
-  background: rgba(100,150,255,0.1);
+  background: rgba(125,211,252,0.1);
 }
 
 #music-track-select option {
   background: #1a1a2e;
   color: #fff;
+  padding: 0.4rem;
 }
 
 .music-progress-container {
-  margin-bottom: 1rem;
+  flex: 1;
+  min-width: 120px;
+  margin: 0;
 }
 
 .music-progress-bar {
   width: 100%;
-  height: 6px;
-  background: rgba(100,150,255,0.1);
+  height: 5px;
+  background: rgba(125,211,252,0.15);
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
@@ -142,41 +113,34 @@
   transition: width 0.05s linear;
 }
 
-.music-time-display {
-  font-size: 0.75rem;
-  color: #aaa;
-  text-align: right;
-  margin-top: 0.3rem;
-}
-
 .music-controls {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.25rem;
+  margin: 0;
 }
 
 .music-btn {
-  flex: 1;
-  padding: 0.7rem;
-  background: rgba(100,150,255,0.2);
-  border: 1px solid rgba(100,150,255,0.3);
+  padding: 0.38rem 0.5rem;
+  background: rgba(125,211,252,0.12);
+  border: 1px solid rgba(125,211,252,0.25);
   color: #fff;
-  border-radius: 6px;
+  border-radius: 18px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   transition: all 0.2s;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  white-space: nowrap;
+  min-width: auto;
+  flex: 0 0 auto;
 }
 
 .music-btn:hover {
-  background: rgba(100,150,255,0.4);
-  border-color: rgba(100,150,255,0.6);
+  background: rgba(125,211,252,0.25);
+  border-color: rgba(125,211,252,0.5);
 }
 
 .music-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
 }
 
 .music-btn.playing {
@@ -188,21 +152,20 @@
 .music-volume-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  margin: 0;
+  flex: 0 0 auto;
 }
 
 .music-volume-group label {
-  font-size: 0.75rem;
-  color: #aaa;
-  white-space: nowrap;
-  margin-bottom: 0;
+  display: none;
 }
 
 #music-volume-slider {
-  flex: 1;
-  height: 6px;
-  background: rgba(100,150,255,0.1);
-  border-radius: 3px;
+  width: 70px;
+  height: 4px;
+  background: rgba(125,211,252,0.15);
+  border-radius: 2px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -211,35 +174,85 @@
 #music-volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   background: #7dd3fc;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid rgba(125,211,252,0.5);
+  border: 1.5px solid rgba(125,211,252,0.6);
+  box-shadow: 0 2px 6px rgba(125,211,252,0.3);
 }
 
 #music-volume-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   background: #7dd3fc;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid rgba(125,211,252,0.5);
+  border: 1.5px solid rgba(125,211,252,0.6);
+  box-shadow: 0 2px 6px rgba(125,211,252,0.3);
+}
+
+#music-volume-slider::-moz-range-track {
+  background: transparent;
+  border: none;
 }
 
 .music-volume-value {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #7dd3fc;
-  min-width: 30px;
-  text-align: right;
+  min-width: 22px;
+  text-align: center;
+  font-weight: 600;
 }
 
-@media(max-width: 480px){
-  #music-player-widget {
-    width: calc(100% - 2rem);
-    right: 1rem;
-    left: 1rem;
+@media(max-width: 800px){
+  #floating-audio-player {
+    padding: 0.5rem 0.7rem;
+    gap: 0.5rem;
+  }
+  #music-track-select {
+    min-width: 120px;
+    font-size: 0.8rem;
+  }
+  .music-progress-container {
+    min-width: 100px;
+  }
+  .music-btn {
+    padding: 0.35rem 0.45rem;
+    font-size: 0.7rem;
+  }
+  #music-volume-slider {
+    width: 60px;
+  }
+}
+
+@media(max-width: 600px){
+  #floating-audio-player {
+    right: 0.8rem;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    width: calc(100% - 1.6rem);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #music-track-select {
+    order: 1;
+    min-width: 100px;
+  }
+  .music-controls {
+    order: 2;
+  }
+  .music-progress-container {
+    order: 3;
+    width: 100%;
+    margin-top: 0.4rem;
+  }
+  .music-volume-group {
+    order: 4;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.4rem;
   }
 }
 `;
@@ -260,43 +273,34 @@
 
     var state = loadState();
     var currentTrackIndex = state.trackIndex;
-    var isPlaying = false;
+    var isPlaying = state.playing || false;
+    var wasPlaying = state.playing || false;
 
     // Create HTML
-    var widget = document.createElement('div');
-    widget.id = 'music-player-widget';
-    widget.innerHTML = `
-      <h3>🎵 Música</h3>
-      <div class="music-current-track">
-        <div>
-          <div class="track-title" id="music-now-playing">Selecciona una canción</div>
-          <div class="track-time" id="music-track-time">0:00 / 0:00</div>
-        </div>
-      </div>
+    var playerDiv = document.createElement('div');
+    playerDiv.id = 'floating-audio-player';
+    playerDiv.innerHTML = `
+      <button class="music-btn" id="music-play-btn" title="Reproducir/Pausa">▶</button>
       <div class="music-selector-group">
-        <label for="music-track-select">Canción:</label>
         <select id="music-track-select"></select>
       </div>
       <div class="music-progress-container">
         <div class="music-progress-bar" id="music-progress-bar">
           <div class="music-progress-fill" id="music-progress-fill"></div>
         </div>
-        <div class="music-time-display" id="music-time-display">0:00 / 0:00</div>
       </div>
-      <div class="music-controls">
-        <button class="music-btn" id="music-prev-btn">⏮ Anterior</button>
-        <button class="music-btn" id="music-play-btn">▶ Reproducir</button>
-        <button class="music-btn" id="music-next-btn">Siguiente ⏭</button>
+      <div class="music-volume-group">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 5.54a9 9 0 0 1 0 12.92"></path>
+          <path d="M19.07 4.93a16 16 0 0 1 0 14.14"></path>
+        </svg>
+        <input type="range" id="music-volume-slider" min="0" max="100" value="70">
+        <div class="music-volume-value" id="music-volume-value">70%</div>
       </div>
-      <div class="music-selector-group">
-        <div class="music-volume-group">
-          <label for="music-volume-slider">Volumen:</label>
-          <input type="range" id="music-volume-slider" min="0" max="100" value="70">
-          <div class="music-volume-value" id="music-volume-value">70%</div>
-        </div>
-      </div>
+      <button class="music-btn" id="music-next-btn" title="Siguiente">⏭</button>
     `;
-    document.body.appendChild(widget);
+    document.body.appendChild(playerDiv);
 
     // Create audio element
     var audio = document.createElement('audio');
@@ -307,13 +311,9 @@
     // Get references
     var selectTrack = document.getElementById('music-track-select');
     var playBtn = document.getElementById('music-play-btn');
-    var prevBtn = document.getElementById('music-prev-btn');
     var nextBtn = document.getElementById('music-next-btn');
     var volumeSlider = document.getElementById('music-volume-slider');
     var volumeValue = document.getElementById('music-volume-value');
-    var nowPlaying = document.getElementById('music-now-playing');
-    var trackTime = document.getElementById('music-track-time');
-    var timeDisplay = document.getElementById('music-time-display');
     var progressBar = document.getElementById('music-progress-bar');
     var progressFill = document.getElementById('music-progress-fill');
 
@@ -331,15 +331,11 @@
       selectTrack.value = idx;
       var track = playlist[idx];
       audio.src = encodeURI(track.file);
-      nowPlaying.textContent = track.title;
       saveState(currentTrackIndex, isPlaying, audio.currentTime, audio.volume);
     }
 
     function updateUI(){
-      playBtn.textContent = audio.paused ? '▶ Reproducir' : '⏸ Pausa';
-      playBtn.classList.toggle('playing', !audio.paused);
-      timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
-      trackTime.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+      playBtn.textContent = audio.paused ? '▶' : '⏸';
       if(audio.duration){
         var percent = (audio.currentTime / audio.duration) * 100;
         progressFill.style.width = percent + '%';
@@ -353,10 +349,6 @@
       } else {
         audio.pause();
       }
-    });
-
-    prevBtn.addEventListener('click', function(){
-      loadTrack(currentTrackIndex - 1);
     });
 
     nextBtn.addEventListener('click', function(){
@@ -396,7 +388,6 @@
     });
 
     audio.addEventListener('error', function(){
-      nowPlaying.textContent = 'Error cargando: ' + playlist[currentTrackIndex].title;
       console.error('Audio error:', audio.error);
     });
 
@@ -406,22 +397,61 @@
     volumeValue.textContent = Math.round(state.volume * 100) + '%';
     loadTrack(currentTrackIndex);
 
+    // Listen for changes from other tabs/pages
+    window.addEventListener('storage', function(e){
+      if(e.key === STORAGE_KEY){
+        var newState = JSON.parse(e.newValue || '{}');
+        if(newState.trackIndex !== undefined){
+          currentTrackIndex = newState.trackIndex;
+          selectTrack.value = currentTrackIndex;
+          audio.src = encodeURI(playlist[currentTrackIndex].file);
+        }
+        if(newState.time !== undefined){
+          audio.currentTime = newState.time;
+        }
+        if(newState.volume !== undefined){
+          audio.volume = newState.volume;
+          volumeSlider.value = Math.round(newState.volume * 100);
+          volumeValue.textContent = Math.round(newState.volume * 100) + '%';
+        }
+        if(newState.playing && audio.paused){
+          setTimeout(function(){ audio.play().catch(function(e){}); }, 100);
+        }
+        if(!newState.playing && !audio.paused){
+          audio.pause();
+        }
+      }
+    });
+
+    // Delay playback start slightly to let audio load
+    window.addEventListener('load', function(){
+      if(wasPlaying && audio.paused){
+        setTimeout(function(){
+          if(state.time && state.time > 0){
+            audio.currentTime = state.time;
+          }
+          audio.play().catch(function(e){
+            console.log('Autoplay prevented by browser');
+          });
+        }, 200);
+      }
+    });
+
     // Save state periodically
     setInterval(function(){
       saveState(currentTrackIndex, !audio.paused, audio.currentTime, audio.volume);
-    }, 2000);
-
-    // Restore playback state on page load if was playing
-    window.addEventListener('load', function(){
-      if(state.playing && audio.paused){
-        // Comment this out if you don't want autoplay
-        // audio.play().catch(function(e){});
-      }
-    });
+    }, 1000);
 
     // Save state on unload
     window.addEventListener('beforeunload', function(){
       saveState(currentTrackIndex, !audio.paused, audio.currentTime, audio.volume);
+    });
+
+    // Force save on visibility change (when tab becomes inactive)
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){
+        saveState(currentTrackIndex, !audio.paused, audio.currentTime, audio.volume);
+      }
     });
   });
 })();
