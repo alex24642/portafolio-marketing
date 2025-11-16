@@ -22,11 +22,14 @@
 
   function injectCSS(){
     var css = ''+
-      '#music-bar{position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.7);padding:8px 12px;border-radius:10px;color:#fff;font-family:Arial,sans-serif;}'+
-      '#music-bar button{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer;}'+
-      '#music-bar select{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.08);padding:6px;border-radius:6px;}'+
-      '#music-bar input[type=range]{cursor:pointer;}'+
-      '#music-bar .time{font-size:12px;color:#ddd;margin-left:6px;}';
+      '#music-bar{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:12px;background:rgba(20,20,25,0.95);padding:12px 16px;border-radius:12px;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 12px rgba(0,0,0,0.3);}'+
+      '#music-bar button{background:rgba(100,150,255,0.2);border:1px solid rgba(100,150,255,0.4);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:14px;transition:all 0.2s;min-width:36px;text-align:center;}'+
+      '#music-bar button:hover{background:rgba(100,150,255,0.35);border-color:rgba(100,150,255,0.6);}'+
+      '#music-bar select{background:rgba(30,30,40,0.8);color:#fff;border:1px solid rgba(100,150,255,0.3);padding:8px 10px;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer;transition:all 0.2s;min-width:200px;}'+
+      '#music-bar select:hover,#music-bar select:focus{outline:none;background:rgba(40,40,55,0.9);border-color:rgba(100,150,255,0.6);}'+
+      '#music-bar select option{background:#1a1a25;color:#fff;padding:8px;}'+
+      '#music-bar input[type=range]{cursor:pointer;accent-color:rgba(100,150,255,0.8);}'+
+      '#music-bar .time{font-size:11px;color:#aaa;min-width:30px;text-align:center;font-weight:500;}';
     var s = document.createElement('style'); s.appendChild(document.createTextNode(css)); document.head.appendChild(s);
   }
 
@@ -66,12 +69,15 @@
     // initialize
     setTrack(index, false);
 
+    function updatePlayButton(){ ui.play.textContent = ui.audio.paused ? '▶' : '⏸'; }
+    updatePlayButton();
+
     ui.play.addEventListener('click', function(){
-      if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); ui.play.textContent = ''; }
-      else { ui.audio.pause(); ui.play.textContent = ''; }
+      if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); updatePlayButton(); }
+      else { ui.audio.pause(); updatePlayButton(); }
     });
 
-    ui.select.addEventListener('change', function(){ var idx = parseInt(this.value,10); setTrack(idx, true); ui.play.textContent = ''; });
+    ui.select.addEventListener('change', function(){ var idx = parseInt(this.value,10); setTrack(idx, true); updatePlayButton(); });
 
     ui.volume.addEventListener('input', function(){ var v = parseInt(this.value,10)/100; ui.audio.volume = v; saveState({ index: index, volume: v }); });
 
@@ -80,10 +86,10 @@
     ui.audio.addEventListener('timeupdate', function(){ ui.progress.max = isFinite(ui.audio.duration) ? ui.audio.duration : 100; ui.progress.value = ui.audio.currentTime || 0; var t = Math.floor(ui.audio.currentTime||0); ui.time.textContent = Math.floor(t/60)+':' + (''+ (t%60)).padStart(2,'0'); });
 
     ui.audio.addEventListener('ended', function(){ // auto next
-      var next = (index+1) % PLAYLIST.length; setTrack(next, true); ui.play.textContent = ''; });
+      var next = (index+1) % PLAYLIST.length; setTrack(next, true); updatePlayButton(); });
 
-    ui.audio.addEventListener('play', function(){ ui.play.textContent = ''; });
-    ui.audio.addEventListener('pause', function(){ ui.play.textContent = ''; });
+    ui.audio.addEventListener('play', function(){ updatePlayButton(); });
+    ui.audio.addEventListener('pause', function(){ updatePlayButton(); });
 
     // Save on unload
     window.addEventListener('pagehide', function(){ saveState({ index: index, volume: ui.audio.volume }); });
