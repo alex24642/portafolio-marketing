@@ -60,7 +60,19 @@
     var bc = null;
     try{ bc = new BroadcastChannel('music-player'); }catch(e){ bc = null; }
 
-    function openPlayerPopup(){ try{ var w = window.open('player-window.html?v=1.1', 'music-player', 'width=420,height=120'); if(w){ w.focus(); return true; } return false; }catch(e){ return false; } }
+    function openPlayerPopup(){
+      try{
+        var width = 360, height = 90;
+        var availW = (screen && screen.availWidth) ? screen.availWidth : window.screen.width;
+        var availH = (screen && screen.availHeight) ? screen.availHeight : window.screen.height;
+        var left = Math.max(0, availW - width - 20);
+        var top = Math.max(0, availH - height - 40);
+        var features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',toolbar=0,location=0,menubar=0,status=0,scrollbars=0,resizable=0';
+        var w = window.open('player-window.html?v=1.1', 'music-player', features);
+        if(w) try{ w.focus(); }catch(e){}
+        return w;
+      }catch(e){ return null; }
+    }
     function sendToPlayer(msg){ if(bc) try{ bc.postMessage(msg); }catch(e){} }
     function formatTime(seconds){ var t = Math.floor(seconds||0); return Math.floor(t/60)+':' + (''+ (t%60)).padStart(2,'0'); }
 
@@ -95,21 +107,74 @@
       } };
     }
 
-    // If user previously allowed auto-open of persistent player, try to open it now.
-    try{
-      var autoOpen = localStorage.getItem('simple_music_bar_auto_open') === '1';
-      if(autoOpen){ openPlayerPopup(); }
-    }catch(e){}
-
     // initialize local fallback
     setTrack(index, false);
+
+    // --- PJAX navigation: intercept internal link clicks and load <main> via fetch
+    function isInternalLink(a){
+      if(!a || !a.href) return false;
+      try{
+        var u = new URL(a.href, location.href);
+        return u.origin === location.origin && (u.pathname.endsWith('.html') || u.pathname === '/' || u.pathname.indexOf('.') === -1);
+      }catch(e){return false;}
+    }
+
+    function runScriptsFromFragment(fragment){
+      // execute inline and external scripts inside the fragment
+      var scripts = fragment.querySelectorAll('script');
+      scripts.forEach(function(s){
+        var el = document.createElement('script');
+        if(s.src){ el.src = s.src; el.async = false; }
+        else { el.textContent = s.textContent; }
+        document.body.appendChild(el);
+        // remove appended script after load to keep DOM clean
+        el.addEventListener('load', function(){ setTimeout(function(){ el.parentNode && el.parentNode.removeChild(el); },1000); });
+      });
+    }
+
+    function ajaxNavigateTo(url, addToHistory){
+      fetch(url, { credentials: 'same-origin' }).then(function(resp){ if(!resp.ok) throw new Error('Network response not ok'); return resp.text(); }).then(function(html){
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, 'text/html');
+        var newMain = doc.querySelector('main');
+        if(newMain){
+          var oldMain = document.querySelector('main');
+          if(oldMain){ oldMain.innerHTML = newMain.innerHTML; }
+          else { document.body.appendChild(newMain); }
+          // update title
+          if(doc.title) document.title = doc.title;
+          // run scripts found in new main
+          runScriptsFromFragment(newMain);
+          window.scrollTo(0,0);
+          if(addToHistory) history.pushState({ pjax: true }, doc.title || '', url);
+          // notify other scripts
+          document.dispatchEvent(new CustomEvent('pjax:loaded', { detail: { url: url } }));
+        } else { window.location.href = url; }
+      }).catch(function(err){ console.warn('PJAX load failed, falling back to full navigation', err); window.location.href = url; });
+    }
+
+    // global click handler to intercept internal links
+    document.addEventListener('click', function(e){
+      var a = e.target;
+      while(a && a.tagName !== 'A') a = a.parentNode;
+      if(!a) return;
+      if(a.target && a.target !== '' && a.target !== '_self') return; // allow external targets
+      if(a.hasAttribute('download') || a.rel === 'external') return;
+      if(isInternalLink(a)){
+        e.preventDefault();
+        var href = a.getAttribute('href');
+        if(href.indexOf('#') === 0){ location.hash = href; return; }
+        ajaxNavigateTo(href, true);
+      }
+    }, true);
+
+    // handle back/forward
+    window.addEventListener('popstate', function(e){ if(e.state && e.state.pjax){ ajaxNavigateTo(location.href, false); } else { /* for safety, do full load */ ajaxNavigateTo(location.href, false); } });
 
     function updatePlayButton(){ ui.play.textContent = ui.audio.paused ? '▶' : '⏸'; }
     updatePlayButton();
 
     ui.play.addEventListener('click', function(){
-      // remember that user initiated playback so future pages can auto-open persistent player
-      try{ localStorage.setItem('simple_music_bar_auto_open', '1'); }catch(e){}
       if(bc){ openPlayerPopup(); sendToPlayer({ type: 'TOGGLE_PLAY' }); }
       else {
         if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); updatePlayButton(); }
