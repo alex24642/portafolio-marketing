@@ -41,7 +41,6 @@
     audio.id = 'ap-audio';
     audio.preload = 'auto';
     audio.loop = false;
-    audio.crossOrigin = 'anonymous';
     audio.style.display = 'none';
     document.body.appendChild(audio);
 
@@ -92,7 +91,13 @@
     function loadTrack(index){
       if(index < 0 || index >= playlist.length) return;
       currentTrackIndex = index;
-      audio.src = playlist[index].url;
+      // Encode the URL to handle spaces and special characters
+      try {
+        var src = encodeURI(playlist[index].url);
+        audio.src = src;
+      } catch (err) {
+        audio.src = playlist[index].url;
+      }
       title.textContent = playlist[index].title;
       trackSelect.value = index;
       state.trackIndex = index;
@@ -116,7 +121,7 @@
     // Play/Pause toggle
     toggle.addEventListener('click', function(){
       if(audio.paused){ 
-        audio.play().catch(function(e){ console.log('Autoplay blocked:', e); }); 
+        audio.play().catch(function(e){ console.log('Autoplay blocked:', e); title.textContent = 'Pulse ▶ para reproducir (autoplay bloqueado)'; });
       } else { 
         audio.pause(); 
       }
@@ -151,6 +156,12 @@
         loadTrack(currentTrackIndex + 1);
         audio.play().catch(function(e){});
       }
+    });
+
+    // Error handling for audio loading/playback
+    audio.addEventListener('error', function(ev){
+      console.error('Audio error loading:', audio.src, audio.error, ev);
+      title.textContent = 'Error cargando pista';
     });
 
     // Periodic save

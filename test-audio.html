@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prueba de audio</title>
+  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:2rem}</style>
+</head>
+<body>
+  <h1>Prueba de audio local</h1>
+  <p>Este archivo intenta cargar y reproducir un MP3 local. Usa los controles o el botón <strong>Play</strong>.</p>
+
+  <audio id="test-audio" controls></audio>
+  <div style="margin-top:1rem;font-size:0.9rem;color:#444">Console: abre DevTools (F12) → pestaña <strong>Console</strong> y <strong>Network</strong>.</div>
+
+  <script>
+    (function(){
+      var audio = document.getElementById('test-audio');
+      // Ruta al MP3 (se codifica para manejar espacios y paréntesis)
+      var path = 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3';
+      audio.src = encodeURI(path);
+
+      console.log('test-audio: assigned src ->', audio.src);
+
+      audio.addEventListener('loadedmetadata', function(){
+        console.log('test-audio: loadedmetadata, duration=', audio.duration);
+      });
+      audio.addEventListener('canplay', function(){ console.log('test-audio: canplay'); });
+      audio.addEventListener('play', function(){ console.log('test-audio: play'); });
+      audio.addEventListener('pause', function(){ console.log('test-audio: pause'); });
+      audio.addEventListener('ended', function(){ console.log('test-audio: ended'); });
+      audio.addEventListener('error', function(ev){
+        console.error('test-audio: error loading/playing', audio.src, audio.error, ev);
+      });
+
+      // Intento de autoplay para ver si el navegador lo bloquea
+      audio.play().then(function(){
+        console.log('test-audio: autoplay started');
+      }).catch(function(e){
+        console.warn('test-audio: autoplay blocked or failed', e);
+      });
+    })();
+  </script>
+</body>
+</html>
