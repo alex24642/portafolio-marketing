@@ -6,12 +6,12 @@
   var AUDIO_KEY = 'site_audio_state_v2';
   var SAVE_INTERVAL = 2000; // ms
   
-  // Default playlist: reemplaza con tus links de YouTube o MP3
+  // Default playlist: reemplaza con tus archivos MP3 locales o URLs directas a MP3
   var defaultPlaylist = [
-    {title: 'Sueño Fugaz', url: 'https://www.youtube.com/embed/uKATwfkZCDI?autoplay=1'},
-    {title: 'Sin un Corazón', url: 'https://www.youtube.com/embed/Qwlzp5bLjZA?autoplay=1'},
-    {title: 'Fly Me to the Moon', url: 'https://www.youtube.com/embed/gtI9tITk5Fg?autoplay=1'},
-    {title: 'Las Noches', url: 'https://www.youtube.com/embed/3ShkWzG7tFs?autoplay=1'}
+    {title: 'Sueño Fugaz', url: 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3'},
+    {title: 'Sin un Corazón', url: 'musica/Cuco - Sin Un Corazon (musica2).mp3'},
+    {title: 'Fly Me to the Moon', url: 'musica/Fly Me to the Moon (musica3).mp3'},
+    {title: 'Las Noches', url: 'musica/Junior H - LAS NOCHES (musica4).mp3'}
   ];
   
   var playlist = window.SITE_PLAYLIST || defaultPlaylist;
@@ -30,7 +30,7 @@
           </select>
         </div>
         <div id="ap-progress-wrap">
-          <input id="ap-progress" type="range" min="0" max="100" value="0" step="0.1">
+          <input id="ap-progress" type="range" min="0" max="100" value="0" step="0.1" style="width:100%;cursor:pointer;">
         </div>
       </div>
       <button id="ap-mute" aria-label="Silenciar">🔊</button>
@@ -41,6 +41,7 @@
     audio.id = 'ap-audio';
     audio.preload = 'auto';
     audio.loop = false;
+    audio.crossOrigin = 'anonymous';
     audio.style.display = 'none';
     document.body.appendChild(audio);
 

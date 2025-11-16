@@ -12,14 +12,8 @@ Cómo configurarlo en el sitio:
 
    <script>window.SITE_AUDIO_SRC = 'audio/ambient.mp3';</script>
 
-2) Alternativamente, puedes usar un vídeo de YouTube público (no YouTube Music) estableciendo:
-
-   <script>window.SITE_AUDIO_SRC = 'youtube:VIDEO_ID';</script>
-
-   Donde VIDEO_ID es el id del vídeo (la parte después de v= en la URL de YouTube).
-
 Notas importantes:
-- YouTube Music no ofrece un embed público que podamos controlar desde el sitio. Si quieres reproducir una pista alojada en YouTube Music, lo práctico es usar la versión pública del vídeo en YouTube (si existe).
+- Coloca tus archivos MP3 en la carpeta `audio/` o `musica/` y referencia la ruta en `window.SITE_AUDIO_SRC` o configura `window.SITE_PLAYLIST` con URLs locales.
 - Por políticas de reproducción automática, los navegadores pueden bloquear la reproducción hasta que el usuario interactúe con la página.
 - El reproductor intenta sincronizar tiempo y estado entre páginas usando localStorage, pero la reproducción continúa en la nueva pestaña solo tras interacción si el navegador lo requiere.
 
