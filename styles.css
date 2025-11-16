@@ -362,12 +362,22 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   grid-template-rows: 200px 1fr;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform 0.35s ease, box-shadow var(--transition), opacity 0.35s ease, max-height 0.35s ease, margin 0.35s ease, padding 0.35s ease;
 }
 
 .portfolio-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Hidden state with smooth transition */
+.portfolio-card.is-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
 }
 
 .portfolio-thumb {

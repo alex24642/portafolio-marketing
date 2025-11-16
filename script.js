@@ -27,19 +27,46 @@ if (menuToggle && navLinks) {
   });
 }
 
+const applyFilter = (filter) => {
+  filterButtons.forEach(btn => btn.classList.remove('active'));
+  // mark the button with matching data-filter as active (if exists)
+  const btnToActive = Array.from(filterButtons).find(b => b.dataset.filter === filter);
+  if (btnToActive) btnToActive.classList.add('active');
+
+  portfolioCards.forEach(card => {
+    const matches = filter === 'all' || card.dataset.category === filter;
+
+    if (matches) {
+      // make sure it's in the flow then remove hidden class to animate in
+      card.style.display = 'grid';
+      // force reflow so the transition runs reliably
+      // eslint-disable-next-line no-unused-expressions
+      card.offsetWidth;
+      card.classList.remove('is-hidden');
+    } else {
+      // add hidden class to animate out, then remove from flow after animation
+      card.classList.add('is-hidden');
+      // wait for transition to finish before setting display none
+      setTimeout(() => {
+        if (card.classList.contains('is-hidden')) {
+          card.style.display = 'none';
+        }
+      }, 380);
+    }
+  });
+};
+
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
-
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    portfolioCards.forEach(card => {
-      const matches = filter === 'all' || card.dataset.category === filter;
-      card.style.display = matches ? 'grid' : 'none';
-    });
+    applyFilter(filter);
   });
 });
+
+// On load, apply the currently active filter button (defaults to 'original' if none)
+const activeBtn = document.querySelector('.filter-button.active');
+const initialFilter = activeBtn ? activeBtn.dataset.filter : 'original';
+applyFilter(initialFilter);
 
 let currentTestimonial = 0;
 const updateTestimonials = () => {
