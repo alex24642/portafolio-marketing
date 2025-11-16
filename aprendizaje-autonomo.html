@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2.7">
+  <link rel="stylesheet" href="styles.css?v=2.8">
 </head>
 <body>
   <header class="hero hero--compact" id="inicio">
@@ -32,17 +32,36 @@
       <p>Recursos, investigaciones y trabajos desarrollados de manera autónoma por los estudiantes.</p>
     </section>
 
-    <div style="margin: 2rem 0; border-radius: 1.5rem; overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-      <img src="https://via.placeholder.com/800x400?text=Aprendizaje+Autónomo" alt="Aprendizaje autónomo" style="width: 100%; height: auto; display: block;">
-    </div>
+    <!-- PDF preview grid: iframes with download links for all files in "aprendizaje autonomo" -->
+    <section aria-labelledby="pdfs-title" style="margin-top:1.5rem;">
+      <h2 id="pdfs-title">Documentos: Aprendizaje autónomo</h2>
+      <p>Previsualiza los documentos a continuación y descárgalos si lo deseas.</p>
 
-    <section class="profile-card">
-      <h2>Trabajos individuales</h2>
-      <p>Aquí puedes incluir ensayos, proyectos independientes y resultados de investigación personal.</p>
-    </section>
+      <div class="pdf-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-top:1rem;">
 
-    <section style="margin-top:2rem; text-align:center;">
-      <a class="button" href="index.html#portfolio">Volver al portafolio</a>
+        <article class="pdf-card">
+          <h3>Concepto de Gastronomía</h3>
+          <iframe class="pdf-frame" src="aprendizaje%20autonomo/concepto%20de%20gastronom%C3%ADa%20.pdf" title="Previsualización: Concepto de Gastronomía"></iframe>
+          <p style="margin-top:.5rem;"><a class="button" href="aprendizaje%20autonomo/concepto%20de%20gastronom%C3%ADa%20.pdf" download>Descargar PDF</a></p>
+        </article>
+
+        <article class="pdf-card">
+          <h3>Marketing Digital — Grupo Sazón360</h3>
+          <iframe class="pdf-frame" src="aprendizaje%20autonomo/Marketing%20Digital%20Grupo%20Sazon360%20.pdf" title="Previsualización: Marketing Digital Grupo Sazón360"></iframe>
+          <p style="margin-top:.5rem;"><a class="button" href="aprendizaje%20autonomo/Marketing%20Digital%20Grupo%20Sazon360%20.pdf" download>Descargar PDF</a></p>
+        </article>
+
+        <article class="pdf-card">
+          <h3>Marketing Digital — La Revolución</h3>
+          <iframe class="pdf-frame" src="aprendizaje%20autonomo/Marketing-Digital-La-Revolucion-.pdf" title="Previsualización: Marketing Digital La Revolución"></iframe>
+          <p style="margin-top:.5rem;"><a class="button" href="aprendizaje%20autonomo/Marketing-Digital-La-Revolucion-.pdf" download>Descargar PDF</a></p>
+        </article>
+
+      </div>
+
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a class="button" href="index.html#portfolio">Volver al portafolio</a>
+      </div>
     </section>
   </main>
 
