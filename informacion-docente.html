@@ -27,21 +27,88 @@
 
   <main class="container">
     <section class="section-header">
-      <span class="eyebrow">Información del docente</span>
+      <span class="eyebrow">Perfil académico</span>
       <h1>Información del docente</h1>
-      <p>Aquí puedes agregar la información del docente responsable de la asignatura: datos de contacto, perfil académico, materiales y notas relevantes.</p>
     </section>
 
-    <div style="margin: 2rem 0; border-radius: 1.5rem; overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-      <img src="https://via.placeholder.com/800x400?text=Imagen+del+Docente" alt="Imagen del docente" style="width: 100%; height: auto; display: block;">
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin: 2rem 0; padding: 2rem; background: rgba(255,255,255,0.03); border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+      <!-- Columna izquierda: Foto -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <div style="width: 200px; height: 200px; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); border: 2px solid rgba(125,211,252,0.2);">
+          <img src="https://via.placeholder.com/200x250?text=Foto+Docente" alt="Foto del docente" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <h2 style="margin: 0; text-align: center; color: var(--secondary); font-size: 1.1rem;">Ing. Giovanny Haro Sosa</h2>
+        <p style="margin: 0; text-align: center; color: #999; font-size: 0.9rem;">PhD en Marketing</p>
+        
+        <div style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 12px; border-left: 4px solid #7dd3fc; margin-top: 1rem;">
+          <p style="margin: 0.5rem 0; font-size: 0.85rem; color: #999;">
+            <strong style="color: var(--text);">Email:</strong><br>
+            <a href="mailto:gharo@espoch.edu.ec" style="color: #7dd3fc; text-decoration: none;">gharo@espoch.edu.ec</a>
+          </p>
+          <p style="margin: 0.5rem 0; font-size: 0.85rem; color: #999;">
+            <strong style="color: var(--text);">Teléfono:</strong><br>
+            +593 9 92928997
+          </p>
+          <p style="margin: 0.5rem 0; font-size: 0.85rem; color: #999;">
+            <strong style="color: var(--text);">Ubicación:</strong><br>
+            Riobamba - Ecuador
+          </p>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Información -->
+      <div>
+        <div style="margin-bottom: 2rem;">
+          <h3 style="color: var(--secondary); margin-bottom: 0.5rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Estudios</h3>
+          
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin: 0; color: var(--secondary); font-weight: 600;">Ingeniero en Marketing</p>
+            <p style="margin: 0.3rem 0 0 0; color: #999; font-size: 0.85rem;">Fecha: 2009</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin: 0; color: var(--secondary); font-weight: 600;">Doctor en Marketing</p>
+            <p style="margin: 0.3rem 0 0 0; color: #999; font-size: 0.85rem;">Fecha: 2024</p>
+            <p style="margin: 0.5rem 0 0 0; color: #999; font-size: 0.8rem;">Campo de conocimiento: Administración, Educación comercial y administración, Mercadotecnia y publicidad</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin: 0; color: var(--secondary); font-weight: 600;">Máster Universitario en Dirección y Administración de Empresas / MBA</p>
+            <p style="margin: 0.3rem 0 0 0; color: #999; font-size: 0.85rem;">Fecha: 2018</p>
+            <p style="margin: 0.5rem 0 0 0; color: #999; font-size: 0.8rem;">Campo de conocimiento: Administración, Educación comercial y administración</p>
+          </div>
+
+          <div>
+            <p style="margin: 0; color: var(--secondary); font-weight: 600;">Magíster en Gestión de Marketing y Servicio al Cliente</p>
+            <p style="margin: 0.3rem 0 0 0; color: #999; font-size: 0.85rem;">Fecha: 2015</p>
+          </div>
+        </div>
+
+        <div style="padding: 1.5rem; background: rgba(125,211,252,0.1); border-radius: 12px; border-left: 4px solid #7dd3fc;">
+          <h3 style="margin-top: 0; color: var(--secondary); margin-bottom: 0.8rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Información general</h3>
+          <ul style="margin: 0; padding-left: 1.5rem; color: #999; font-size: 0.9rem; line-height: 1.6;">
+            <li>Facultad de Salud Pública / Carrera de Gastronomía</li>
+            <li>Tiempo de experiencia: 15 años y 7 meses</li>
+            <li>Asignatura(s) que dicta: Marketing Gastronómico / Talento Humano</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="margin-top: 0; color: var(--secondary); margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Oficina / Contacto directo</h3>
+          <p style="margin: 0; color: #999; font-size: 0.9rem;">
+            Edificio de Investigación<br>
+            Piso 3, Oficina 304<br>
+            ESPOCH - Riobamba
+          </p>
+          <p style="margin: 1rem 0 0 0; color: #999; font-size: 0.9rem;">
+            <strong style="color: var(--text);">Horario de atención:</strong><br>
+            Lunes a Viernes: 8:00 AM - 5:00 PM
+          </p>
+        </div>
+      </div>
     </div>
 
-    <section class="profile-card">
-      <h2>Datos del docente</h2>
-      <p>Nombre, cargo, correo y enlaces a recursos del docente. Sustituye este texto por contenido real cuando lo tengas listo.</p>
-    </section>
-
-    <section style="margin-top:2rem; text-align:center;">
+    <section style="margin-top: 2rem; text-align: center;">
       <a class="button" href="index.html#portfolio">Volver al portafolio</a>
     </section>
   </main>
