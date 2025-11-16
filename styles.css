@@ -759,6 +759,95 @@ textarea {
 .linkedin-badge svg { display: block; width: 18px; height: 18px; }
 .linkedin-badge:hover { background: rgba(10,102,194,0.12); transform: translateY(-2px); }
 
+/* Social links in navbar */
+.nav-links .social-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-links .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.nav-links .social-links a:hover {
+  background: rgba(125,211,252,0.15);
+  border-color: rgba(125,211,252,0.3);
+  transform: translateY(-2px);
+}
+
+.nav-links .social-links svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Social links in footer */
+.footer-socials {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.footer-socials a:hover {
+  background: rgba(125,211,252,0.15);
+  border-color: rgba(125,211,252,0.3);
+  transform: translateY(-2px);
+}
+
+.footer-socials svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Footer contact information */
+.footer-contact {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+.footer-contact p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.footer-contact a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
 .footer .social-links a.linkedin-badge {
   width: auto;
   padding: 0.45rem 0.7rem;
