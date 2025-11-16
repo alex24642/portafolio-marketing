@@ -382,22 +382,22 @@ button {
 
 .portfolio-thumb {
   background: linear-gradient(135deg, rgba(240, 138, 36, 0.35), rgba(244, 93, 47, 0.4)),
-              url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80') center/cover;
+              url('https://cdn-icons-png.flaticon.com/512/2621/2621824.png') center/cover;
 }
 
 .portfolio-card:nth-child(2) .portfolio-thumb {
   background: linear-gradient(135deg, rgba(244, 93, 47, 0.3), rgba(240, 138, 36, 0.35)),
-              url('https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=900&q=80') center/cover;
+              url('https://ecosistema.buap.mx/forms/files/dspace-24/FORMACION_DOCENTE.jpg') center/cover;
 }
 
 .portfolio-card:nth-child(3) .portfolio-thumb {
   background: linear-gradient(135deg, rgba(240, 138, 36, 0.32), rgba(228, 199, 161, 0.35)),
-              url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80') center/cover;
+              url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREnXwUr974croqZoCh_QanGFC0CIO4HbQQDg&s') center/cover;
 }
 
 .portfolio-card:nth-child(4) .portfolio-thumb {
   background: linear-gradient(135deg, rgba(244, 93, 47, 0.35), rgba(240, 138, 36, 0.25)),
-              url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80') center/cover;
+              url('https://www.shutterstock.com/image-vector/school-education-concept-vector-illustration-600nw-2401814931.jpg') center/cover;
 }
 
 .portfolio-content {
