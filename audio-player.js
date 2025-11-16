@@ -23,7 +23,6 @@
     container.innerHTML = `
       <button id="ap-toggle" aria-label="Play/Pausa">▶</button>
       <div id="ap-info">
-        <div id="ap-title">Música</div>
         <div id="ap-playlist-select">
           <select id="ap-track-select" aria-label="Seleccionar canción">
             ${playlist.map((track, i) => `<option value="${i}">${track.title}</option>`).join('')}
@@ -33,10 +32,10 @@
       <div id="ap-progress-wrap">
         <input id="ap-progress" type="range" min="0" max="100" value="0" step="0.1">
       </div>
+      <button id="ap-mute" aria-label="Silenciar">🔊</button>
       <div class="ap-volume-group">
-        <button id="ap-mute" aria-label="Silenciar">🔊</button>
         <input id="ap-volume-slider" type="range" min="0" max="100" value="70">
-        <div class="ap-volume-value" id="ap-volume-value">70%</div>
+        <div class="ap-volume-value" id="ap-volume-value">22%</div>
       </div>
       <button id="ap-next" aria-label="Siguiente">⏭</button>
     `;
@@ -79,50 +78,52 @@
   backdrop-filter:blur(10px);
   z-index:2000;
   width:auto;
-  max-width:520px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.5)
+  max-width:none;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  flex-wrap:nowrap
 }
 #floating-audio-player button{
   background:rgba(125,211,252,0.12);
   border:1px solid rgba(125,211,252,0.25);
   color:#fff;
-  font-size:0.75rem;
-  padding:0.38rem 0.5rem;
+  font-size:0.9rem;
+  padding:0.5rem 0.6rem;
   cursor:pointer;
-  border-radius:18px;
+  border-radius:50%;
   transition:all 0.2s;
   white-space:nowrap;
-  font-weight:600
+  font-weight:600;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0
 }
 #floating-audio-player button:hover{
   background:rgba(125,211,252,0.25);
   border-color:rgba(125,211,252,0.5)
 }
-#floating-audio-player button:active{
-  transform:scale(0.92)
-}
 #ap-info{
   display:flex;
-  flex-direction:column;
-  min-width:180px;
-  max-width:280px;
-  gap:0.4rem
+  align-items:center;
+  gap:0.6rem;
+  flex-shrink:0
 }
 #ap-title{
-  font-weight:600;
-  color:#7dd3fc;
-  font-size:0.95rem
+  display:none
 }
 #ap-playlist-select select{
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(125,211,252,0.25);
   color:#fff;
   border-radius:20px;
-  padding:0.4rem 0.6rem;
-  font-size:0.85rem;
+  padding:0.5rem 0.8rem;
+  font-size:0.9rem;
   cursor:pointer;
   transition:all 0.2s;
-  min-width:140px
+  min-width:150px;
+  font-family:inherit
 }
 #ap-playlist-select select:hover,#ap-playlist-select select:focus{
   outline:none;
@@ -132,124 +133,182 @@
 #ap-playlist-select select option{
   background:#1a1a2e;
   color:#fff;
-  padding:0.4rem
+  padding:0.6rem
 }
 #ap-progress-wrap{
-  margin-top:0.2rem;
   flex:1;
-  min-width:120px;
-  margin-right:0.5rem
+  min-width:150px;
+  display:flex;
+  align-items:center;
+  height:auto
 }
 #ap-progress{
   width:100%;
-  height:5px;
+  height:6px;
   cursor:pointer;
   background:rgba(125,211,252,0.15);
   border-radius:3px;
   -webkit-appearance:none;
   appearance:none;
-  border:none
+  border:none;
+  outline:none
 }
 #ap-progress::-webkit-slider-thumb{
   -webkit-appearance:none;
   appearance:none;
-  width:11px;
-  height:11px;
+  width:14px;
+  height:14px;
   background:#7dd3fc;
   border-radius:50%;
   cursor:pointer;
-  border:1.5px solid rgba(125,211,252,0.6);
-  box-shadow:0 2px 6px rgba(125,211,252,0.3)
+  border:none;
+  box-shadow:0 2px 6px rgba(125,211,252,0.4)
 }
 #ap-progress::-moz-range-thumb{
-  width:11px;
-  height:11px;
+  width:14px;
+  height:14px;
   background:#7dd3fc;
   border-radius:50%;
   cursor:pointer;
-  border:1.5px solid rgba(125,211,252,0.6);
-  box-shadow:0 2px 6px rgba(125,211,252,0.3)
+  border:none;
+  box-shadow:0 2px 6px rgba(125,211,252,0.4)
 }
 #ap-progress::-moz-range-track{
   background:transparent;
   border:none
 }
+#ap-mute{
+  width:40px;
+  height:40px;
+  padding:0;
+  border-radius:50%
+}
 .ap-volume-group{
   display:flex;
   align-items:center;
-  gap:0.3rem;
+  gap:0.5rem;
   margin:0;
   flex:0 0 auto
 }
-#ap-mute{
-  padding:0.38rem 0.5rem;
-  font-size:0.9rem
-}
 #ap-volume-slider{
-  width:70px;
-  height:4px;
+  width:80px;
+  height:6px;
   background:rgba(125,211,252,0.15);
-  border-radius:2px;
+  border-radius:3px;
   cursor:pointer;
   -webkit-appearance:none;
   appearance:none;
-  border:none
+  border:none;
+  outline:none
 }
 #ap-volume-slider::-webkit-slider-thumb{
   -webkit-appearance:none;
   appearance:none;
-  width:11px;
-  height:11px;
+  width:14px;
+  height:14px;
   background:#7dd3fc;
   border-radius:50%;
   cursor:pointer;
-  border:1.5px solid rgba(125,211,252,0.6);
-  box-shadow:0 2px 6px rgba(125,211,252,0.3)
+  border:none;
+  box-shadow:0 2px 6px rgba(125,211,252,0.4)
 }
 #ap-volume-slider::-moz-range-thumb{
-  width:11px;
-  height:11px;
+  width:14px;
+  height:14px;
   background:#7dd3fc;
   border-radius:50%;
   cursor:pointer;
-  border:1.5px solid rgba(125,211,252,0.6);
-  box-shadow:0 2px 6px rgba(125,211,252,0.3)
+  border:none;
+  box-shadow:0 2px 6px rgba(125,211,252,0.4)
 }
 #ap-volume-slider::-moz-range-track{
   background:transparent;
   border:none
 }
 .ap-volume-value{
-  font-size:0.7rem;
+  font-size:0.75rem;
   color:#7dd3fc;
-  min-width:22px;
+  min-width:28px;
   text-align:center;
   font-weight:600
 }
-@media(max-width:600px){
+#ap-next{
+  width:40px;
+  height:40px;
+  padding:0;
+  border-radius:50%
+}
+@media(max-width:1200px){
   #floating-audio-player{
-    right:0.8rem;
-    left:0.8rem;
-    bottom:0.8rem;
-    width:calc(100% - 1.6rem);
-    flex-wrap:wrap;
-    justify-content:center
+    right:1rem;
+    bottom:1rem
   }
-  #ap-info{
-    order:1;
-    min-width:100px
+  #ap-playlist-select select{
+    min-width:130px;
+    font-size:0.85rem
   }
   #ap-progress-wrap{
-    order:3;
-    width:100%;
-    margin-right:0;
-    margin-top:0.4rem
+    min-width:120px
   }
-  .ap-volume-group{
-    order:4;
-    width:100%;
-    justify-content:center;
-    margin-top:0.4rem
+}
+@media(max-width:800px){
+  #floating-audio-player{
+    right:0.8rem;
+    bottom:0.8rem;
+    gap:0.5rem;
+    padding:0.5rem 0.7rem
+  }
+  #ap-playlist-select select{
+    min-width:110px;
+    padding:0.4rem 0.6rem;
+    font-size:0.8rem
+  }
+  #floating-audio-player button{
+    width:36px;
+    height:36px;
+    font-size:0.85rem;
+    padding:0.4rem
+  }
+  #ap-progress-wrap{
+    min-width:100px
+  }
+  #ap-volume-slider{
+    width:60px
+  }
+  .ap-volume-value{
+    font-size:0.7rem;
+    min-width:24px
+  }
+}
+@media(max-width:600px){
+  #floating-audio-player{
+    right:0.6rem;
+    bottom:0.6rem;
+    left:0.6rem;
+    width:calc(100% - 1.2rem);
+    gap:0.4rem;
+    padding:0.4rem 0.6rem
+  }
+  #ap-playlist-select select{
+    min-width:100px;
+    padding:0.35rem 0.5rem;
+    font-size:0.75rem
+  }
+  #floating-audio-player button{
+    width:32px;
+    height:32px;
+    font-size:0.8rem;
+    padding:0.3rem
+  }
+  #ap-progress-wrap{
+    min-width:80px
+  }
+  #ap-volume-slider{
+    width:50px
+  }
+  .ap-volume-value{
+    font-size:0.65rem;
+    min-width:20px
   }
 }
 `;
