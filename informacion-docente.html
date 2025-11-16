@@ -34,9 +34,9 @@
     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin: 2rem 0; padding: 2rem; background: rgba(255,255,255,0.03); border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
       <!-- Columna izquierda: Foto -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-        <div style="width: 200px; height: 200px; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); border: 2px solid rgba(125,211,252,0.2);">
-          <img src="https://via.placeholder.com/200x250?text=Foto+Docente" alt="Foto del docente" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
+          <div style="width: 200px; height: 200px; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); border: 2px solid rgba(125,211,252,0.2);">
+            <img src="infomación del docente/imagen del docente.png" alt="Foto del docente" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
         <h2 style="margin: 0; text-align: center; color: var(--secondary); font-size: 1.1rem;">Ing. Giovanny Haro Sosa</h2>
         <p style="margin: 0; text-align: center; color: #999; font-size: 0.9rem;">PhD en Marketing</p>
         
@@ -108,8 +108,14 @@
       </div>
     </div>
 
-    <section style="margin-top: 2rem; text-align: center;">
-      <a class="button" href="index.html#portfolio">Volver al portafolio</a>
+    <section style="margin-top: 2rem; text-align: center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a class="button" href="javascript:void(0)" onclick="downloadCV()" style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+        📥 Descargar CV (HTML)
+      </a>
+      <a class="button" id="download-cv-pdf" href="infomación del docente/HARO SOSA GIOVANNY LENIN - HOJA DE VIDA.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem;">
+        📄 Descargar CV (PDF)
+      </a>
+      <a class="button ghost" href="index.html#portfolio">Volver al portafolio</a>
     </section>
   </main>
 
@@ -122,5 +128,17 @@
   <script src="script.js"></script>
   <script src="audio-player.js"></script>
   <script src="navigation-config.js"></script>
+  <script>
+    function downloadCV() {
+      // Prefer downloading the PDF if available
+      var pdfPath = 'infomaci%C3%B3n%20del%20docente/HARO%20SOSA%20GIOVANNY%20LENIN%20-%20HOJA%20DE%20VIDA.pdf';
+      var anchor = document.createElement('a');
+      anchor.href = pdfPath;
+      anchor.download = 'CV_Haro_Sosa_Giovanny.pdf';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    }
+  </script>
 </body>
 </html>
