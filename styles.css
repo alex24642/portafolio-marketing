@@ -400,6 +400,26 @@ button {
               url('https://www.shutterstock.com/image-vector/school-education-concept-vector-illustration-600nw-2401814931.jpg') center/cover;
 }
 
+.portfolio-card:nth-child(5) .portfolio-thumb {
+  background: linear-gradient(135deg, rgba(240, 138, 36, 0.35), rgba(244, 93, 47, 0.4)),
+              url('https://profuturo.education/wp-content/uploads/2023/09/@Vectorjuice-para-Freepik.png') center/cover;
+}
+
+.portfolio-card:nth-child(6) .portfolio-thumb {
+  background: linear-gradient(135deg, rgba(244, 93, 47, 0.3), rgba(240, 138, 36, 0.35)),
+              url('https://img.freepik.com/vector-gratis/concepto-propiedad-intelectual-cerebro-engranajes_23-2148695134.jpg?semt=ais_hybrid&w=740&q=80') center/cover;
+}
+
+.portfolio-card:nth-child(7) .portfolio-thumb {
+  background: linear-gradient(135deg, rgba(240, 138, 36, 0.32), rgba(228, 199, 161, 0.35)),
+              url('https://img.freepik.com/vector-gratis/ilustracion-neuroeducacion-dibujada-mano_23-2150945405.jpg?semt=ais_hybrid&w=740&q=80') center/cover;
+}
+
+.portfolio-card:nth-child(8) .portfolio-thumb {
+  background: linear-gradient(135deg, rgba(244, 93, 47, 0.35), rgba(240, 138, 36, 0.25)),
+              url('https://vilmanunez.com/wp-content/uploads/2020/10/VN-Co%CC%81mo-hacer-una-buena-presentacio%CC%81n-de-resultados-de-auditori%CC%81a-u%CC%81ltimas-horas.png') center/cover;
+}
+
 .portfolio-content {
   padding: 1.75rem;
   display: grid;
