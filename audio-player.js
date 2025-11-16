@@ -60,7 +60,7 @@
     var bc = null;
     try{ bc = new BroadcastChannel('music-player'); }catch(e){ bc = null; }
 
-    function openPlayerPopup(){ try{ var w = window.open('player-window.html?v=1.1', 'music-player', 'width=420,height=120'); if(w) w.focus(); }catch(e){} }
+    function openPlayerPopup(){ try{ var w = window.open('player-window.html?v=1.1', 'music-player', 'width=420,height=120'); if(w){ w.focus(); return true; } return false; }catch(e){ return false; } }
     function sendToPlayer(msg){ if(bc) try{ bc.postMessage(msg); }catch(e){} }
     function formatTime(seconds){ var t = Math.floor(seconds||0); return Math.floor(t/60)+':' + (''+ (t%60)).padStart(2,'0'); }
 
@@ -95,6 +95,12 @@
       } };
     }
 
+    // If user previously allowed auto-open of persistent player, try to open it now.
+    try{
+      var autoOpen = localStorage.getItem('simple_music_bar_auto_open') === '1';
+      if(autoOpen){ openPlayerPopup(); }
+    }catch(e){}
+
     // initialize local fallback
     setTrack(index, false);
 
@@ -102,6 +108,8 @@
     updatePlayButton();
 
     ui.play.addEventListener('click', function(){
+      // remember that user initiated playback so future pages can auto-open persistent player
+      try{ localStorage.setItem('simple_music_bar_auto_open', '1'); }catch(e){}
       if(bc){ openPlayerPopup(); sendToPlayer({ type: 'TOGGLE_PLAY' }); }
       else {
         if(ui.audio.paused){ var p = ui.audio.play(); if(p && p.catch) p.catch(function(e){ console.warn('play failed', e); }); updatePlayButton(); }
