@@ -1274,3 +1274,48 @@ body.modal-open {
     padding: 0 1.5rem 1.75rem;
   }
 }
+
+/* Theme Navigation Styles */
+.theme-navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.theme-navigation .button {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.theme-navigation .button:hover {
+  transform: translateY(-2px);
+}
+
+.theme-navigation .button.ghost {
+  order: -1;
+}
+
+@media (max-width: 600px) {
+  .theme-navigation {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .theme-navigation .button {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .theme-navigation .button.ghost {
+    order: 0;
+  }
+}

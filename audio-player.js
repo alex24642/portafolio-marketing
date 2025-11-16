@@ -150,13 +150,51 @@
       try{ audio.currentTime = progress.value; }catch(e){} 
     });
 
-    // Auto-play next track when current ends
+    // Auto-play next track when current ends with crossfade
     audio.addEventListener('ended', function(){
       if(currentTrackIndex < playlist.length - 1){
-        loadTrack(currentTrackIndex + 1);
-        audio.play().catch(function(e){});
+        playNextTrackWithCrossfade();
       }
     });
+
+    function playNextTrackWithCrossfade(){
+      var crossfadeDuration = 10; // seconds
+      var fadeSteps = 100;
+      var fadeInterval = (crossfadeDuration * 1000) / fadeSteps;
+      var startVolume = audio.volume;
+      var step = 0;
+      
+      var fadeOutInterval = setInterval(function(){
+        step++;
+        var progress = step / fadeSteps;
+        audio.volume = startVolume * (1 - progress);
+        
+        if(step >= fadeSteps){
+          clearInterval(fadeOutInterval);
+          audio.volume = 0;
+          
+          // Load next track
+          var nextIndex = currentTrackIndex + 1;
+          if(nextIndex < playlist.length){
+            loadTrack(nextIndex);
+            audio.play().catch(function(e){});
+            
+            // Fade in
+            step = 0;
+            var fadeInInterval = setInterval(function(){
+              step++;
+              var progress = step / fadeSteps;
+              audio.volume = startVolume * progress;
+              
+              if(step >= fadeSteps){
+                clearInterval(fadeInInterval);
+                audio.volume = startVolume;
+              }
+            }, fadeInterval);
+          }
+        }
+      }, fadeInterval);
+    }
 
     // Error handling for audio loading/playback
     audio.addEventListener('error', function(ev){
