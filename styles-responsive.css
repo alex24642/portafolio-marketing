@@ -102,3 +102,30 @@
   .menu-toggle { display: none; }
   .nav-links { display: flex !important; position: static; background: transparent; padding: 0; gap: 1.5rem; }
 }
+
+/* Mobile-specific hero fixes to avoid large empty space on load */
+@media (max-width: 799px) {
+  .hero, .hero--compact {
+    min-height: auto !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1.25rem !important;
+    background-position: center top !important;
+    background-size: cover !important;
+  }
+
+  .hero-content {
+    margin-top: 1rem !important;
+    gap: 1rem;
+  }
+
+  main.container {
+    padding-top: 0.5rem;
+  }
+
+  /* Extra small screens */
+  @media (max-width: 420px) {
+    .pdf-frame { height: 180px; }
+    .image-section .image-section-image .pdf-frame { height: 160px; }
+    .pdf-card h3 { font-size: 0.95rem; }
+  }
+}
