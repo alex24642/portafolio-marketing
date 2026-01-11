@@ -93,12 +93,13 @@ button {
 }
 
 .logo span {
-  background: linear-gradient(135deg, #ff6b35 0%, #ff9a3b 50%, #ffd059 100%);
+  background: linear-gradient(135deg, #ff1744 0%, #ff6b35 50%, #ffab00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
-  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.2));
+  filter: drop-shadow(0 3px 8px rgba(255, 23, 68, 0.4));
+  animation: glow 2s ease-in-out infinite;
 }
 
 .menu-toggle {
@@ -263,6 +264,15 @@ button {
   }
   50% {
     box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 3px 8px rgba(255, 23, 68, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 5px 15px rgba(255, 107, 53, 0.6));
   }
 }
 
