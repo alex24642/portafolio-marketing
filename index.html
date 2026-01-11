@@ -7,8 +7,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.0">
 </head>
 <body>
   <header class="hero" id="inicio">
@@ -34,6 +34,24 @@ Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se co
         <div class="hero-actions">
           <a class="button primary" href="#portfolio">Contenido medio ciclo</a>
           <a class="button" href="#contacto">GastroVisión</a>
+        </div>
+        <!-- Spotify Player Widget -->
+        <div class="spotify-player-container">
+          <div class="spotify-player">
+            <div class="spotify-player-album">
+              <img src="https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9" alt="Album art" class="spotify-album-art">
+            </div>
+            <div class="spotify-player-info">
+              <div class="spotify-player-track">
+                <h4>I Just Might</h4>
+                <p>Bruno Mars</p>
+              </div>
+              <div class="spotify-player-controls">
+                <button class="spotify-play-btn" id="spotify-play-btn">▶</button>
+                <a href="https://open.spotify.com/track/3qm84nBvXc8tEqFqIYnXjO" target="_blank" rel="noopener" class="spotify-link-btn">🎵 Escuchar en Spotify</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="hero-card">
@@ -238,9 +256,6 @@ Reúne tareas, proyectos y registros visuales de los trabajos desarrollados en c
   </div>
 
   <script src="script.js"></script>
-  <!-- Spotify embed (replaces custom audio bar) -->
-  <div class="spotify-embed-container">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/12bYYQaLqHliSXvRIYlq8G?utm_source=generator" width="100%" height="122" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
+  <script src="spotify-player.js?v=1.0"></script>
 </body>
 </html>

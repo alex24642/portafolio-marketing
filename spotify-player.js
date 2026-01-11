@@ -15,8 +15,8 @@
   // Playlist configuration - you can add more songs here
   var PLAYLIST = [
     {
-      title: 'Fly Me to the Moon',
-      artist: 'Various Artists',
+      title: 'I Just Might',
+      artist: 'Bruno Mars',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Fly Me to the Moon (musica3).mp3',
       spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
@@ -26,21 +26,21 @@
       artist: 'PARIS The Prince',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3',
-      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
+      spotifyUrl: 'https://open.spotify.com/artist/4A3ItkgkJBxfNJ1UnVfQZW'
     },
     {
       title: 'Sin Un Corazon',
       artist: 'Cuco',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Cuco - Sin Un Corazon (musica2).mp3',
-      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
+      spotifyUrl: 'https://open.spotify.com/artist/5P3Ey0lsF0vNZIjPcDMZHy'
     },
     {
       title: 'LAS NOCHES',
       artist: 'Junior H',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Junior H - LAS NOCHES (musica4).mp3',
-      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
+      spotifyUrl: 'https://open.spotify.com/artist/4N6AxWjvFwj0mKaDYmRh4B'
     }
   ];
 
@@ -60,13 +60,7 @@
       audio = document.createElement('audio');
       audio.id = 'spotify-audio';
       audio.preload = 'auto';
-      audio.crossOrigin = 'anonymous';
       document.body.appendChild(audio);
-
-      // Debug: log audio load events
-      audio.addEventListener('loadstart', function(){ console.log('Audio loading...'); });
-      audio.addEventListener('canplay', function(){ console.log('Audio ready to play'); });
-      audio.addEventListener('error', function(){ console.error('Audio error:', audio.error); });
 
       // Play/Pause button click
       if (playBtn) {
@@ -115,14 +109,7 @@
     var track = PLAYLIST[currentTrackIndex];
     
     if (audio) {
-      // Normalize URL path to ensure correct loading
-      var audioUrl = track.url;
-      // Ensure path doesn't have double slashes
-      if (audioUrl.startsWith('/')) {
-        audioUrl = audioUrl.substring(1);
-      }
-      audio.src = audioUrl;
-      audio.load(); // Explicitly load the audio
+      audio.src = track.url;
     }
 
     // Update UI
