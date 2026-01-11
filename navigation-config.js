@@ -74,18 +74,18 @@ function getPreviousPageUrl(currentUrl) {
 
 function getNextPageName(currentUrl) {
   const nextUrl = getNextPageUrl(currentUrl);
-  if (!nextUrl) return 'Portafolio';
+  if (!nextUrl) return 'Fin del portafolio';
   
   const next = [...pagesOrder.parte1, ...pagesOrder.parte2].find(p => p.url === nextUrl);
-  return next ? next.name : 'Portafolio';
+  return next ? next.name : 'Fin del portafolio';
 }
 
 function getPreviousPageName(currentUrl) {
   const prevUrl = getPreviousPageUrl(currentUrl);
-  if (!prevUrl) return 'Portafolio';
+  if (!prevUrl) return 'Fin del portafolio';
   
   const prev = [...pagesOrder.parte1, ...pagesOrder.parte2].find(p => p.url === prevUrl);
-  return prev ? prev.name : 'Portafolio';
+  return prev ? prev.name : 'Fin del portafolio';
 }
 
 // Inicializa botones de navegación en las páginas

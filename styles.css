@@ -72,10 +72,11 @@ button {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: center;
+  gap: 4rem;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
 }
 
 .logo {
@@ -88,11 +89,15 @@ button {
   gap: 0.3rem;
   transition: all 0.3s ease;
   font-weight: 700;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .logo:hover {
-  text-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-  transform: scale(1.02);
+  text-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+  transform: translateX(-50%) scale(1.05);
 }
 
 .logo span {
@@ -123,16 +128,19 @@ button {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 4rem;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-links a {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: color var(--transition), transform var(--transition);
+  color: #2c3e50;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
   position: relative;
   padding: 0.5rem 0;
 }
@@ -146,11 +154,11 @@ button {
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #ff8c00, #ff6b35);
+  background: #ff8c00;
   transition: width 0.3s ease;
 }
 
