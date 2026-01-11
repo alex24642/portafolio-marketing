@@ -81,7 +81,7 @@ button {
   font-size: clamp(1.25rem, 2vw, 1.8rem);
   text-transform: uppercase;
   letter-spacing: 0.24rem;
-  color: #ff6b35;
+  color: #e63946;
   display: inline-flex;
   gap: 0.5rem;
   transition: all 0.3s ease;
@@ -93,12 +93,12 @@ button {
 }
 
 .logo span {
-  background: linear-gradient(135deg, #ff1744 0%, #ff6b35 50%, #ffab00 100%);
+  background: linear-gradient(135deg, #e63946 0%, #ff1744 50%, #ff6b9d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
-  filter: drop-shadow(0 3px 8px rgba(255, 23, 68, 0.4));
+  filter: drop-shadow(0 3px 8px rgba(230, 57, 70, 0.4));
   animation: glow 2s ease-in-out infinite;
 }
 
@@ -269,10 +269,10 @@ button {
 
 @keyframes glow {
   0%, 100% {
-    filter: drop-shadow(0 3px 8px rgba(255, 23, 68, 0.4));
+    filter: drop-shadow(0 3px 8px rgba(230, 57, 70, 0.4));
   }
   50% {
-    filter: drop-shadow(0 5px 15px rgba(255, 107, 53, 0.6));
+    filter: drop-shadow(0 5px 15px rgba(230, 57, 70, 0.6));
   }
 }
 
