@@ -81,7 +81,7 @@ button {
   font-size: clamp(1.25rem, 2vw, 1.8rem);
   text-transform: uppercase;
   letter-spacing: 0.24rem;
-  color: #ff6b35;
+  color: #ff8c00;
   display: inline-flex;
   gap: 0.5rem;
   transition: all 0.3s ease;
