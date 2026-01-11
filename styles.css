@@ -2386,13 +2386,13 @@ body.modal-open {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: linear-gradient(135deg, #191414 0%, #282828 100%);
+  background: linear-gradient(135deg, var(--primary-strong) 0%, var(--primary) 100%);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.2rem;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .spotify-player-album {
@@ -2430,7 +2430,7 @@ body.modal-open {
 
 .spotify-player-track p {
   font-size: 0.8rem;
-  color: #b3b3b3;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0.3rem 0 0 0;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -2444,8 +2444,8 @@ body.modal-open {
 }
 
 .spotify-play-btn {
-  background: #1DB954;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -2460,7 +2460,8 @@ body.modal-open {
 }
 
 .spotify-play-btn:hover {
-  background: #1ed760;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
   transform: scale(1.05);
 }
 
@@ -2469,7 +2470,7 @@ body.modal-open {
 }
 
 .spotify-link-btn {
-  background: #1DB954;
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -2480,10 +2481,12 @@ body.modal-open {
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .spotify-link-btn:hover {
-  background: #1ed760;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive Spotify Player */

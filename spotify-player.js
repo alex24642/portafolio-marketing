@@ -15,32 +15,32 @@
   // Playlist configuration - you can add more songs here
   var PLAYLIST = [
     {
-      title: 'I Just Might',
-      artist: 'Bruno Mars',
+      title: 'Fly Me to the Moon',
+      artist: 'Various Artists',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Fly Me to the Moon (musica3).mp3',
-      spotifyUrl: 'https://open.spotify.com/track/3qm84nBvXc8tEqFqIYnXjO'
+      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
     },
     {
       title: 'Fleeting Dream',
       artist: 'PARIS The Prince',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3',
-      spotifyUrl: 'https://open.spotify.com/artist/4A3ItkgkJBxfNJ1UnVfQZW'
+      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
     },
     {
       title: 'Sin Un Corazon',
       artist: 'Cuco',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Cuco - Sin Un Corazon (musica2).mp3',
-      spotifyUrl: 'https://open.spotify.com/artist/5P3Ey0lsF0vNZIjPcDMZHy'
+      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
     },
     {
       title: 'LAS NOCHES',
       artist: 'Junior H',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
       url: 'musica/Junior H - LAS NOCHES (musica4).mp3',
-      spotifyUrl: 'https://open.spotify.com/artist/4N6AxWjvFwj0mKaDYmRh4B'
+      spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
     }
   ];
 
