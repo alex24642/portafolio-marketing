@@ -1,13 +1,19 @@
 ﻿/*
-  Simple Music Bar for all pages
+  Simple Music Bar for main portfolio page (index.html)
   - Single <audio> element
   - Select one of the 4 local songs, play/pause, progress/seek and volume control
   - Persists last track and volume in localStorage
-  Usage: add <script src="audio-player.js"></script> to every HTML page where you want the bar.
+  Usage: add <script src="audio-player.js"></script> to every HTML page (loads only on index.html).
 */
 
 (function(){
   'use strict';
+
+  // Only show music bar on index.html (main portfolio page)
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  if (currentPage !== 'index.html' && currentPage !== '') {
+    return; // Exit early if not on main page
+  }
 
   var STORAGE_KEY = 'simple_music_bar_v1';
   var PLAYLIST = [
