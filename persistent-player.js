@@ -1,6 +1,7 @@
 /*
-  Persistent Music Player
+  Persistent Music Player with Spotify Web Playback
   - Floats across all pages
+  - Plays music using Spotify SDK
   - Continues playing when navigating
   - Uses localStorage to persist state
   - Similar to Spotify, YouTube Music apps
@@ -11,7 +12,15 @@
 
   const STORAGE_KEY = 'persistent_player_state';
   const SPOTIFY_TRACK_ID = '12bYYQaLqHliSXvRIYlq8G';
-  const SPOTIFY_EMBED_URL = `https://open.spotify.com/embed/track/${SPOTIFY_TRACK_ID}?utm_source=generator`;
+  const SPOTIFY_TRACK_URI = `spotify:track:${SPOTIFY_TRACK_ID}`;
+
+  // Inject Spotify Web API script
+  function loadSpotifySDK() {
+    if (window.Spotify) return;
+    const script = document.createElement('script');
+    script.src = 'https://sdk.scdn.co/spotify-player.js';
+    document.head.appendChild(script);
+  }
 
   // Save player state
   function saveState(state) {
@@ -114,6 +123,11 @@
         font-size: 1.5rem;
         flex-shrink: 0;
         animation: pulse 2s ease-in-out infinite;
+        animation-play-state: paused;
+      }
+
+      .persistent-player.playing .persistent-player-icon {
+        animation-play-state: running;
       }
 
       @keyframes pulse {
@@ -230,48 +244,120 @@
     createFloatingPlayer();
 
     const toggleBtn = document.getElementById('persistent-player-toggle');
+    const playerContainer = document.querySelector('.persistent-player');
     const state = loadState();
 
-    // Restore playing state
-    if (state.isPlaying) {
-      toggleBtn.textContent = '⏸';
-      updateIndicator(true);
-    }
+    // Load Spotify SDK
+    loadSpotifySDK();
 
-    // Toggle play/pause
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const isPlaying = toggleBtn.textContent === '⏸';
-        toggleBtn.textContent = isPlaying ? '▶' : '⏸';
-        updateIndicator(!isPlaying);
-        saveState({ isPlaying: !isPlaying, lastTimestamp: Date.now() });
-      });
-    }
-
-    // Update pulse animation based on state
-    function updateIndicator(isPlaying) {
-      const icon = document.querySelector('.persistent-player-icon');
-      if (icon) {
-        if (isPlaying) {
-          icon.style.animationPlayState = 'running';
-        } else {
-          icon.style.animationPlayState = 'paused';
+    // Initialize Spotify Player when SDK loads
+    window.onSpotifyWebPlaybackSDKReady = function() {
+      console.log('Spotify SDK loaded');
+      const token = getSpotifyToken();
+      
+      if (!token) {
+        console.log('No Spotify token available. Click play to open Spotify.');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open('https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672', '_blank');
+          });
         }
+        return;
       }
-    }
+
+      // Create Spotify player
+      const player = new Spotify.Player({
+        name: 'Gastro Lab Music Player',
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
+      });
+
+      player.addListener('player_state_changed', state => {
+        if (state) {
+          const isPlaying = !state.paused;
+          if (isPlaying) {
+            playerContainer.classList.add('playing');
+            toggleBtn.textContent = '⏸';
+          } else {
+            playerContainer.classList.remove('playing');
+            toggleBtn.textContent = '▶';
+          }
+          saveState({ isPlaying: isPlaying, lastTimestamp: Date.now() });
+        }
+      });
+
+      player.connect().then(success => {
+        if (success) {
+          console.log('Spotify player connected');
+          
+          // Play track
+          if (toggleBtn) {
+            toggleBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              player.togglePlay();
+            });
+          }
+
+          // Restore playing state
+          if (state.isPlaying) {
+            player.resume();
+            toggleBtn.textContent = '⏸';
+            playerContainer.classList.add('playing');
+          }
+        }
+      });
+    };
+
+    // Fallback: if no SDK, open Spotify
+    if (!toggleBtn) return;
+    
+    setTimeout(() => {
+      if (!window.Spotify) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672', '_blank');
+        });
+      }
+    }, 3000);
 
     // Save state when leaving page
     window.addEventListener('beforeunload', function() {
-      const isPlaying = toggleBtn.textContent === '⏸';
+      const isPlaying = playerContainer.classList.contains('playing');
       saveState({ isPlaying: isPlaying, lastTimestamp: Date.now() });
     });
   });
 
+  // Get Spotify access token from URL or storage
+  function getSpotifyToken() {
+    // Try to get from localStorage
+    const stored = localStorage.getItem('spotify_access_token');
+    if (stored) return stored;
+    
+    // Try to get from URL hash (if redirected from Spotify auth)
+    const hash = window.location.hash.substring(1).split('&').reduce((initial, item) => {
+      if (item) {
+        var parts = item.split('=');
+        initial[parts[0]] = decodeURIComponent(parts[1]);
+      }
+      return initial;
+    }, {});
+    
+    if (hash.access_token) {
+      localStorage.setItem('spotify_access_token', hash.access_token);
+      // Clean URL
+      window.history.replaceState(null, null, window.location.pathname);
+      return hash.access_token;
+    }
+    
+    return null;
+  }
+
   // Expose for debugging
   window.__persistentPlayer = {
     saveState: saveState,
-    loadState: loadState
+    loadState: loadState,
+    getSpotifyToken: getSpotifyToken
   };
 
 })();
