@@ -158,5 +158,23 @@
       document.body.removeChild(anchor);
     }
   </script>
+
+  <!-- Floating down-arrow button: scroll to Fin de Ciclo (fallback to logro-aprendizaje) -->
+  <a href="#fin-de-ciclo" class="floating-btn" aria-label="Ir a Fin de Ciclo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <style>
+    .floating-btn{position:fixed;right:1.25rem;bottom:1.25rem;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff7a4d,#ff6a3a);box-shadow:0 10px 25px rgba(0,0,0,0.12);z-index:1200;text-decoration:none}
+    .floating-btn svg{width:24px;height:24px}
+    @media (max-width:480px){.floating-btn{right:0.85rem;bottom:0.85rem;width:48px;height:48px}}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var btn=document.querySelector('.floating-btn'); if(!btn) return;
+      btn.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(btn.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}else{window.location.href='logro-aprendizaje.html#fin-de-ciclo';}});
+    });
+  </script>
 </body>
 </html>
