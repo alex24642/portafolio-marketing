@@ -82,7 +82,7 @@
  
 
     <!-- Fin de Ciclo Section -->
-    <section style="margin-top: 2rem; margin-bottom: 2rem; padding: 1.5rem 1rem; background: var(--primary); border-radius: 1.2rem;">
+    <section id="fin-de-ciclo" style="margin-top: 2rem; margin-bottom: 2rem; padding: 1.5rem 1rem; background: var(--primary); border-radius: 1.2rem;">
       <h2 style="color: #fff; margin: 0 0 1.2rem 0; text-align: center; font-size: clamp(1.3rem, 5vw, 1.8rem); font-weight: 600;">Reflexión fin de ciclo</h2>
       <div style="background: #ffffff; border-radius: 1rem; padding: 1.5rem 1rem; color: #556b82; line-height: 1.8; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <p style="margin: 0 0 1.2rem 0; text-align: justify; font-size: clamp(0.9rem, 3vw, 1rem); color: #2c3e50;">Al finalizar este ciclo académico, considero que el proceso de aprendizaje fue muy significativo para mi formación. A lo largo de este periodo adquirí nuevos conocimientos y reforcé habilidades que han sido importantes tanto a nivel académico como personal. Las distintas actividades realizadas me permitieron mejorar mi forma de analizar, organizar ideas y enfrentar retos con mayor responsabilidad.</p>
@@ -101,5 +101,23 @@
   <script src="script.js"></script>
   <script src="navigation-config.js"></script>
   <script src="audio-persistent.js"></script>
+  <!-- Floating down-arrow button: scroll to Fin de Ciclo -->
+  <a href="#fin-de-ciclo" class="floating-btn" aria-label="Ir a Fin de Ciclo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <style>
+    .floating-btn{position:fixed;right:1.25rem;bottom:1.25rem;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff7a4d,#ff6a3a);box-shadow:0 10px 25px rgba(0,0,0,0.12);z-index:1200;text-decoration:none}
+    .floating-btn svg{width:24px;height:24px}
+    @media (max-width:480px){.floating-btn{right:0.85rem;bottom:0.85rem;width:48px;height:48px}}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var btn=document.querySelector('.floating-btn');
+      if(!btn) return;
+      btn.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(btn.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+    });
+  </script>
 </body>
 </html>
