@@ -52,6 +52,20 @@
   document.addEventListener('DOMContentLoaded', function(){
     injectCSS();
     var ui = createUI();
+    // Position the music bar above the footer (if footer exists) to avoid overlap
+    function positionBar(){
+      try{
+        var footer = document.querySelector('footer');
+        if(footer && ui && ui.bar){
+          var fh = footer.getBoundingClientRect().height || 0;
+          ui.bar.style.bottom = (fh + 20) + 'px';
+        } else if(ui && ui.bar){
+          ui.bar.style.bottom = '20px';
+        }
+      }catch(e){ if(ui && ui.bar) ui.bar.style.bottom = '20px'; }
+    }
+    positionBar();
+    window.addEventListener('resize', positionBar);
     var state = readState();
     var index = (typeof state.index === 'number') ? state.index : 0;
     var vol = (typeof state.volume === 'number') ? state.volume : 0.7;
