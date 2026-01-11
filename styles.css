@@ -6,8 +6,8 @@
   --primary: #ff6b35;
   --primary-strong: #ff3b1f;
   --secondary: #ffd59a;
-  --text: #000000;
-  --text-muted: #666666;
+  --text: #2c3e50;
+  --text-muted: #7f8c8d;
   --accent: linear-gradient(135deg, rgba(255,107,53,0.85), rgba(255,59,31,0.85));
   --transition: 0.3s ease;
   font-size: 16px;
@@ -23,12 +23,25 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
   background: #ffffff;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Estilos globales de textos para mejor legibilidad */
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+p {
+  color: #555;
+  line-height: 1.8;
+  margin: 0 0 1rem 0;
 }
 
 a {
@@ -112,25 +125,29 @@ button {
 }
 
 .button {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0.65rem 1.2rem;
-  border-radius: 999px;
-  transition: background var(--transition), color var(--transition), transform var(--transition);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  letter-spacing: 0.02em;
 }
 
 .button.primary {
   background: var(--primary);
   color: #ffffff;
-  border: none;
-  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .button.secondary {
-  border-color: rgba(240, 138, 36, 0.4);
+  background: transparent;
+  border: 2px solid var(--primary);
   color: var(--primary);
+  font-weight: 600;
 }
 
 .button:hover,
@@ -138,6 +155,7 @@ button {
   transform: translateY(-2px);
   background: var(--primary-strong);
   color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 59, 31, 0.4);
 }
 
 .hero-content {
@@ -152,11 +170,14 @@ button {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 6vw, 4.2rem);
   margin-bottom: 1rem;
+  color: #2c3e50;
+  line-height: 1.2;
 }
 
 .hero-text p {
   max-width: 32rem;
   color: var(--text-muted);
+  line-height: 1.8;
 }
 
 .hero-actions {
@@ -246,10 +267,13 @@ button {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
   margin: 0.75rem 0;
+  color: #2c3e50;
+  line-height: 1.3;
 }
 
 .section-header p {
   color: var(--text-muted);
+  line-height: 1.7;
 }
 
 .highlights,
@@ -318,11 +342,15 @@ button {
 .service-card h3 {
   font-size: 1.4rem;
   margin-bottom: 0.75rem;
+  color: #2c3e50;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .service-card p {
   color: var(--text-muted);
   margin-bottom: 1rem;
+  line-height: 1.8;
 }
 
 .service-card ul {
@@ -425,7 +453,7 @@ button {
 }
 
 .portfolio-link {
-  color: var(--secondary);
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -590,8 +618,9 @@ button {
 .contact-form input:focus,
 .contact-form textarea:focus,
 .newsletter-form input:focus {
-  outline: 2px solid rgba(255, 107, 53, 0.6);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
 .contact-form label,
@@ -698,10 +727,13 @@ textarea {
 
 .blog-card h3 {
   font-size: 1.35rem;
+  color: #2c3e50;
+  line-height: 1.4;
 }
 
 .blog-card p {
   color: var(--text-muted);
+  line-height: 1.7;
 }
 
 .blog-card .tag {
@@ -712,8 +744,13 @@ textarea {
 }
 
 .blog-link {
-  color: var(--secondary);
+  color: var(--primary);
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.blog-link:hover {
+  color: var(--primary-strong);
 }
 
 .newsletter-form {
@@ -754,10 +791,12 @@ textarea {
 .footer h2 {
   font-family: 'Playfair Display', serif;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .footer p {
-  color: var(--text-muted);
+  color: #bbb;
+  line-height: 1.8;
 }
 
 .social-links {
@@ -767,7 +806,7 @@ textarea {
 }
 
 .social-links a {
-  color: var(--secondary);
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -916,17 +955,19 @@ textarea {
 .contact-info {
   list-style: none;
   display: grid;
-  gap: 0.4rem;
+  gap: 0.8rem;
   color: var(--text-muted);
+  line-height: 1.7;
 }
 
 .contact-form {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
   background: rgba(0, 0, 0, 0.02);
-  padding: 2rem;
-  border-radius: 1.4rem;
+  padding: 2.5rem;
+  border-radius: 1.2rem;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .footer-bottom {
@@ -1138,8 +1179,9 @@ body.modal-open {
   padding: 2rem;
   display: flex;
   gap: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform var(--transition), border var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition), border var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .document-card:hover {
@@ -1168,10 +1210,13 @@ body.modal-open {
 .document-content h3 {
   font-size: 1.3rem;
   color: var(--text);
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .document-content p {
   color: var(--text-muted);
+  line-height: 1.8;
 }
 
 .document-meta {
@@ -1522,7 +1567,7 @@ body.modal-open {
 
 .promo-section {
   background: #f5f5f5;
-  color: #000;
+  color: #2c3e50;
   padding: 4rem clamp(1.5rem, 5vw, 6rem) 3rem;
   position: relative;
   overflow: hidden;
@@ -1552,7 +1597,7 @@ body.modal-open {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #666;
+  color: #95a5a6;
   margin-bottom: 1.5rem;
 }
 
@@ -1560,9 +1605,9 @@ body.modal-open {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2.5rem, 8vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.3;
   margin-bottom: 1.5rem;
-  color: #000;
+  color: #2c3e50;
   letter-spacing: -0.02em;
 }
 
@@ -1572,15 +1617,15 @@ body.modal-open {
 
 .promo-description {
   font-size: 1rem;
-  color: #333;
+  color: #7f8c8d;
   margin-bottom: 2rem;
-  line-height: 1.7;
+  line-height: 1.8;
   max-width: 600px;
 }
 
 .link-more {
   display: inline-block;
-  color: #000;
+  color: #2c3e50;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: underline;
@@ -1746,7 +1791,7 @@ body.modal-open {
 /* PORTAFOLIO PAGE - ADIDAS STYLE */
 .portafolio-page {
   background: #fff;
-  color: #000;
+  color: #2c3e50;
 }
 
 .top-banner {
@@ -1759,7 +1804,6 @@ body.modal-open {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-bottom: 1px solid #333;
 }
 
 .top-banner p {
@@ -1768,7 +1812,6 @@ body.modal-open {
 
 .navbar-main {
   background: #fff;
-  border-bottom: 1px solid #eee;
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -1791,7 +1834,7 @@ body.modal-open {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #000;
+  color: #2c3e50;
   white-space: nowrap;
 }
 
@@ -1811,7 +1854,7 @@ body.modal-open {
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #000;
+  color: #34495e;
   text-transform: uppercase;
   text-decoration: none;
   transition: color var(--transition);
@@ -1829,10 +1872,10 @@ body.modal-open {
 }
 
 .search-input {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #e0e0e0;
   background: #f9f9f9;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   font-size: 0.85rem;
   width: 200px;
 }
@@ -1884,16 +1927,16 @@ body.modal-open {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #999;
+  color: #95a5a6;
   margin-bottom: 1.5rem;
 }
 
 .main-title {
   font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: 1.5rem;
-  color: #000;
+  color: #2c3e50;
 }
 
 .main-title .emoji {
@@ -1908,14 +1951,14 @@ body.modal-open {
 
 .promo-text {
   font-size: 0.95rem;
-  line-height: 1.7;
-  color: #333;
+  line-height: 1.8;
+  color: #555;
   margin-bottom: 2rem;
 }
 
 .link-show {
   display: inline-block;
-  color: #000;
+  color: #2c3e50;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: underline;
@@ -1933,9 +1976,9 @@ body.modal-open {
 
 .promo-card {
   background: #fff;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   position: relative;
 }
 
@@ -1968,12 +2011,12 @@ body.modal-open {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #000;
+  color: #2c3e50;
 }
 
 .card-info p {
   font-size: 0.9rem;
-  color: #666;
+  color: #7f8c8d;
 }
 
 .gallery-main {
@@ -2042,8 +2085,8 @@ body.modal-open {
 .filter-btn {
   padding: 0.75rem 1.5rem;
   background: transparent;
-  border: 1px solid rgba(255, 235, 220, 0.2);
-  color: var(--text);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  color: #7f8c8d;
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
