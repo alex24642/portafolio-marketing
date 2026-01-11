@@ -1,13 +1,13 @@
 :root {
-  --bg: #0b0a0b;
-  --bg-soft: #1a0f0d;
-  --bg-card: rgba(255, 235, 220, 0.04);
-  --bg-card-strong: rgba(255, 235, 220, 0.08);
+  --bg: #ffffff;
+  --bg-soft: #f5f5f5;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --bg-card-strong: rgba(0, 0, 0, 0.04);
   --primary: #ff6b35;
   --primary-strong: #ff3b1f;
   --secondary: #ffd59a;
-  --text: #fff8f5;
-  --text-muted: #ffdcbf;
+  --text: #000000;
+  --text-muted: #666666;
   --accent: linear-gradient(135deg, rgba(255,107,53,0.85), rgba(255,59,31,0.85));
   --transition: 0.3s ease;
   font-size: 16px;
@@ -22,9 +22,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top right, rgba(244, 93, 47, 0.18), transparent 45%),
-              radial-gradient(circle at bottom left, rgba(240, 138, 36, 0.15), transparent 40%),
-              var(--bg);
+  background: #ffffff;
   line-height: 1.6;
 }
 
@@ -46,7 +44,7 @@ button {
 .hero {
   padding: 2.5rem clamp(1.5rem, 3vw, 4rem) 5rem;
   min-height: 100vh;
-  background: linear-gradient(160deg, rgba(13, 13, 15, 0.95) 60%, rgba(20, 20, 28, 0.85)),
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 60%, rgba(245, 245, 245, 0.95)),
               url('images/1.png') center/cover;
   display: flex;
   flex-direction: column;
@@ -114,7 +112,7 @@ button {
 }
 
 .button {
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0.65rem 1.2rem;
   border-radius: 999px;
   transition: background var(--transition), color var(--transition), transform var(--transition);
@@ -125,7 +123,7 @@ button {
 
 .button.primary {
   background: var(--primary);
-  color: #0d0d0f;
+  color: #ffffff;
   border: none;
   font-weight: 600;
 }
@@ -139,7 +137,7 @@ button {
 .button:focus {
   transform: translateY(-2px);
   background: var(--primary-strong);
-  color: #0d0d0f;
+  color: #ffffff;
 }
 
 .hero-content {
@@ -174,7 +172,7 @@ button {
   border-radius: 1.5rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(12px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
 }
@@ -300,7 +298,7 @@ button {
   background: var(--bg-card);
   padding: 2rem;
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transition: transform var(--transition), border var(--transition);
 }
 
@@ -359,7 +357,7 @@ button {
   background: var(--bg-card);
   border-radius: 1.6rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: grid;
   grid-template-rows: 200px 1fr;
   transition: transform 0.35s ease, box-shadow var(--transition), opacity 0.35s ease, max-height 0.35s ease, margin 0.35s ease, padding 0.35s ease;
@@ -441,7 +439,7 @@ button {
 
 .filter-button {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
   color: var(--text-muted);
@@ -451,7 +449,7 @@ button {
 .filter-button.active,
 .filter-button:hover {
   background: var(--primary);
-  color: #0d0d0f;
+  color: #ffffff;
   border-color: transparent;
 }
 
@@ -470,15 +468,15 @@ button {
   padding: 2rem;
   border-radius: 1.4rem;
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: grid;
   gap: 0.9rem;
 }
 
 .uploaded-resources {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: clamp(2rem, 4vw, 3rem);
   display: grid;
   gap: 2rem;
@@ -507,8 +505,8 @@ button {
   flex-wrap: wrap;
   gap: 1.25rem;
   align-items: stretch;
-  background: rgba(16, 16, 20, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(245, 245, 245, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 1.2rem;
   padding: 1.5rem;
 }
@@ -551,20 +549,20 @@ button {
 
 .button.ghost {
   background: transparent;
-  border: 1px dashed rgba(240, 138, 36, 0.4);
+  border: 1px dashed rgba(255, 107, 53, 0.3);
   color: var(--secondary);
 }
 
 .button.ghost:hover {
   border-style: solid;
-  background: rgba(240, 138, 36, 0.12);
+  background: rgba(255, 107, 53, 0.08);
 }
 
 .upload-form {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 1.5rem;
   padding: clamp(2rem, 4vw, 3rem);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: grid;
   gap: 1.2rem;
 }
@@ -579,8 +577,8 @@ button {
 .contact-form input,
 .contact-form textarea,
 .newsletter-form input {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.9rem;
   padding: 0.85rem 1rem;
   color: var(--text);
@@ -592,7 +590,7 @@ button {
 .contact-form input:focus,
 .contact-form textarea:focus,
 .newsletter-form input:focus {
-  outline: 2px solid rgba(240, 138, 36, 0.4);
+  outline: 2px solid rgba(255, 107, 53, 0.6);
   outline-offset: 2px;
 }
 
@@ -617,7 +615,7 @@ textarea {
 }
 
 .testimonial {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(245, 245, 245, 0.5);
   padding: clamp(2rem, 4vw, 3rem);
   border-radius: 1.5rem;
   border: 1px solid transparent;
@@ -629,7 +627,7 @@ textarea {
 .testimonial.active {
   opacity: 1;
   transform: translateX(0);
-  border-color: rgba(240, 138, 36, 0.4);
+  border-color: rgba(255, 107, 53, 0.3);
 }
 
 .testimonial blockquote {
@@ -655,7 +653,7 @@ textarea {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   background: none;
   color: var(--text);
   font-size: 1.4rem;
@@ -664,7 +662,7 @@ textarea {
 
 .slider-button:hover {
   background: var(--primary);
-  color: #0d0d0f;
+  color: #ffffff;
   transform: translateY(-3px);
 }
 
@@ -678,7 +676,7 @@ textarea {
   padding: 2rem;
   background: var(--bg-card);
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: grid;
   gap: 0.9rem;
   position: relative;
@@ -720,10 +718,10 @@ textarea {
 
 .newsletter-form {
   margin-top: 3rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.02);
   padding: clamp(2rem, 4vw, 3rem);
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: grid;
   gap: 1rem;
 }
@@ -743,7 +741,7 @@ textarea {
 }
 
 .footer {
-  background: #08080a;
+  background: #000000;
 }
 
 .footer-grid {
@@ -805,8 +803,8 @@ textarea {
   height: 32px;
   border-radius: 6px;
   color: var(--text);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
@@ -838,8 +836,8 @@ textarea {
   height: 32px;
   border-radius: 6px;
   color: var(--text);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
@@ -858,7 +856,7 @@ textarea {
 .footer-contact {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
@@ -887,15 +885,15 @@ textarea {
   align-items: center;
   color: var(--secondary);
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Audio player selector styling */
 #ap-playlist-select{position:relative}
 #ap-playlist-select select,#ap-track-select{
   color: var(--text);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 0.45rem 0.9rem 0.45rem 0.6rem;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -925,14 +923,14 @@ textarea {
 .contact-form {
   display: grid;
   gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.02);
   padding: 2rem;
   border-radius: 1.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 3rem;
   padding-top: 2rem;
   text-align: center;
@@ -948,7 +946,7 @@ textarea {
   border-radius: 50%;
   border: none;
   background: var(--accent);
-  color: #0d0d0f;
+  color: #ffffff;
   font-size: 1.4rem;
   display: grid;
   place-items: center;
@@ -971,7 +969,7 @@ body.modal-open {
 .resource-preview {
   position: fixed;
   inset: 0;
-  background: rgba(4, 4, 6, 0.82);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -988,9 +986,9 @@ body.modal-open {
 }
 
 .resource-preview-dialog {
-  background: rgba(18, 18, 24, 0.98);
+  background: #ffffff;
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   width: min(900px, 100%);
   max-height: 90vh;
   display: grid;
@@ -1352,7 +1350,7 @@ body.modal-open {
   background: var(--bg-card);
   border-radius: 1rem;
   padding: 1rem;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1370,7 +1368,7 @@ body.modal-open {
   height: 340px; /* larger preview for readability on desktop */
   border: 1px solid rgba(0,0,0,0.06);
   border-radius: 8px;
-  background: rgba(255,255,255,0.02);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .pdf-card .button {
@@ -1393,7 +1391,7 @@ body.modal-open {
   background: var(--bg-card);
   border-radius: 1rem;
   padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -1408,7 +1406,7 @@ body.modal-open {
 
 .notes-section p {
   margin: 0;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0, 0, 0, 0.6);
   font-size: 0.95rem;
 }
 
@@ -1417,8 +1415,8 @@ body.modal-open {
   min-height: 150px;
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
@@ -1429,7 +1427,7 @@ body.modal-open {
 .notes-textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: rgba(255,255,255,0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .notes-buttons {
@@ -1466,7 +1464,7 @@ body.modal-open {
 }
 
 .image-section-content p {
-  color: rgba(255,255,255,0.7);
+  color: rgba(0, 0, 0, 0.6);
   line-height: 1.6;
   margin: 0;
 }
