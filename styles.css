@@ -1,13 +1,13 @@
 :root {
-  --bg: #ffffff;
-  --bg-soft: #f5f5f5;
+  --bg: #f8f9fa;
+  --bg-soft: #f0f4f8;
   --bg-card: rgba(0, 0, 0, 0.02);
   --bg-card-strong: rgba(0, 0, 0, 0.04);
   --primary: #ff6b35;
   --primary-strong: #ff3b1f;
   --secondary: #ffd59a;
   --text: #2c3e50;
-  --text-muted: #7f8c8d;
+  --text-muted: #556b82;
   --accent: linear-gradient(135deg, rgba(255,107,53,0.85), rgba(255,59,31,0.85));
   --transition: 0.3s ease;
   font-size: 16px;
@@ -22,7 +22,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
-  background: #ffffff;
+  background: #f8f9fa;
   line-height: 1.7;
 }
 
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  color: #555;
+  color: #34495e;
   line-height: 1.8;
   margin: 0 0 1rem 0;
 }
@@ -57,7 +57,7 @@ button {
 .hero {
   padding: 2.5rem clamp(1.5rem, 3vw, 4rem) 5rem;
   min-height: 100vh;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 60%, rgba(245, 245, 245, 0.95)),
+  background: linear-gradient(160deg, rgba(248, 249, 250, 0.98) 60%, rgba(240, 244, 248, 0.95)),
               url('images/1.png') center/cover;
   display: flex;
   flex-direction: column;
@@ -778,7 +778,7 @@ textarea {
 }
 
 .footer {
-  background: #000000;
+  background: #2c3e50;
 }
 
 .footer-grid {
@@ -795,7 +795,7 @@ textarea {
 }
 
 .footer p {
-  color: #bbb;
+  color: #adb5bd;
   line-height: 1.8;
 }
 
@@ -1546,10 +1546,9 @@ body.modal-open {
 }
 
 .banner-top {
-  background: #000;
+  background: #2c3e50;
   padding: 1rem 0;
   text-align: center;
-  border-bottom: 1px solid #333;
   font-size: 0.85rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1562,11 +1561,11 @@ body.modal-open {
 
 .banner-top p:last-child {
   font-size: 0.75rem;
-  color: #999;
+  color: #7a8a9a;
 }
 
 .promo-section {
-  background: #f5f5f5;
+  background: #f5f7fa;
   color: #2c3e50;
   padding: 4rem clamp(1.5rem, 5vw, 6rem) 3rem;
   position: relative;
@@ -1597,7 +1596,7 @@ body.modal-open {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #95a5a6;
+  color: #8e9aaf;
   margin-bottom: 1.5rem;
 }
 
@@ -1617,7 +1616,7 @@ body.modal-open {
 
 .promo-description {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #556b82;
   margin-bottom: 2rem;
   line-height: 1.8;
   max-width: 600px;
@@ -1790,12 +1789,12 @@ body.modal-open {
 
 /* PORTAFOLIO PAGE - ADIDAS STYLE */
 .portafolio-page {
-  background: #fff;
+  background: #f8f9fa;
   color: #2c3e50;
 }
 
 .top-banner {
-  background: #000;
+  background: #2c3e50;
   color: #fff;
   padding: 0.75rem 0;
   display: flex;
@@ -1811,11 +1810,12 @@ body.modal-open {
 }
 
 .navbar-main {
-  background: #fff;
+  background: #f8f9fa;
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .navbar-container {
@@ -1873,8 +1873,8 @@ body.modal-open {
 
 .search-input {
   padding: 0.6rem 1.2rem;
-  border: 2px solid #e0e0e0;
-  background: #f9f9f9;
+  border: 2px solid #d0d8e0;
+  background: #f5f8fb;
   border-radius: 0.5rem;
   font-size: 0.85rem;
   width: 200px;
@@ -1906,11 +1906,11 @@ body.modal-open {
 }
 
 .portafolio-content {
-  background: #fff;
+  background: #f8f9fa;
 }
 
 .promo-hero {
-  background: #f5f5f5;
+  background: #f5f7fa;
   padding: 4rem clamp(1.5rem, 5vw, 6rem) 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1927,7 +1927,7 @@ body.modal-open {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #95a5a6;
+  color: #8e9aaf;
   margin-bottom: 1.5rem;
 }
 
@@ -1975,7 +1975,7 @@ body.modal-open {
 }
 
 .promo-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -2016,14 +2016,14 @@ body.modal-open {
 
 .card-info p {
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: #556b82;
 }
 
 .gallery-main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  background: #fff;
+  background: #f8f9fa;
   margin: 2rem 0;
 }
 
@@ -2086,7 +2086,7 @@ body.modal-open {
   padding: 0.75rem 1.5rem;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.15);
-  color: #7f8c8d;
+  color: #556b82;
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2174,12 +2174,12 @@ body.modal-open {
 /* GLOBAL ADIDAS STYLE THEME FOR ALL PAGES */
 /* Update hero section styling */
 .hero {
-  background: linear-gradient(160deg, #000 60%, #1a1a1a 85%),
+  background: linear-gradient(160deg, #f8f9fa 60%, #f0f4f8 85%),
               url('images/1.png') center/cover;
 }
 
 .hero--compact {
-  background: linear-gradient(160deg, #000 60%, #1a1a1a 85%);
+  background: linear-gradient(160deg, #f8f9fa 60%, #f0f4f8 85%);
 }
 
 /* Update navbar styling */
