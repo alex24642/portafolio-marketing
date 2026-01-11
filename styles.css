@@ -2416,3 +2416,62 @@ body.modal-open {
     width: 100% !important;
   }
 }
+/* Portfolio Navigation (Adidas Style) */
+.portfolio-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  border-bottom: 1px solid #e8ecf1;
+  padding-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-item {
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #556b82;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #ff6b35;
+}
+
+.nav-item.active {
+  color: #ff6b35;
+  border-bottom-color: #ff6b35;
+}
+
+/* Section Title */
+.portfolio-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 1.5rem 0 1rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .portfolio-nav {
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .nav-item {
+    font-size: 0.85rem;
+  }
+}

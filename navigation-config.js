@@ -4,7 +4,7 @@ const pagesOrder = {
   parte1: [
     { name: 'Información Personal', url: 'informacion-personal.html' },
     { name: 'Información del Docente', url: 'informacion-docente.html' },
-    { name: 'Primer Parcial', url: 'primer-parcial.html' },
+    { name: 'Medio ciclo', url: 'primer-parcial.html' },
     { name: 'Información de la Asignatura', url: 'informacion-asignatura.html' }
   ],
   parte2: [

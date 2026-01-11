@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   <header class="hero" id="inicio">
     <nav class="navbar">
       <a href="#inicio" class="logo">Gastro<span> lab</span></a>
-      <button class="menu-toggle" aria-label="Abrir menú">
+      <button class="menu-toggle" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
@@ -27,143 +27,137 @@
     <div class="hero-content">
       <div class="hero-text">
         <h1>Marketing gastronómico</h1>
-        <p>El marketing gastronómico no solo vende comida, sino experiencias que conectan emociones y recuerdos.
-Cada plato cuenta una historia y cada detalle comunica identidad.
-Hoy, el éxito no está solo en el sabor, sino en la experiencia que permanece en la mente del cliente.
-Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se convierte en marca.</p>
+        <p>El marketing gastronómico no solo vende comida, sino experiencias que conectan emociones y recuerdos.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#portfolio">Contenido medio ciclo</a>
-          <a class="button" href="#contacto">GastroVisión</a>
-        </div>
-        <!-- Spotify Embed Player -->
-        <div class="spotify-embed-container">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/12bYYQaLqHliSXvRIYlq8G?utm_source=generator" width="100%" height="122" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-      </div>
-      <div class="hero-card">
-        <img src="images/1.png" alt="Chef profesional en cocina" class="chef-image">
-        <span class="badge">medio ciclo y fin de cliclo realizado con exito</span>
-        <div class="card-content">
-          <h2>Elaborado por</h2>
-          <p>Eduardo Alexander Ilbay Saca</p>
-          <ul>
-            <li>¡Hola y bienvenido!</li>
-            <li>Estás a punto de entrar en un espacio creado con pasión, donde cada proyecto refleja aprendizaje, evolución y creatividad.</li>
-          </ul>
+          <a href="#portfolio" class="button primary">Explorar portafolio</a>
+          <a href="#contacto" class="button ghost">Contacto</a>
         </div>
       </div>
     </div>
+
+    <!-- Spotify Embed -->
+    <div class="spotify-embed-container">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/12bYYQaLqHliSXvRIYlq8G?utm_source=generator" width="100%" height="122" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
   </header>
 
-  <main>
-
-
-    
-    
+  <main class="container">
     <section class="portfolio" id="portfolio">
       <div class="section-header">
-
         <span class="eyebrow">Marketing gastronómico</span>
         <h2>Contenido de medio ciclo y fin de ciclo</h2>
         <p>Contenido desarrollado y evidencias de este medio ciclo académico.</p>
       </div>
-      <div class="portfolio-grid">
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información personal"></div>
-          <div class="portfolio-content">
-            <h3>Información personal</h3>
-            <p>Aquí presento mis datos y perfil académico, ofreciendo una visión general de mi formación y experiencias dentro de la gastronomía.</p>
-              <a href="informacion-personal.html" class="portfolio-link">Ver contenido</a>
+
+      <!-- Navigation Style Menu (Adidas Style) -->
+      <nav class="portfolio-nav" role="tablist" aria-label="Categorías de contenido">
+        <button class="nav-item active" data-filter="all" role="tab" aria-selected="true">TODOS</button>
+        <button class="nav-item" data-filter="parte1" role="tab" aria-selected="false">PARTE 1</button>
+        <button class="nav-item" data-filter="parte2" role="tab" aria-selected="false">PARTE 2</button>
+      </nav>
+
+      <!-- Content Grid -->
+      <div class="portfolio-sections">
+        <!-- Parte 1 -->
+        <section class="portfolio-section" data-section="parte1">
+          <h3 class="section-title">INFORMACION GENERAL</h3>
+          <div class="portfolio-grid">
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Informacion personal"></div>
+              <div class="portfolio-content">
+                <h4>Informacion personal</h4>
+                <p>Datos y perfil academico, formacion y experiencias dentro de la gastronomia.</p>
+                <a href="informacion-personal.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Informacion del docente"></div>
+              <div class="portfolio-content">
+                <h4>Informacion del docente</h4>
+                <p>Informacion del docente responsable de la asignatura y sus objetivos.</p>
+                <a href="informacion-docente.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Medio ciclo"></div>
+              <div class="portfolio-content">
+                <h4>Medio ciclo</h4>
+                <p>Contenido correspondiente al medio ciclo academico.</p>
+                <a href="primer-parcial.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Informacion de la Asignatura"></div>
+              <div class="portfolio-content">
+                <h4>Informacion de la Asignatura</h4>
+                <p>Informacion y descripcion de la asignatura de Marketing Gastronómico.</p>
+                <a href="informacion-asignatura.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información del docente"></div>
-          <div class="portfolio-content">
-            <h3>Información del docente</h3>
-            <p>A continuación se presenta la información del docente responsable de la asignatura y sus objetivos.</p>
-              <a href="informacion-docente.html" class="portfolio-link">Ver contenido</a>
+        </section>
+
+        <!-- Parte 2 -->
+        <section class="portfolio-section" data-section="parte2" style="display:none;">
+          <h3 class="section-title">APRENDIZAJES</h3>
+          <div class="portfolio-grid">
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Aprendizaje en contacto con el docente"></div>
+              <div class="portfolio-content">
+                <h4>Aprendizaje en contacto</h4>
+                <p>Experiencias de aprendizaje directo mediante interaccion y mentoria del docente.</p>
+                <a href="aprendizaje-contacto.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Aprendizaje practico experimental"></div>
+              <div class="portfolio-content">
+                <h4>Aprendizaje practico</h4>
+                <p>Actividades practicas que aplican conocimientos teoricos en situaciones reales.</p>
+                <a href="aprendizaje-practico.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Aprendizaje autonomo"></div>
+              <div class="portfolio-content">
+                <h4>Aprendizaje autonomo</h4>
+                <p>Desarrollo de habilidades de autogestion e investigacion independiente.</p>
+                <a href="aprendizaje-autonomo.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-thumb" role="img" aria-label="Resultado o logro de aprendizaje"></div>
+              <div class="portfolio-content">
+                <h4>Logro de aprendizaje</h4>
+                <p>Evidencias que demuestran la adquisicion de competencias y logros alcanzados.</p>
+                <a href="logro-aprendizaje.html" class="portfolio-link">Ver contenido</a>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Primer parcial"></div>
-          <div class="portfolio-content">
-            <h3>Primer parcial</h3>
-            <p>A continuación se presenta el contenido correspondiente al primer parcial.</p>
-              <a href="primer-parcial.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información de la Asignatura"></div>
-          <div class="portfolio-content">
-            <h3>Información de la Asignatura</h3>
-            <p>A continuación, la información de la asignatura.</p>
-              <a href="informacion-asignatura.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje en contacto con el docente"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje en contacto con el docente</h3>
-            <p>Experiencias de aprendizaje directo mediante interacción, orientación y mentoría del docente en sesiones académicas.</p>
-              <a href="aprendizaje-contacto.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje práctico experimental"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje práctico experimental</h3>
-            <p>Actividades prácticas y experimentales que permiten aplicar conocimientos teóricos en situaciones reales del ámbito gastronómico.</p>
-              <a href="aprendizaje-practico.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje autónomo"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje autónomo</h3>
-            <p>Desarrollo de habilidades de autogestión, investigación independiente y aprendizaje autodirigido en temas gastronómicos.</p>
-              <a href="aprendizaje-autonomo.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Resultado o logro de aprendizaje"></div>
-          <div class="portfolio-content">
-            <h3>resultados o logro de aprendizaje</h3>
-            <p>Evidencias y resultados finales que demuestran la adquisición de competencias y logros alcanzados en este medio ciclo.</p>
-              <a href="logro-aprendizaje.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-      </div>
-      <div class="filters" role="group" aria-label="Filtrar portafolio">
-        <button class="filter-button active" data-filter="original">Parte 1</button>
-        <button class="filter-button" data-filter="restaurante">Parte 2</button>
-        <button class="filter-button" data-filter="hotel">Proximamente </button>
-        <button class="filter-button" data-filter="gourmet">Proximamente 2</button>
+        </section>
       </div>
     </section>
 
-
-
     <section class="testimonials" id="testimonios">
       <div class="section-header">
-        <span class="eyebrow">Aprendizaje con propósito, enseñanza con pasión</span>
-        <h2>Cada clase, una inspiración; cada palabra, un impulso.</h2>
+        <span class="eyebrow">Aprendizaje con proposito, ensenanza con pasion</span>
+        <h2>Cada clase, una inspiracion; cada palabra, un impulso.</h2>
       </div>
       <div class="testimonial-slider" aria-live="polite">
         <article class="testimonial active">
           <blockquote>
             Cuando conectas con el cliente, el producto deja de ser comida y se convierte en recuerdo.
-        
+          </blockquote>
         </article>
         <article class="testimonial">
           <blockquote>
             La fidelidad nace cuando la experiencia supera a la expectativa.
-        
-          
+          </blockquote>
         </article>
         <article class="testimonial">
           <blockquote>
-            La diferenciación es la receta secreta para destacar en un mercado lleno de sabores.
-          
+            La diferenciacion es la receta secreta para destacar en un mercado lleno de sabores.
+          </blockquote>
         </article>
       </div>
       <div class="slider-controls">
@@ -174,8 +168,8 @@ Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se co
 
     <section class="gallery" id="galeria">
       <div class="section-header">
-        <span class="eyebrow">Galería</span>
-        <h2>Registro fotográfico con el docente</h2>
+        <span class="eyebrow">Galeria</span>
+        <h2>Registro fotografico con el docente</h2>
       </div>
 
       <div class="image-row" style="display:flex; gap:1rem; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
@@ -193,8 +187,8 @@ Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se co
     <div class="footer-content">
       <div class="footer-grid">
         <div class="footer-section">
-          <h3>GastroVisión</h3>
-          <p>Portafolio académico enfocado en la materia de Marketing Gastronómico. Reúne tareas, proyectos y registros visuales de los trabajos desarrollados en clase, mostrando la aplicación de estrategias de marketing dentro del ámbito gastronómico y el aprendizaje obtenido a lo largo del curso.</p>
+          <h3>GastroVision</h3>
+          <p>Portafolio academico enfocado en la materia de Marketing Gastronómico. Reune tareas, proyectos y registros visuales de los trabajos desarrollados en clase, mostrando la aplicacion de estrategias de marketing dentro del ambito gastronómico y el aprendizaje obtenido a lo largo del curso.</p>
         </div>
       </div>
 
@@ -244,5 +238,26 @@ Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se co
 
   <script src="script.js"></script>
   <script src="audio-persistent.js"></script>
+  <script>
+    // Portfolio Navigation Filter
+    document.querySelectorAll('.nav-item').forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        
+        // Update active button
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update visible sections
+        document.querySelectorAll('.portfolio-section').forEach(section => {
+          if(filter === 'all' || section.dataset.section === filter) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
