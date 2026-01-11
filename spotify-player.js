@@ -1,6 +1,6 @@
 /*
   Spotify-style Player - Local reproduction
-  Allows playing local audio files with Spotify-like UI
+  Plays local audio files with Spotify-like UI
 */
 
 (function(){
@@ -12,45 +12,86 @@
     return;
   }
 
-  // Playlist configuration - Links to Spotify
+  // Playlist configuration
   var PLAYLIST = [
     {
       title: 'I Just Might',
       artist: 'Bruno Mars',
       image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
+      url: 'musica/Fly Me to the Moon (musica3).mp3',
       spotifyUrl: 'https://open.spotify.com/intl-es/track/12bYYQaLqHliSXvRIYlq8G?si=c0383b4aabd94672'
+    },
+    {
+      title: 'Fleeting Dream',
+      artist: 'PARIS The Prince',
+      image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
+      url: 'musica/PARIS The Prince - Fleeting Dream (musica1).mp3',
+      spotifyUrl: 'https://open.spotify.com/artist/4A3ItkgkJBxfNJ1UnVfQZW'
+    },
+    {
+      title: 'Sin Un Corazon',
+      artist: 'Cuco',
+      image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
+      url: 'musica/Cuco - Sin Un Corazon (musica2).mp3',
+      spotifyUrl: 'https://open.spotify.com/artist/5P3Ey0lsF0vNZIjPcDMZHy'
+    },
+    {
+      title: 'LAS NOCHES',
+      artist: 'Junior H',
+      image: 'https://i.scdn.co/image/ab67616d0000b27374f5d961a8b58ca1a17d96e9',
+      url: 'musica/Junior H - LAS NOCHES (musica4).mp3',
+      spotifyUrl: 'https://open.spotify.com/artist/4N6AxWjvFwj0mKaDYmRh4B'
     }
   ];
 
   var currentTrackIndex = 0;
   var isPlaying = false;
+  var audio = null;
 
   document.addEventListener('DOMContentLoaded', function(){
     try {
       var playBtn = document.getElementById('spotify-play-btn');
       var playerContainer = document.querySelector('.spotify-player');
-      var linkBtn = document.querySelector('.spotify-link-btn');
       
       if (!playerContainer) return;
 
-      // Play button - opens Spotify
+      // Create audio element
+      audio = document.createElement('audio');
+      audio.id = 'spotify-audio';
+      audio.crossOrigin = 'anonymous';
+      document.body.appendChild(audio);
+
+      // Play button
       if (playBtn) {
         playBtn.addEventListener('click', function(e){
           e.preventDefault();
+          e.stopPropagation();
           togglePlayPause();
         });
       }
 
-      // Allow clicking on track info to open Spotify
-      if (playerContainer) {
-        var trackInfo = playerContainer.querySelector('.spotify-player-track');
-        if (trackInfo) {
-          trackInfo.style.cursor = 'pointer';
-          trackInfo.addEventListener('click', togglePlayPause);
-        }
-      }
+      // Audio events
+      audio.addEventListener('play', function(){
+        isPlaying = true;
+        updatePlayButton();
+      });
 
-      // Load first track info
+      audio.addEventListener('pause', function(){
+        isPlaying = false;
+        updatePlayButton();
+      });
+
+      audio.addEventListener('ended', function(){
+        nextTrack();
+      });
+
+      audio.addEventListener('error', function(){
+        console.error('Error loading audio:', audio.src);
+        isPlaying = false;
+        updatePlayButton();
+      });
+
+      // Load first track
       loadTrack(0);
 
     } catch(e) {
@@ -59,43 +100,68 @@
   });
 
   function loadTrack(index) {
+    if (!PLAYLIST.length) return;
+    
     currentTrackIndex = (index % PLAYLIST.length + PLAYLIST.length) % PLAYLIST.length;
     var track = PLAYLIST[currentTrackIndex];
+    
+    if (!audio) return;
+    
+    // Stop current playback
+    audio.pause();
+    audio.currentTime = 0;
+    
+    // Set new source
+    audio.src = track.url;
+    audio.load();
 
     // Update UI
     var trackTitle = document.querySelector('.spotify-player-track h4');
     var trackArtist = document.querySelector('.spotify-player-track p');
     var albumArt = document.querySelector('.spotify-album-art');
-    var linkBtn = document.querySelector('.spotify-link-btn');
 
     if (trackTitle) trackTitle.textContent = track.title;
     if (trackArtist) trackArtist.textContent = track.artist;
     if (albumArt) albumArt.src = track.image;
-    if (linkBtn) linkBtn.href = track.spotifyUrl;
 
+    isPlaying = false;
     updatePlayButton();
   }
 
   function togglePlayPause() {
-    // Toggle play state
-    isPlaying = !isPlaying;
-    updatePlayButton();
-    
-    // Open Spotify link
-    var track = PLAYLIST[currentTrackIndex];
-    if (track && track.spotifyUrl) {
-      window.open(track.spotifyUrl, '_blank');
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(function(){
+            // Autoplay started successfully
+          })
+          .catch(function(error){
+            console.error('Playback failed:', error);
+            isPlaying = false;
+            updatePlayButton();
+          });
+      }
     }
   }
 
   function nextTrack() {
     loadTrack(currentTrackIndex + 1);
+    if (audio) {
+      audio.play().catch(function(error){
+        console.error('Autoplay failed:', error);
+      });
+    }
   }
 
   function updatePlayButton() {
     var playBtn = document.getElementById('spotify-play-btn');
     if (playBtn) {
-      playBtn.textContent = isPlaying ? '⏸' : '▶';
+      playBtn.textContent = (audio && !audio.paused) ? '⏸' : '▶';
     }
   }
 
@@ -104,7 +170,8 @@
     loadTrack: loadTrack,
     togglePlayPause: togglePlayPause,
     nextTrack: nextTrack,
-    playlist: PLAYLIST
+    playlist: PLAYLIST,
+    audio: audio
   };
 
 })();
