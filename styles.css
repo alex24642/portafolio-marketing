@@ -81,13 +81,19 @@ button {
   font-size: clamp(1.25rem, 2vw, 1.8rem);
   text-transform: uppercase;
   letter-spacing: 0.24rem;
-  color: var(--text);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   display: inline-flex;
   gap: 0.5rem;
 }
 
 .logo span {
-  color: var(--primary);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .menu-toggle {
@@ -1834,12 +1840,18 @@ body.modal-open {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #2c3e50;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   white-space: nowrap;
 }
 
 .logo-main span {
-  color: var(--primary);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-main {
@@ -2188,12 +2200,18 @@ body.modal-open {
 }
 
 .logo {
-  color: #fff;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 1.2rem;
 }
 
 .logo span {
-  color: var(--primary);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff3b1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Container styling */
