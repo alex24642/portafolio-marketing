@@ -1,32 +1,37 @@
 /*
-  Invisible Persistent Audio Player
+  Invisible Persistent Audio Player with Spotify Web Preview
   - Keeps music playing when navigating between pages
-  - Uses invisible iframe for Spotify embed or local audio
-  - No floating UI, just continuous playback
+  - Uses Spotify Web Player SDK for continuous playback
+  - No visible UI, just background audio
+  - Requires Spotify authentication via embed or manual token
 */
 
 (function(){
   'use strict';
 
-  const SPOTIFY_TRACK_ID = '12bYYQaLqHliSXvRIYlq8G';
-  
+  // Persistent audio state
+  const audioState = {
+    isPlaying: localStorage.getItem('audio_playing') === 'true',
+    currentTrack: localStorage.getItem('current_track') || 'spotify:track:12bYYQaLqHliSXvRIYlq8G',
+    volume: parseFloat(localStorage.getItem('audio_volume')) || 0.5
+  };
+
   // Create invisible persistent audio container
   function createPersistentAudioContainer() {
-    // Check if already exists
     if (document.getElementById('persistent-audio-container')) {
       return document.getElementById('persistent-audio-container');
     }
 
     const container = document.createElement('div');
     container.id = 'persistent-audio-container';
-    container.style.cssText = 'position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;z-index:9999;pointer-events:none;';
+    container.style.cssText = 'position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;z-index:-9999;pointer-events:none;';
     
-    // Create hidden audio element
     const audio = document.createElement('audio');
     audio.id = 'persistent-audio';
     audio.preload = 'auto';
+    audio.loop = true;
+    audio.volume = audioState.volume;
     audio.style.display = 'none';
-    audio.crossOrigin = 'anonymous';
     
     container.appendChild(audio);
     document.body.appendChild(container);
@@ -34,11 +39,11 @@
     return container;
   }
 
-  // Initialize persistent audio player
+  // Initialize on DOM ready
   document.addEventListener('DOMContentLoaded', function() {
     createPersistentAudioContainer();
     loadSpotifySDK();
-    initializeAudioPlayer();
+    restoreAudioState();
   });
 
   // Load Spotify SDK
@@ -49,78 +54,83 @@
     script.src = 'https://sdk.scdn.co/spotify-player.js';
     script.async = true;
     document.head.appendChild(script);
+    
+    // Handle SDK ready
+    window.onSpotifyWebPlaybackSDKReady = initializeSpotifyPlayer;
   }
 
-  // Initialize audio player
-  function initializeAudioPlayer() {
-    // Wait for Spotify SDK to load
-    window.onSpotifyWebPlaybackSDKReady = function() {
-      console.log('Spotify SDK Ready');
-      const token = getSpotifyToken();
-      
-      if (token) {
-        createSpotifyPlayer(token);
-      }
-    };
+  // Initialize Spotify player
+  function initializeSpotifyPlayer() {
+    console.log('Spotify SDK Ready');
+    const token = getSpotifyToken();
+    
+    if (!token) {
+      console.log('No Spotify token - waiting for authentication via embed');
+      // Wait for token from Spotify embed or other auth method
+      window.addEventListener('storage', function() {
+        const newToken = getSpotifyToken();
+        if (newToken) {
+          initializeSpotifyPlayer();
+        }
+      });
+      return;
+    }
 
-    // Fallback: if SDK doesn't load in 5 seconds, try audio element
-    setTimeout(() => {
-      if (!window.Spotify) {
-        console.log('Spotify SDK not loaded, using fallback');
-      }
-    }, 5000);
+    createSpotifyPlayer(token);
   }
 
-  // Create Spotify player
+  // Create and connect Spotify player
   function createSpotifyPlayer(token) {
+    if (window.__spotifyPlayer) return; // Already initialized
+    
     const player = new Spotify.Player({
       name: 'Gastro Lab',
       getOAuthToken: cb => { cb(token); },
-      volume: 0.5
+      volume: audioState.volume
     });
 
-    player.addListener('initialization_error', ({ message }) => {
-      console.error('Failed to initialize', message);
-    });
-
-    player.addListener('authentication_error', ({ message }) => {
-      console.error('Failed to authenticate', message);
-    });
-
-    player.addListener('account_error', ({ message }) => {
-      console.error('Failed to validate account', message);
+    player.addListener('ready', ({ device_id }) => {
+      console.log('Spotify player ready - Device ID:', device_id);
+      localStorage.setItem('spotify_device_id', device_id);
+      
+      // Auto-play if enabled
+      if (audioState.isPlaying) {
+        playTrack(device_id, token);
+      }
     });
 
     player.addListener('player_state_changed', state => {
       if (state) {
-        console.log('Spotify player state:', state.paused ? 'paused' : 'playing');
+        localStorage.setItem('audio_playing', !state.paused);
+        audioState.isPlaying = !state.paused;
       }
-    });
-
-    player.addListener('ready', ({ device_id }) => {
-      console.log('Ready with Device ID', device_id);
-      playTrack(device_id, token);
     });
 
     player.addListener('not_ready', ({ device_id }) => {
-      console.log('Device ID has gone offline', device_id);
+      console.log('Device offline:', device_id);
+      localStorage.removeItem('spotify_device_id');
     });
 
-    player.connect().then(success => {
-      if (success) {
-        console.log('Player connected successfully');
-      } else {
-        console.log('Could not connect player');
-      }
+    player.addListener('initialization_error', ({ message }) => {
+      console.error('Spotify init error:', message);
     });
 
-    // Store player globally
+    player.addListener('authentication_error', ({ message }) => {
+      console.error('Spotify auth error:', message);
+      localStorage.removeItem('spotify_access_token');
+    });
+
+    player.addListener('account_error', ({ message }) => {
+      console.error('Spotify account error:', message);
+    });
+
+    player.connect();
     window.__spotifyPlayer = player;
   }
 
-  // Play track
+  // Play track using Spotify API
   function playTrack(deviceId, token) {
-    const trackUri = `spotify:track:${SPOTIFY_TRACK_ID}`;
+    const trackUri = 'spotify:track:12bYYQaLqHliSXvRIYlq8G';
     
     fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
       method: 'PUT',
@@ -128,38 +138,41 @@
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ uris: [trackUri] })
+      body: JSON.stringify({ 
+        uris: [trackUri],
+        offset: { position: 0 }
+      })
     }).then(response => {
       if (response.status === 204) {
-        console.log('Track started playing');
-      } else {
-        console.log('Play request status:', response.status);
+        console.log('✓ Track playing on device');
+        localStorage.setItem('audio_playing', 'true');
+      } else if (response.status === 401) {
+        console.log('Token expired, clearing...');
+        localStorage.removeItem('spotify_access_token');
       }
-    }).catch(error => {
-      console.error('Error playing track:', error);
-    });
+    }).catch(error => console.error('Play error:', error));
   }
 
-  // Get Spotify access token
+  // Get Spotify access token from localStorage or URL hash
   function getSpotifyToken() {
-    // Try localStorage first
     const stored = localStorage.getItem('spotify_access_token');
-    if (stored && !isTokenExpired(stored)) {
+    if (stored && !isTokenExpired()) {
       return stored;
     }
 
-    // Try URL hash
-    const hash = window.location.hash.substring(1).split('&').reduce((initial, item) => {
+    // Parse URL hash for auth redirect
+    const hash = window.location.hash.substring(1).split('&').reduce((acc, item) => {
       if (item) {
-        var parts = item.split('=');
-        initial[parts[0]] = decodeURIComponent(parts[1]);
+        const [key, value] = item.split('=');
+        acc[key] = decodeURIComponent(value);
       }
-      return initial;
+      return acc;
     }, {});
 
     if (hash.access_token) {
       localStorage.setItem('spotify_access_token', hash.access_token);
       localStorage.setItem('spotify_token_time', Date.now());
+      // Clean URL
       window.history.replaceState(null, null, window.location.pathname);
       return hash.access_token;
     }
@@ -167,17 +180,45 @@
     return null;
   }
 
-  // Check if token is expired (after 1 hour)
-  function isTokenExpired(token) {
+  // Check token expiration (1 hour)
+  function isTokenExpired() {
     const tokenTime = localStorage.getItem('spotify_token_time');
     if (!tokenTime) return true;
-    const age = Date.now() - parseInt(tokenTime);
-    return age > 3600000; // 1 hour
+    return Date.now() - parseInt(tokenTime) > 3600000;
+  }
+
+  // Restore playback state on page load
+  function restoreAudioState() {
+    const deviceId = localStorage.getItem('spotify_device_id');
+    const token = getSpotifyToken();
+    
+    if (deviceId && token && audioState.isPlaying) {
+      // Small delay to ensure player is ready
+      setTimeout(() => {
+        if (window.__spotifyPlayer) {
+          playTrack(deviceId, token);
+        }
+      }, 1000);
+    }
   }
 
   // Expose for debugging
   window.__persistentAudio = {
-    getSpotifyToken: getSpotifyToken,
+    getToken: getSpotifyToken,
+    play: () => {
+      const token = getSpotifyToken();
+      const deviceId = localStorage.getItem('spotify_device_id');
+      if (token && deviceId) playTrack(deviceId, token);
+    },
+    pause: () => {
+      if (window.__spotifyPlayer) {
+        fetch('https://api.spotify.com/v1/me/player/pause', {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${getSpotifyToken()}` }
+        });
+      }
+    },
+    state: audioState,
     playTrack: playTrack
   };
 
