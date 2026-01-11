@@ -109,6 +109,8 @@ function initNavigationButtons() {
   if (prevBtn && prevUrl) {
     prevBtn.href = prevUrl;
     prevBtn.textContent = `← Anterior: ${getPreviousPageName(currentUrl)}`;
+    // Asegura que el botón 'Anterior' use la misma clase que el botón 'Siguiente'
+    prevBtn.className = 'button';
   }
   
   // Si no hay botones, créalos dinámicamente
@@ -120,7 +122,7 @@ function initNavigationButtons() {
     let html = '';
     
     if (prevUrl) {
-      html += `<a href="${prevUrl}" class="button ghost" id="prev-theme-btn">← Anterior: ${getPreviousPageName(currentUrl)}</a>`;
+      html += `<a href="${prevUrl}" class="button" id="prev-theme-btn">← Anterior: ${getPreviousPageName(currentUrl)}</a>`;
     }
     
     if (nextUrl) {
