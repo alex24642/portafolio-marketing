@@ -84,10 +84,21 @@ button {
   color: var(--text);
   display: inline-flex;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  text-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transform: scale(1.02);
 }
 
 .logo span {
-  color: var(--primary);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9a3b 50%, #ffd059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.2));
 }
 
 .menu-toggle {
@@ -234,12 +245,25 @@ button {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: var(--accent);
-  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9a3b 50%, #ffd059 100%);
+  padding: 0.5rem 1.2rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12rem;
   text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
+  }
 }
 
 .hero-card ul {
@@ -1540,7 +1564,7 @@ body.modal-open {
   }
 }
 
-/* OUTLET STYLE - Primer Parcial Page */
+/* OUTLET STYLE - Medio Ciclo Page */
 .outlet-main {
   padding: 0;
 }
