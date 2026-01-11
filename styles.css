@@ -2379,7 +2379,8 @@ body.modal-open {
 .spotify-player-container {
   margin-top: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
 }
 
 .spotify-player {

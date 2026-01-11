@@ -60,7 +60,13 @@
       audio = document.createElement('audio');
       audio.id = 'spotify-audio';
       audio.preload = 'auto';
+      audio.crossOrigin = 'anonymous';
       document.body.appendChild(audio);
+
+      // Debug: log audio load events
+      audio.addEventListener('loadstart', function(){ console.log('Audio loading...'); });
+      audio.addEventListener('canplay', function(){ console.log('Audio ready to play'); });
+      audio.addEventListener('error', function(){ console.error('Audio error:', audio.error); });
 
       // Play/Pause button click
       if (playBtn) {
@@ -109,7 +115,14 @@
     var track = PLAYLIST[currentTrackIndex];
     
     if (audio) {
-      audio.src = track.url;
+      // Normalize URL path to ensure correct loading
+      var audioUrl = track.url;
+      // Ensure path doesn't have double slashes
+      if (audioUrl.startsWith('/')) {
+        audioUrl = audioUrl.substring(1);
+      }
+      audio.src = audioUrl;
+      audio.load(); // Explicitly load the audio
     }
 
     // Update UI
