@@ -2425,6 +2425,13 @@ body.modal-open {
   padding-bottom: 1.5rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: sticky;
+  top: 88px; /* keeps nav visible under the hero/header */
+  z-index: 40;
+  background: #ffffff; /* ensure it's readable when fixed */
+  padding-top: 0.6rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .nav-item {
