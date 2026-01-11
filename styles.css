@@ -2375,3 +2375,135 @@ body.modal-open {
 .footer-socials a:hover {
   color: var(--primary);
 }
+/* Spotify Player Widget Styles */
+.spotify-player-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.spotify-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #191414 0%, #282828 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spotify-player-album {
+  flex-shrink: 0;
+}
+
+.spotify-album-art {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.spotify-player-track {
+  color: #fff;
+}
+
+.spotify-player-track h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.spotify-player-track p {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  margin: 0.3rem 0 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.spotify-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.spotify-play-btn {
+  background: #1DB954;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.spotify-play-btn:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+}
+
+.spotify-play-btn:active {
+  transform: scale(0.95);
+}
+
+.spotify-link-btn {
+  background: #1DB954;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.spotify-link-btn:hover {
+  background: #1ed760;
+}
+
+/* Responsive Spotify Player */
+@media (max-width: 768px) {
+  .spotify-player {
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+
+  .spotify-album-art {
+    width: 70px;
+    height: 70px;
+  }
+
+  .spotify-player-track h4 {
+    font-size: 0.9rem;
+  }
+
+  .spotify-link-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
