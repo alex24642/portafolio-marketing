@@ -59,6 +59,7 @@
       audio = document.createElement('audio');
       audio.id = 'spotify-audio';
       audio.crossOrigin = 'anonymous';
+      audio.volume = 0.5;
       document.body.appendChild(audio);
 
       // Play button

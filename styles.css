@@ -2386,48 +2386,81 @@ body.modal-open {
 .spotify-player {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  background: #3a3a3a;
-  border-radius: 24px;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  gap: 1rem;
+  background: #282828;
+  border-radius: 32px;
+  padding: 0.6rem 0.8rem 0.6rem 0.6rem;
   width: auto;
-  max-width: 450px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 550px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.spotify-logo {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-logo svg {
+  width: 20px;
+  height: 20px;
 }
 
 .spotify-player-album {
   flex-shrink: 0;
+  position: relative;
+}
+
+.spotify-album-frame {
+  width: 72px;
+  height: 72px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 4px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .spotify-album-art {
-  width: 56px;
-  height: 56px;
-  border-radius: 6px;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .spotify-player-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  min-width: 120px;
+  gap: 0.3rem;
+  min-width: 140px;
+  margin-right: 0.5rem;
 }
 
 .spotify-track-title {
   color: #fff;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  letter-spacing: 0.3px;
 }
 
 .spotify-track-artist {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #b3b3b3;
   margin: 0;
   text-overflow: ellipsis;
@@ -2436,15 +2469,16 @@ body.modal-open {
 }
 
 .spotify-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #888;
-  margin: 0.2rem 0 0 0;
+  margin: 0.1rem 0 0 0;
+  font-weight: 500;
 }
 
 .spotify-player-buttons {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -2454,7 +2488,7 @@ body.modal-open {
   border: none;
   color: #b3b3b3;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding: 0.4rem;
   border-radius: 50%;
   transition: all 0.2s;
@@ -2466,14 +2500,15 @@ body.modal-open {
 .spotify-add-btn:hover,
 .spotify-menu-btn:hover {
   color: #fff;
+  transform: scale(1.1);
 }
 
 .spotify-play-btn {
   background: #fff;
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
