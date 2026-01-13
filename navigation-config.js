@@ -11,7 +11,8 @@ const pagesOrder = {
     { name: 'Aprendizaje en Contacto', url: 'aprendizaje-contacto.html' },
     { name: 'Aprendizaje Práctico', url: 'aprendizaje-practico.html' },
     { name: 'Aprendizaje Autónomo', url: 'aprendizaje-autonomo.html' },
-    { name: 'Logro de Aprendizaje', url: 'logro-aprendizaje.html' }
+    { name: 'Logro de Aprendizaje', url: 'logro-aprendizaje.html' },
+    { name: 'Agradecimiento', url: 'agradecimiento.html' }
   ]
 };
 
