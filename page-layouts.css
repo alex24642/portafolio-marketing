@@ -1,0 +1,558 @@
+/* Page-specific layouts to differentiate page structures */
+
+/* ======================
+   Generic page styling - all pages
+   ====================== */
+main {
+  background: var(--bg);
+}
+
+main section {
+  margin-bottom: 2rem;
+}
+
+/* ======================
+   index.html - Portfolio landing
+   ====================== */
+main > section.portfolio {
+  display: block;
+}
+
+.portfolio-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  margin: 2rem 0 !important;
+}
+
+.portfolio-card {
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 1.5rem !important;
+  background: var(--bg-soft) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.portfolio-card h3 {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ======================
+   informacion-personal.html - Stacked sections
+   ====================== */
+.profile-card {
+  display: block !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  background: var(--bg-soft) !important;
+}
+
+.profile-card h2 {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 2px solid var(--primary) !important;
+}
+
+.profile-card p {
+  margin: 0.5rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+.profile-card ul {
+  margin: 1rem 0 !important;
+  padding-left: 1.5rem !important;
+}
+
+/* ======================
+   informacion-docente.html - Centered layout
+   ====================== */
+.section-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 1rem !important;
+  padding: 2rem !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  background: var(--bg-soft) !important;
+  max-width: 600px !important;
+  margin: 2rem auto !important;
+}
+
+.section-header .eyebrow {
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.15em !important;
+  color: var(--secondary) !important;
+}
+
+.section-header h1 {
+  margin: 0 !important;
+  border-bottom: 2px solid var(--primary) !important;
+  padding-bottom: 1rem !important;
+  width: 100% !important;
+}
+
+/* ======================
+   primer-parcial.html - Banner with sections
+   ====================== */
+.banner-top {
+  background: var(--bg-soft) !important;
+  border: 3px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+}
+
+.banner-top p {
+  margin: 0 !important;
+  font-weight: 600 !important;
+}
+
+.promo-section {
+  padding: 2rem !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  background: var(--bg) !important;
+  margin-bottom: 2rem !important;
+}
+
+.promo-title {
+  border-left: 5px solid var(--primary) !important;
+  padding-left: 1rem !important;
+  margin: 0 !important;
+}
+
+/* ======================
+   informacion-asignatura.html - Info sections
+   ====================== */
+.section-header {
+  padding: 2rem !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  background: var(--bg-soft) !important;
+  margin-bottom: 2rem !important;
+}
+
+/* ======================
+   aprendizaje-contacto.html - Two-column alternating
+   ====================== */
+main > section > div {
+  padding: 1.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  background: var(--bg-soft);
+  margin-bottom: 1.5rem;
+}
+
+main > section > h2 {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ======================
+   aprendizaje-practico.html - Vertical sections
+   ====================== */
+main > section {
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 2rem !important;
+  background: var(--bg) !important;
+  margin-bottom: 2rem !important;
+}
+
+main > section h2,
+main > section h3 {
+  border-bottom: 2px solid var(--primary) !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ======================
+   aprendizaje-autonomo.html - Multi-grid
+   ====================== */
+main > section {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.5rem !important;
+  margin: 2rem 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+main > section > article {
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+main > section > article h3 {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin: 0 !important;
+}
+
+/* ======================
+   logro-aprendizaje.html - Reflection centered
+   ====================== */
+section#resultado {
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  background: var(--bg-soft) !important;
+  margin-bottom: 2rem !important;
+  padding: 2rem !important;
+}
+
+section#resultado h1 {
+  border-bottom: 2px solid var(--primary) !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ======================
+   agradecimiento.html - Centered gratitude
+   ====================== */
+section#agradecimiento {
+  background: var(--bg) !important;
+  border: 3px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 3rem 2rem !important;
+  margin-bottom: 2.5rem !important;
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+section#agradecimiento h1 {
+  color: var(--text) !important;
+  border-bottom: 2px solid var(--primary) !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+section#agradecimiento p {
+  color: var(--text) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.8 !important;
+  max-width: 700px !important;
+  margin: 1rem auto 0 !important;
+}
+
+/* ======================
+   portafolio.html - Resource sections
+   ====================== */
+main > section {
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 2rem !important;
+  background: var(--bg) !important;
+  margin-bottom: 2rem !important;
+}
+
+main > section h2 {
+  border-bottom: 2px solid var(--primary) !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* ======================
+   Responsive - Tablet
+   ====================== */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  main > section {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ======================
+   Responsive - Mobile
+   ====================== */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .banner-top {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .banner-top p {
+    text-align: center !important;
+  }
+
+  .section-header {
+    max-width: 100% !important;
+    margin: 1.5rem auto !important;
+  }
+
+  main > section {
+    grid-template-columns: 1fr !important;
+    padding: 1.5rem !important;
+  }
+
+  section#agradecimiento {
+    padding: 1.5rem 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  section#agradecimiento h1 {
+    font-size: 1.5rem !important;
+  }
+
+  main > section > article {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-card {
+    padding: 1rem !important;
+  }
+
+  .portfolio-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .profile-card {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  main > section {
+    padding: 1rem !important;
+  }
+
+  main > section > div {
+    padding: 1rem !important;
+  }
+
+  section#resultado {
+    padding: 1rem !important;
+  }
+}
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+}
+
+.hero-card h1 {
+  grid-column: 1 / -1;
+  text-align: left;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 1rem;
+}
+
+.hero-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* informacion-personal.html - Single column vertical layout */
+.profile-card {
+  display: block;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  background: var(--bg-soft);
+}
+
+.profile-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--primary);
+}
+
+/* aprendizaje-contacto.html - Alternating layout */
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.image-grid:nth-child(even) {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+
+.image-grid > * {
+  direction: ltr;
+}
+
+/* informacion-docente.html - Centered focused layout */
+.docente-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* primer-parcial.html - Card list layout */
+.banner-top {
+  background: var(--bg-soft);
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* aprendizaje-practico.html - Vertical stacked sections */
+.promo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.promo-content {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-soft);
+}
+
+/* informacion-asignatura.html - Two column info grid */
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.section-header .eyebrow {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* aprendizaje-autonomo.html - Grid-based layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* logro-aprendizaje.html - Reflection cards */
+.reflection-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+}
+
+/* agradecimiento.html - Centered gratitude layout */
+#agradecimiento {
+  background: var(--bg) !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0.5rem !important;
+  padding: 3rem 2rem !important;
+  margin-bottom: 2.5rem !important;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+#agradecimiento h1 {
+  color: var(--text) !important;
+}
+
+#agradecimiento p {
+  color: var(--text) !important;
+}
+
+/* portafolio.html - Portfolio cards grid */
+.portfolio-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.portfolio-card {
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  background: var(--bg-soft);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card h1 {
+    grid-column: 1;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid:nth-child(even) {
+    direction: ltr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-section {
+    grid-template-columns: 1fr;
+  }
+
+  .docente-info {
+    margin: 0;
+  }
+
+  .reflection-card {
+    grid-template-columns: 1fr;
+  }
+}

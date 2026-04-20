@@ -210,7 +210,7 @@ button {
   margin-top: clamp(2rem, 8vw, 6rem);
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   align-items: center;
   flex-direction: column-reverse;
 }
@@ -385,7 +385,7 @@ button {
 
 .service-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -448,7 +448,7 @@ button {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.75rem;
 }
 
