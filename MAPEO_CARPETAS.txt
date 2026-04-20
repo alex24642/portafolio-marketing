@@ -1,0 +1,14 @@
+﻿# Portafolio Académico Digital - Vinculación de Carpetas
+
+## Secciones Vinculadas:
+
+1. INFORMACIÓN PERSONAL → Carpeta: Informacón personal/
+2. INFORMACIÓN DEL DOCENTE → Carpeta: infomación del docente/
+3. INFORMACIÓN DE LA ASIGNATURA → Carpeta: Información de la Asignatura/
+4. CONTENIDO MEDIO CICLO → Carpeta: primer parcial/
+5. APRENDIZAJE CON DOCENTE → Carpeta: aprendizaje con el docente/
+6. APRENDIZAJE PRÁCTICO → Carpeta: aprendizaje practico experimetal/
+7. APRENDIZAJE AUTÓNOMO → Carpeta: aprendizaje autonomo/
+8. LOGROS DE APRENDIZAJE → Carpeta: resultado o logro de aprendizaje/
+
+Nota: El archivo HTML se abra con navegador

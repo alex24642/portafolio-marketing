@@ -1,209 +1,374 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabores con Estrategia | Portafolio de Marketing Gastronómico</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=9.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio Académico | Jimmy A. Herrera Guerrero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
-    @media (max-width: 768px) {
-      body { font-size: 16px; }
-      h1 { font-size: clamp(1.8rem, 6vw, 2.5rem) !important; }
-      h2 { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
-      p { font-size: clamp(0.9rem, 3vw, 1rem) !important; line-height: 1.7 !important; }
-      .container { padding: 1rem !important; }
-      .section-header { padding: 1.5rem 1rem !important; margin-bottom: 1.5rem !important; }
-      .hero-content { padding: 1.5rem 1rem !important; }
-      .profile-card { padding: 1.2rem 1rem !important; margin-bottom: 1rem !important; }
-      .button { padding: 0.75rem 1.5rem !important; font-size: clamp(0.9rem, 2.5vw, 1rem) !important; }
-    }
+    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; --shadow:0 8px 40px rgba(0,0,0,0.35); --transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:"DM Sans", sans-serif; background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.7; }
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--navy); }
+    ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
+    h1, h2, h3, h4 { font-family:"Cormorant Garamond", serif; }
+    body::before { content:""; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:999; padding:0 2rem; height:70px; display:flex; align-items:center; justify-content:space-between; background:rgba(13,27,42,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); transition:var(--transition); }
+    .nav-brand { font-family:"Cormorant Garamond", serif; font-size:1.3rem; font-weight:600; color:var(--gold); letter-spacing:0.04em; text-decoration:none; }
+    .nav-brand span { color:var(--cream); }
+    .nav-links { display:flex; gap:0.15rem; list-style:none; }
+    .nav-links a { color:var(--text-dim); text-decoration:none; font-size:0.78rem; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; padding:0.4rem 0.7rem; border-radius:6px; transition:color 0.3s, background 0.3s; }
+    .nav-links a:hover { color:var(--gold); background:rgba(201,168,76,0.08); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; border:none; background:none; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--gold); border-radius:2px; transition:var(--transition); }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:70px; left:0; right:0; background:rgba(13,27,42,0.97); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:1.5rem 2rem; z-index:998; flex-direction:column; gap:0.25rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { color:var(--cream-dark); text-decoration:none; font-size:0.9rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; padding:0.75rem 1rem; border-radius:8px; border-left:2px solid transparent; transition:all 0.3s; }
+    .mobile-menu a:hover { color:var(--gold); border-left-color:var(--gold); background:rgba(201,168,76,0.06); }
+    #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; padding:8rem 2rem 6rem; }
+    .hero-content { position:relative; z-index:2; max-width:860px; }
+    .hero-name { font-size:clamp(2.8rem, 7vw, 6rem); font-weight:300; line-height:1.1; color:var(--cream); letter-spacing:-0.01em; margin-bottom:1.5rem; }
+    .hero-name strong { font-weight:600; color:var(--white); display:block; }
+    .hero-name em { font-style:italic; color:var(--gold); }
+    .hero-subtitle { font-size:clamp(1rem, 2vw, 1.25rem); color:var(--text-dim); max-width:520px; margin:0 auto 3rem; font-weight:300; }
+    section { padding:6rem 2rem; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+    .section-header { text-align:center; margin-bottom:4rem; }
+    .section-tag { font-family:"Space Mono", monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:1rem; }
+    .section-title { font-size:clamp(2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; }
+    .section-title strong { color:var(--gold); font-weight:600; }
+    .section-line { width:50px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); margin:1.5rem auto 0; border-radius:2px; }
+    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:2rem 2.25rem; backdrop-filter:blur(10px); transition:transform 0.35s, border-color 0.35s, box-shadow 0.35s; position:relative; overflow:hidden; }
+    .card:hover { transform:translateY(-5px); border-color:rgba(201,168,76,0.45); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+    .card h3 { font-size:1.35rem; font-weight:600; color:var(--cream); margin-bottom:0.75rem; }
+    .card p { font-size:0.9rem; color:var(--text-dim); line-height:1.8; }
+    .card ul { list-style:none; padding:0; }
+    .card li { padding:0.45rem 0; padding-left:1.2rem; position:relative; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .card li:last-child { border-bottom:none; }
+    .card li::before { content:"—"; position:absolute; left:0; color:var(--gold); font-size:0.7rem; top:0.55rem; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+    .footer-link { color:var(--gold); text-decoration:none; font-weight:600; }
+    .footer-link:hover { text-decoration:underline; }
+    @media (max-width:900px) { .nav-links { display:none; } .hamburger { display:flex; } .grid-3 { grid-template-columns:repeat(2, 1fr); } }
+    @media (max-width:600px) { section { padding:4rem 1.25rem; } .card { padding:1.5rem; } .grid-2, .grid-3 { grid-template-columns:1fr; } }
+    .section-divider { width:100%; height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent); margin:0 auto; }
+    .folder-link { text-align:center; font-size:0.85rem; color:var(--text-dim); margin-top:2rem; }
+    .folder-link a { color:var(--gold); text-decoration:none; }
+    .folder-link a:hover { text-decoration:underline; }
+    footer { border-top:1px solid var(--border); padding:2.5rem 2rem; text-align:center; font-size:0.8rem; color:var(--text-dim); letter-spacing:0.04em; }
+    footer strong { color:var(--gold); }
   </style>
-  <link rel="stylesheet" href="styles-responsive.css?v=1.1">
-  <link rel="stylesheet" href="page-layouts.css">
 </head>
 <body>
-  <main>
-        <h1>Marketing gastronómico</h1>
-        <p>El marketing gastronómico no solo vende comida, sino experiencias que conectan emociones y recuerdos.
-Cada plato cuenta una historia y cada detalle comunica identidad.
-Hoy, el éxito no está solo en el sabor, sino en la experiencia que permanece en la mente del cliente.
-Cuando un comensal recuerda cómo se sintió, la gastronomía trasciende y se convierte en marca.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#portfolio">Contenidos</a>
-          <a class="button" href="#contacto">Galeria</a>
-        </div>
 
-  <main>
+  <nav id="navbar">
+    <a class="nav-brand" href="#hero">J.<span>Herrera</span></a>
+    <ul class="nav-links">
+      <li><a href="#personal">Personal</a></li>
+      <li><a href="#docente">Docente</a></li>
+      <li><a href="#asignatura">Asignatura</a></li>
+      <li><a href="#medio-ciclo">Medio Ciclo</a></li>
+      <li><a href="#contacto-docente">Con Docente</a></li>
+      <li><a href="#practico">Práctico</a></li>
+      <li><a href="#autonomo">Autónomo</a></li>
+      <li><a href="#logros">Logros</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-
-    
-    
-    <section class="portfolio" id="portfolio">
-      <div class="section-header">
-
-        <span class="eyebrow">Marketing gastronómico</span>
-        <h2>Contenido de medio ciclo y fin de ciclo</h2>
-        <p>Contenido desarrollado y evidencias de este medio ciclo y fin de ciclo académico.</p>
-      </div>
-      <div class="portfolio-grid">
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información personal"></div>
-          <div class="portfolio-content">
-            <h3>Información personal</h3>
-            <p>Aquí presento mis datos y perfil académico, ofreciendo una visión general de mi formación y experiencias dentro de la gastronomía.</p>
-              <a href="informacion-personal.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información del docente"></div>
-          <div class="portfolio-content">
-            <h3>Información del docente</h3>
-            <p>A continuación se presenta la información del docente responsable de la asignatura y sus objetivos.</p>
-              <a href="informacion-docente.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Medio ciclo"></div>
-          <div class="portfolio-content">
-            <h3>Medio ciclo y fin de ciclo</h3>
-            <p>A continuación se presenta el contenido correspondiente al medio ciclo y fin de ciclo.</p>
-              <a href="primer-parcial.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="original">
-          <div class="portfolio-thumb" role="img" aria-label="Información de la Asignatura"></div>
-          <div class="portfolio-content">
-            <h3>Información de la Asignatura</h3>
-            <p>A continuación, la información de la asignatura.</p>
-              <a href="informacion-asignatura.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje en contacto con el docente"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje en contacto con el docente</h3>
-            <p>Experiencias de aprendizaje directo mediante interacción, orientación y mentoría del docente en sesiones académicas.</p>
-              <a href="aprendizaje-contacto.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje práctico experimental"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje práctico experimental</h3>
-            <p>Actividades prácticas y experimentales que permiten aplicar conocimientos teóricos en situaciones reales del ámbito gastronómico.</p>
-              <a href="aprendizaje-practico.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Aprendizaje autónomo"></div>
-          <div class="portfolio-content">
-            <h3>Aprendizaje autónomo</h3>
-            <p>Desarrollo de habilidades de autogestión, investigación independiente y aprendizaje autodirigido en temas gastronómicos.</p>
-              <a href="aprendizaje-autonomo.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-        <article class="portfolio-card" data-category="restaurante">
-          <div class="portfolio-thumb" role="img" aria-label="Resultado o logro de aprendizaje"></div>
-          <div class="portfolio-content">
-            <h3>Resultados o logro de aprendizaje</h3>
-            <p>Evidencias y resultados finales que demuestran la adquisición de competencias y logros alcanzados en este medio ciclo y fin de ciclo.</p>
-              <a href="logro-aprendizaje.html" class="portfolio-link">Ver contenido</a>
-          </div>
-        </article>
-      </div>
-      <div class="filters" role="group" aria-label="Filtrar portafolio">
-        <button class="filter-button active" data-filter="original">Acceder al contenido </button>
-        <button class="filter-button" data-filter="restaurante">Contenido medio ciclo y fin de ciclo</button>
-   
-      </div>
-    </section>
-
-
-
-    <section class="testimonials" id="testimonios">
-      <div class="section-header">
-        <span class="eyebrow">Aprendizaje con propósito, enseñanza con pasión</span>
-        <h2>Cada clase, una inspiración; cada palabra, un impulso.</h2>
-      </div>
-      <div class="testimonial-slider" aria-live="polite">
-        <article class="testimonial active">
-          <blockquote>
-            Cuando conectas con el cliente, el producto deja de ser comida y se convierte en recuerdo.
-        
-        </article>
-        <article class="testimonial">
-          <blockquote>
-            La fidelidad nace cuando la experiencia supera a la expectativa.
-        
-          
-        </article>
-        <article class="testimonial">
-          <blockquote>
-            La diferenciación es la receta secreta para destacar en un mercado lleno de sabores.
-          
-        </article>
-      </div>
-      <div class="slider-controls">
-        <button class="slider-button prev" aria-label="Testimonio anterior">&#10094;</button>
-        <button class="slider-button next" aria-label="Siguiente testimonio">&#10095;</button>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" id="contacto">
-    <div class="footer-bottom">
-      <p>&copy; <span id="current-year"></span> Derechos reservados · Marketing gastronómico</p>
-      <div class="footer-contact">
-        <p><strong>Contacto:</strong> <a href="mailto:aleexanderilbys@gmail.com">aleexanderilbys@gmail.com</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <button class="back-to-top" aria-label="Volver al inicio">&#8593;</button>
-
-  <div class="resource-preview" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="resource-preview-dialog" role="document">
-      <button class="resource-preview-close" aria-label="Cerrar vista previa">&times;</button>
-      <div class="resource-preview-header">
-        <h3 class="resource-preview-title"></h3>
-        <p class="resource-preview-description"></p>
-        <ul class="resource-preview-meta"></ul>
-      </div>
-      <div class="resource-preview-body">
-        <p class="resource-preview-unavailable" hidden>Este tipo de archivo no cuenta con vista previa, pero puedes descargarlo para revisarlo en tu dispositivo.</p>
-      </div>
-      <div class="resource-preview-actions">
-        <a class="button primary resource-preview-download" download>Descargar recurso</a>
-      </div>
-    </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#personal" onclick="closeMobile()">Información Personal</a>
+    <a href="#docente" onclick="closeMobile()">Información del Docente</a>
+    <a href="#asignatura" onclick="closeMobile()">Asignatura</a>
+    <a href="#medio-ciclo" onclick="closeMobile()">Contenido Medio Ciclo</a>
+    <a href="#contacto-docente" onclick="closeMobile()">Aprendizaje con Docente</a>
+    <a href="#practico" onclick="closeMobile()">Aprendizaje Práctico</a>
+    <a href="#autonomo" onclick="closeMobile()">Aprendizaje Autónomo</a>
+    <a href="#logros" onclick="closeMobile()">Logros de Aprendizaje</a>
   </div>
 
-  <script src="script.js"></script>
+  <section id="hero" style="max-width:100%; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; min-height:100vh;">
+    <div class="hero-content">
+      <h1 class="hero-name">
+        Jimmy Alejandro<br/>
+        <strong>Herrera Guerrero</strong><br/>
+        <em>Portafolio Académico Digital</em>
+      </h1>
+      <p class="hero-subtitle">
+        Evidencias y logros académicos de la carrera de Gastronomía
+      </p>
+    </div>
+  </section>
 
-  <!-- Floating down-arrow button: scroll to Fin de Ciclo (fallback to logro-aprendizaje) -->
-  <a href="#fin-de-ciclo" class="floating-btn" aria-label="Ir a Fin de Ciclo">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M6 9l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </a>
-  <style>
-    .floating-btn{position:fixed;right:1.25rem;bottom:1.25rem;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff7a4d,#ff6a3a);box-shadow:0 10px 25px rgba(0,0,0,0.12);z-index:1200;text-decoration:none}
-    .floating-btn svg{width:24px;height:24px}
-    @media (max-width:480px){.floating-btn{right:0.85rem;bottom:0.85rem;width:48px;height:48px}}
-  </style>
+  <div class="section-divider"></div>
+
+  <!-- INFORMACIÓN PERSONAL → Carpeta: Informacón personal/ -->
+  <section id="personal">
+    <div class="section-header">
+      <span class="section-tag">01 — Quién soy</span>
+      <h2 class="section-title">Información <strong>Personal</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card">
+      <h3>Datos del Estudiante</h3>
+      <p><strong>Nombre:</strong> Jimmy Alejandro Herrera Guerrero</p>
+      <p><strong>Institución:</strong> Escuela Superior Politécnica de Chimborazo (ESPOCH)</p>
+      <p><strong>Facultad:</strong> Facultad de Salud Pública</p>
+      <p><strong>Carrera:</strong> Gastronomía</p>
+      <p><strong>Semestre/Período:</strong> Editar según corresponda</p>
+    </div>
+    <div class="folder-link">
+      📁 <a href="Informacón personal/" target="_blank">Ver archivos en carpeta "Informacón personal"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- INFORMACIÓN DEL DOCENTE → Carpeta: infomación del docente/ -->
+  <section id="docente">
+    <div class="section-header">
+      <span class="section-tag">02 — Guía académica</span>
+      <h2 class="section-title">Información del <strong>Docente</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card">
+      <h3>Datos del Docente</h3>
+      <p><strong>Nombre del Docente:</strong> — Nombre —</p>
+      <p><strong>Asignatura:</strong> — Materia —</p>
+      <p><strong>Grado Académico:</strong> — Título —</p>
+      <p><strong>Correo:</strong> — correo@espoch.edu.ec —</p>
+      <p><strong>Horario de Clases:</strong> — Días y horas —</p>
+    </div>
+    <div class="folder-link">
+      📁 <a href="infomación del docente/" target="_blank">Ver archivos en carpeta "infomación del docente"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- INFORMACIÓN DE LA ASIGNATURA → Carpeta: Información de la Asignatura/ -->
+  <section id="asignatura">
+    <div class="section-header">
+      <span class="section-tag">03 — La materia</span>
+      <h2 class="section-title">Información de la <strong>Asignatura</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Objetivo General</h3>
+        <p>— Describe aquí el objetivo general de la asignatura según el sílabo. —</p>
+      </div>
+      <div class="card">
+        <h3>Objetivos Específicos</h3>
+        <ul>
+          <li>Objetivo 1</li>
+          <li>Objetivo 2</li>
+          <li>Objetivo 3</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Contenido Académico</h3>
+        <p>— Descripción del contenido temático y unidades de la asignatura. —</p>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="Información de la Asignatura/" target="_blank">Ver archivos en carpeta "Información de la Asignatura"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTENIDO MEDIO CICLO → Carpeta: primer parcial/ -->
+  <section id="medio-ciclo">
+    <div class="section-header">
+      <span class="section-tag">04 — Primera etapa</span>
+      <h2 class="section-title">Contenido de <strong>Medio Ciclo</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Tareas Realizadas</h3>
+        <ul>
+          <li>Tarea 1 — Descripción y fecha</li>
+          <li>Tarea 2 — Descripción y fecha</li>
+          <li>Tarea 3 — Descripción y fecha</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Proyectos y Evidencias</h3>
+        <ul>
+          <li>Proyecto 1 — Descripción</li>
+          <li>Proyecto 2 — Descripción</li>
+          <li>Evidencia fotográfica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="primer parcial/" target="_blank">Ver archivos en carpeta "primer parcial"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- APRENDIZAJE CON DOCENTE → Carpeta: aprendizaje con el docente/ -->
+  <section id="contacto-docente">
+    <div class="section-header">
+      <span class="section-tag">05 — Aprendizaje guiado</span>
+      <h2 class="section-title">Aprendizaje en Contacto con el <strong>Docente</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Actividades en Clase</h3>
+        <ul>
+          <li>Actividad 1 — Descripción</li>
+          <li>Actividad 2 — Descripción</li>
+          <li>Actividad 3 — Descripción</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tutorías y Participación</h3>
+        <ul>
+          <li>Tutoría 1 — Tema tratado</li>
+          <li>Participación en clase</li>
+          <li>Asesoría recibida</li>
+        </ul>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="aprendizaje con el docente/" target="_blank">Ver archivos en carpeta "aprendizaje con el docente"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- APRENDIZAJE PRÁCTICO → Carpeta: aprendizaje practico experimetal/ -->
+  <section id="practico">
+    <div class="section-header">
+      <span class="section-tag">06 — Manos a la obra</span>
+      <h2 class="section-title">Aprendizaje <strong>Práctico Experimental</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Prácticas de Laboratorio</h3>
+        <ul>
+          <li>Práctica 01</li>
+          <li>Práctica 02</li>
+          <li>Práctica 03</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Talleres</h3>
+        <ul>
+          <li>Taller 1 — Descripción</li>
+          <li>Taller 2 — Descripción</li>
+          <li>Taller 3 — Descripción</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Actividades Aplicadas</h3>
+        <ul>
+          <li>Actividad 1</li>
+          <li>Actividad 2</li>
+          <li>Evidencia fotográfica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="aprendizaje practico experimetal/" target="_blank">Ver archivos en carpeta "aprendizaje practico experimetal"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- APRENDIZAJE AUTÓNOMO → Carpeta: aprendizaje autonomo/ -->
+  <section id="autonomo">
+    <div class="section-header">
+      <span class="section-tag">07 — Por cuenta propia</span>
+      <h2 class="section-title">Aprendizaje <strong>Autónomo</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Investigaciones Personales</h3>
+        <ul>
+          <li>Investigación 1 — Descripción</li>
+          <li>Investigación 2 — Descripción</li>
+          <li>Fuentes consultadas</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tareas Independientes</h3>
+        <ul>
+          <li>Actividad fuera del aula 1</li>
+          <li>Actividad fuera del aula 2</li>
+          <li>Lecturas complementarias</li>
+        </ul>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="aprendizaje autonomo/" target="_blank">Ver archivos en carpeta "aprendizaje autonomo"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- LOGROS DE APRENDIZAJE → Carpeta: resultado o logro de aprendizaje/ -->
+  <section id="logros">
+    <div class="section-header">
+      <span class="section-tag">08 — Mi progreso</span>
+      <h2 class="section-title">Resultados y <strong>Logros de Aprendizaje</strong></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Competencias Adquiridas</h3>
+        <ul>
+          <li>Competencia 1 — 90%</li>
+          <li>Competencia 2 — 85%</li>
+          <li>Competencia 3 — 80%</li>
+          <li>Competencia 4 — 75%</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reflexión de Progreso</h3>
+        <p>— Escribe aquí tu reflexión personal sobre tu desarrollo académico, desafíos superados y crecimiento como profesional. —</p>
+      </div>
+    </div>
+    <div class="folder-link">
+      📁 <a href="resultado o logro de aprendizaje/" target="_blank">Ver archivos en carpeta "resultado o logro de aprendizaje"</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <footer>
+    <p>
+      <strong>Jimmy Alejandro Herrera Guerrero</strong> · Portafolio Académico Digital<br />
+      <span style="font-size:0.75rem; margin-top:0.4rem; display:block;">ESPOCH · Facultad de Salud Pública · Carrera de Gastronomía</span>
+    </p>
+  </footer>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      var btn = document.querySelector('.floating-btn');
-      if(!btn) return;
-      var target = document.querySelector('#fin-de-ciclo');
-      if(!target){ btn.style.display = 'none'; return; }
-      btn.addEventListener('click', function(e){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); });
+    const btn = document.getElementById("hamburger");
+    const menu = document.getElementById("mobileMenu");
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("open");
+      menu.classList.toggle("open");
     });
+    function closeMobile() {
+      btn.classList.remove("open");
+      menu.classList.remove("open");
+    }
   </script>
 </body>
 </html>

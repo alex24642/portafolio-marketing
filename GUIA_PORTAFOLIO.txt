@@ -1,0 +1,213 @@
+﻿╔════════════════════════════════════════════════════════════════════════════╗
+║         PORTAFOLIO ACADÉMICO DIGITAL - GUÍA DE VINCULACIÓN               ║
+║         Jimmy Alejandro Herrera Guerrero - ESPOCH Gastronomía            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📋 RESUMEN
+═══════════════════════════════════════════════════════════════════════════
+
+Este portafolio académico digital vincula 8 secciones HTML con las 8 
+carpetas de tu proyecto:
+
+🔗 VINCULACIONES DE SECCIONES A CARPETAS
+═══════════════════════════════════════════════════════════════════════════
+
+01. INFORMACIÓN PERSONAL
+    ├─ URL: #personal
+    ├─ Carpeta vinculada: "Informacón personal/"
+    └─ Contiene: Datos personales, presentación, foto de perfil
+
+02. INFORMACIÓN DEL DOCENTE
+    ├─ URL: #docente
+    ├─ Carpeta vinculada: "infomación del docente/"
+    └─ Contiene: Datos del profesor, horarios, contacto
+
+03. INFORMACIÓN DE LA ASIGNATURA
+    ├─ URL: #asignatura
+    ├─ Carpeta vinculada: "Información de la Asignatura/"
+    └─ Contiene: Sílabo, objetivos, contenido temático
+
+04. CONTENIDO DE MEDIO CICLO
+    ├─ URL: #medio-ciclo
+    ├─ Carpeta vinculada: "primer parcial/"
+    └─ Contiene: Tareas, proyectos, evidencias primer parcial
+
+05. APRENDIZAJE CON DOCENTE
+    ├─ URL: #contacto-docente
+    ├─ Carpeta vinculada: "aprendizaje con el docente/"
+    └─ Contiene: Actividades en clase, tutorías, participación
+
+06. APRENDIZAJE PRÁCTICO EXPERIMENTAL
+    ├─ URL: #practico
+    ├─ Carpeta vinculada: "aprendizaje practico experimetal/"
+    └─ Contiene: Prácticas de laboratorio, talleres, actividades
+
+07. APRENDIZAJE AUTÓNOMO
+    ├─ URL: #autonomo
+    ├─ Carpeta vinculada: "aprendizaje autonomo/"
+    └─ Contiene: Investigaciones, tareas independientes, lecturas
+
+08. LOGROS DE APRENDIZAJE
+    ├─ URL: #logros
+    ├─ Carpeta vinculada: "resultado o logro de aprendizaje/"
+    └─ Contiene: Competencias, reflexión, logros alcanzados
+
+
+🚀 CÓMO USAR EL PORTAFOLIO
+═══════════════════════════════════════════════════════════════════════════
+
+1. ABRIR EN NAVEGADOR
+   • Abre cualquier navegador (Chrome, Firefox, Edge, etc.)
+   • Abre el archivo: index.html
+   • URL: file:///C:/Users/PC/Videos/portafolio-marketing%20-%20copia/index.html
+   • O simplemente haz doble clic en index.html
+
+2. NAVEGAR POR SECCIONES
+   • Usa el menú superior para saltar a cada sección
+   • En móvil, haz clic en el ícono de hamburguesa (≡)
+   • Cada sección tiene un enlace a su carpeta correspondiente
+
+3. VINCULAR ARCHIVOS A LAS CARPETAS
+   • Coloca tus archivos en cada carpeta según su categoría:
+   
+   Informacón personal/
+   ├── foto-perfil.jpg
+   ├── presentacion.pdf
+   └── datos-personales.txt
+   
+   infomación del docente/
+   ├── profesor-datos.txt
+   ├── horarios.pdf
+   └── contacto.txt
+   
+   Información de la Asignatura/
+   ├── silabo.pdf
+   ├── programa-curso.pdf
+   └── objetivos.txt
+   
+   primer parcial/
+   ├── tareas/
+   │   ├── tarea1.pdf
+   │   └── tarea2.pdf
+   ├── proyectos/
+   │   ├── proyecto1.pdf
+   │   └── proyecto2.pdf
+   └── evidencias/
+       ├── foto1.jpg
+       └── documento.pdf
+   
+   Y así con las demás carpetas...
+
+
+✏️ CÓMO EDITAR EL PORTAFOLIO
+═══════════════════════════════════════════════════════════════════════════
+
+1. EDITAR INFORMACIÓN PERSONAL
+   • Abre index.html con un editor de texto (VS Code, Notepad++, etc.)
+   • Busca: "INFORMACIÓN PERSONAL" (línea ~160)
+   • Reemplaza los placeholders:
+     - "— Nombre —" → Tu nombre completo
+     - "— Materia —" → Nombre de la asignatura
+     - "— editar aquí —" → Tus datos
+
+2. CAMBIAR COLORES
+   • Los colores están definidos en la sección <style>
+   • Busca ":root {" para editar los colores principales:
+     - --navy: Color de fondo oscuro
+     - --gold: Color dorado principal
+     - --cream: Color del texto
+
+3. AGREGAR NUEVAS SECCIONES
+   • Copia el bloque HTML de una sección
+   • Pégalo debajo y modifica el ID (id="nueva-seccion")
+   • Agrega un enlace en el menú <nav>
+
+4. PERSONALIZAR CONTENIDO
+   • Cada tarjeta tiene un <h3> (título) y <p> (párrafos)
+   • Edita libremente el contenido entre las etiquetas
+   • Mantén la estructura HTML igual
+
+
+📱 DISPOSITIVOS SOPORTADOS
+═══════════════════════════════════════════════════════════════════════════
+
+✅ Escritorio (1920px+)
+✅ Tablet (768px - 1200px)  
+✅ Móvil (320px - 767px)
+
+El portafolio se adapta automáticamente a cualquier pantalla.
+
+
+📂 ESTRUCTURA DE CARPETAS COMPLETA
+═══════════════════════════════════════════════════════════════════════════
+
+portafolio-marketing - copia/
+├── index.html                          (ARCHIVO PRINCIPAL)
+├── MAPEO_CARPETAS.txt                  (Este archivo)
+│
+├── Informacón personal/                (Sección 01)
+├── infomación del docente/             (Sección 02)
+├── Información de la Asignatura/       (Sección 03)
+├── primer parcial/                     (Sección 04)
+├── aprendizaje con el docente/         (Sección 05)
+├── aprendizaje practico experimetal/   (Sección 06)
+├── aprendizaje autonomo/               (Sección 07)
+└── resultado o logro de aprendizaje/   (Sección 08)
+
+
+💡 CONSEJOS PRÁCTICOS
+═══════════════════════════════════════════════════════════════════════════
+
+1. GUARDAR CAMBIOS: Siempre guarda el archivo HTML después de editar
+2. CREAR COPIAS: Haz backup del index.html antes de cambios grandes
+3. ORGANIZA BIEN: Crea subcarpetas dentro de cada sección (tareas/, 
+   proyectos/, fotos/, etc.)
+4. NOMBRES CLAROS: Usa nombres descriptivos en los archivos
+5. ACTUALIZA REGULARMENTE: Agrega contenido a medida que avances
+
+
+🎨 PERSONALIZACIÓN VISUAL
+═══════════════════════════════════════════════════════════════════════════
+
+El portafolio usa:
+• Font: "Cormorant Garamond" (títulos) y "DM Sans" (texto)
+• Colores: Tema elegante dorado y azul marino
+• Animaciones: Efectos suaves al desplazar
+• Responsive: Se adapta a cualquier pantalla
+
+Para cambiar tema, busca en el CSS las variables de color.
+
+
+❓ PREGUNTAS FRECUENTES
+═══════════════════════════════════════════════════════════════════════════
+
+P: ¿Cómo abro el portafolio?
+R: Abre index.html con cualquier navegador (doble clic)
+
+P: ¿Puedo agregar más secciones?
+R: Sí, copia cualquier bloque <section> y personalízalo
+
+P: ¿Cómo cambio los colores?
+R: Edita las variables en <style> :root { ... }
+
+P: ¿Funciona sin internet?
+R: Sí, funciona completamente offline
+
+P: ¿Puedo agregar videos/audios?
+R: Sí, agrega <video>, <audio> o incrusta con <iframe>
+
+
+✨ LISTO PARA USAR
+═══════════════════════════════════════════════════════════════════════════
+
+Tu portafolio académico digital ya está listo. Solo necesitas:
+
+1. ✅ Abre index.html en tu navegador
+2. ✅ Navega por las secciones
+3. ✅ Agrega tus archivos a cada carpeta
+4. ✅ Edita la información personal en el HTML
+5. ✅ ¡Comparte tu portafolio!
+
+═════════════════════════════════════════════════════════════════════════════
+Creado: 20/04/2026 | Portafolio Académico ESPOCH - Gastronomía
+═════════════════════════════════════════════════════════════════════════════
