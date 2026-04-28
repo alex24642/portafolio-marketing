@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informacin del Docente | Portafolio Acadmico</title>
+  <title>Información del Docente | Portafolio Académico</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
-    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; --transition:0.4s; }
+    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { font-family:"DM Sans", sans-serif; background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.7; }
@@ -18,96 +18,146 @@
     .nav-brand span { color:var(--cream); }
     nav a { color:var(--text-dim); text-decoration:none; font-size:0.75rem; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; padding:0.4rem 0.7rem; border-radius:6px; transition:all 0.3s; }
     nav a:hover { color:var(--gold); background:rgba(201,168,76,0.08); }
-    main { padding-top:100px; padding-bottom:50px; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+    main { padding-top:100px; padding-bottom:80px; max-width:1100px; margin:0 auto; position:relative; z-index:1; padding-left:1.5rem; padding-right:1.5rem; }
     .page-header { text-align:center; margin-bottom:3rem; }
     .page-tag { font-family:"Space Mono", monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:1rem; }
-    .page-title { font-size:clamp(2.2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; margin-bottom:1rem; }
+    .page-title { font-size:clamp(2.2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; }
     .page-title strong { color:var(--gold); font-weight:600; }
     .page-line { width:50px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); margin:1.5rem auto 0; border-radius:2px; }
-    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; }
+    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; margin-bottom:1.5rem; }
     .card:hover { transform:translateY(-3px); border-color:rgba(201,168,76,0.45); }
-    .card h3 { font-size:1.2rem; font-weight:600; color:var(--cream); margin-bottom:1rem; }
-    .info-field { margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.05); }
-    .info-field:last-child { border-bottom:none; }
+    .card h3 { font-family:"Cormorant Garamond", serif; font-size:1.25rem; font-weight:600; color:var(--cream); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.6rem; }
+    .info-field { margin-bottom:0.9rem; padding-bottom:0.9rem; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .info-field:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
     .info-label { font-family:"Space Mono", monospace; font-size:0.62rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; display:block; margin-bottom:0.3rem; }
     .info-value { font-size:0.95rem; color:var(--cream); }
-    .grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem; }
-    .folder-link { text-align:center; margin-top:2rem; }
-    .folder-link a { color:var(--gold); text-decoration:none; font-weight:600; }
-    .folder-link a:hover { text-decoration:underline; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem; margin-bottom:1.5rem; }
+    .profile-img { width:100%; max-width:280px; height:320px; object-fit:cover; border-radius:14px; border:1px solid var(--border); display:block; margin:0 auto; }
+    .profile-placeholder { width:100%; max-width:280px; height:320px; background:rgba(201,168,76,0.08); border:2px dashed rgba(201,168,76,0.3); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto; }
+    .profile-placeholder i { font-size:4rem; color:rgba(201,168,76,0.35); margin-bottom:1rem; }
+    .profile-placeholder p { font-size:0.8rem; color:var(--text-dim); text-align:center; padding:0 1rem; }
+    .evidence-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem; }
+    .evidence-chip { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(201,168,76,0.09); border:1px solid rgba(201,168,76,0.25); color:var(--gold); font-family:"Space Mono", monospace; font-size:0.6rem; letter-spacing:0.1em; padding:0.3rem 0.7rem; border-radius:6px; text-decoration:none; transition:0.25s; }
+    .evidence-chip:hover { background:rgba(201,168,76,0.18); border-color:var(--gold); }
+    .photo-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; }
+    .photo-caption { font-family:"Space Mono", monospace; font-size:0.6rem; color:var(--text-dim); letter-spacing:0.12em; text-transform:uppercase; text-align:center; }
+    .btn-next { display:inline-block; padding:0.75rem 1.75rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:8px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase; }
+    .btn-next:hover { background:var(--gold-light); transform:translateY(-2px); }
     footer { position:fixed; bottom:0; width:100%; border-top:1px solid var(--border); padding:0.75rem 2rem; text-align:center; font-size:0.7rem; color:var(--text-dim); background:rgba(13,27,42,0.9); }
-    @media (max-width:600px) { main { padding:6rem 1.25rem 50px; } .card { padding:1.5rem; } nav a { font-size:0.65rem; padding:0.3rem 0.4rem; } .grid-2 { grid-template-columns:1fr; } }
+    @media (max-width:700px) { main { padding:6rem 1.25rem 80px; } .grid-2 { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <nav>
     <a class="nav-brand" href="index.html">J.<span>Herrera</span></a>
-    <div style="display:flex; gap:0.3rem;">
+    <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
       <a href="personal.html">Personal</a>
       <a href="docente.html">Docente</a>
       <a href="asignatura.html">Asignatura</a>
       <a href="medio-ciclo.html">Medio</a>
-      <a href="contacto-docente.html">Docente</a>
-      <a href="practico.html">Prctico</a>
-      <a href="autonomo.html">Autnomo</a>
-      <a href="logros.html">Logros</a><a href="bibliografia.html">Bibliografa</a>
+      <a href="contacto-docente.html">Con Docente</a>
+      <a href="practico.html">Práctico</a>
+      <a href="autonomo.html">Autónomo</a>
+      <a href="logros.html">Logros</a>
+      <a href="bibliografia.html">Bibliografía</a>
     </div>
   </nav>
 
   <main>
     <div class="page-header">
-      <span class="page-tag">02  Gua Acadmica</span>
-      <h1 class="page-title">Informacin del <strong>Docente</strong></h1>
+      <span class="page-tag">02 — Guía Académica</span>
+      <h1 class="page-title">Información del <strong>Docente</strong></h1>
       <div class="page-line"></div>
     </div>
 
-    <div class="card">
-      <h3><i class="fas fa-chalkboard-user" style="color:var(--gold); margin-right:0.75rem;"></i>Datos del Docente</h3>
-      
-      <div class="info-field">
-        <span class="info-label">Nombre del Docente</span>
-        <span class="info-value"> Nombre del Docente </span>
+    <div class="grid-2">
+      <!-- Datos del docente -->
+      <div class="card">
+        <h3><i class="fas fa-chalkboard-user" style="color:var(--gold);"></i> Datos del Docente</h3>
+
+        <div class="info-field">
+          <span class="info-label">Nombre Completo</span>
+          <span class="info-value">Mg. Giovanny Lenin Haro Sosa</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Asignatura que Imparte</span>
+          <span class="info-value">Marketing Gastronómico</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Título / Grado Académico</span>
+          <span class="info-value">Magíster — Mg.</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Institución</span>
+          <span class="info-value">Escuela Superior Politécnica de Chimborazo (ESPOCH)</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Facultad</span>
+          <span class="info-value">Facultad de Salud Pública</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Correo Institucional</span>
+          <span class="info-value">giovanny.haro@espoch.edu.ec</span>
+        </div>
+        <div class="info-field" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+          <span class="info-label">Período Académico</span>
+          <span class="info-value">Abril – Agosto 2026</span>
+        </div>
+
+        <div class="evidence-row" style="margin-top:1.5rem;">
+          <a href="infomación del docente/HARO SOSA GIOVANNY LENIN - HOJA DE VIDA.pdf" class="evidence-chip">
+            <i class="fas fa-file-pdf"></i> Hoja de Vida — Mg. Haro Sosa
+          </a>
+        </div>
       </div>
-      
-      <div class="info-field">
-        <span class="info-label">Asignatura que Imparte</span>
-        <span class="info-value"> Nombre de la Materia </span>
-      </div>
-      
-      <div class="info-field">
-        <span class="info-label">Ttulo / Grado Acadmico</span>
-        <span class="info-value"> Ttulo del Docente </span>
-      </div>
-      
-      <div class="info-field">
-        <span class="info-label">Correo Institucional</span>
-        <span class="info-value"> correo@espoch.edu.ec </span>
-      </div>
-      
-      <div class="info-field" style="border-bottom:none;">
-        <span class="info-label">Horario de Clases</span>
-        <span class="info-value"> Das y Horas </span>
+
+      <!-- Foto del docente -->
+      <div class="card">
+        <div class="photo-wrap" style="height:100%;">
+          <img
+            src="infomación del docente/imagen del docente.png"
+            alt="Mg. Giovanny Lenin Haro Sosa — Docente de Marketing Gastronómico"
+            class="profile-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="profile-placeholder" style="display:none;">
+            <i class="fas fa-chalkboard-user"></i>
+            <p>Mg. Giovanny Lenin Haro Sosa</p>
+          </div>
+          <p class="photo-caption">Mg. Giovanny Lenin Haro Sosa<br>Docente — Marketing Gastronómico</p>
+        </div>
       </div>
     </div>
 
-    <div style="text-align:center; margin-top:2rem;">
-      <img src="infomacin del docente/imagen del docente.png" alt="Imagen del docente" style="max-width:100%; height:auto; border-radius:14px; border:1px solid var(--border); margin-bottom:1rem;">
-      <img src="infomacin del docente/WhatsApp Image 2026-04-20 at 8.24.04 AM.jpeg" alt="Imagen adicional del docente" style="max-width:100%; height:auto; border-radius:14px; border:1px solid var(--border);">
+    <!-- Fotografía adicional -->
+    <div class="card">
+      <h3><i class="fas fa-images" style="color:var(--gold);"></i> Evidencia Fotográfica</h3>
+      <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:1.25rem;">
+        Fotografía correspondiente a las actividades del período académico con el docente.
+      </p>
+      <div style="display:flex; justify-content:center;">
+        <img
+          src="infomación del docente/WhatsApp Image 2026-04-20 at 8.24.04 AM.jpeg"
+          alt="Actividad con el docente Mg. Giovanny Haro"
+          style="max-width:480px; width:100%; height:auto; border-radius:14px; border:1px solid var(--border);"
+          onerror="this.style.display='none';"
+        />
+      </div>
     </div>
 
     <div style="text-align:center; margin:2rem 0;">
-      <a href="asignatura.html" style="display:inline-block; padding:0.75rem 1.5rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:6px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase;">Siguiente</a>
+      <a href="asignatura.html" class="btn-next">Siguiente: Asignatura &rarr;</a>
     </div>
 
-    <div class="folder-link">
-      ?? <a href="infomacin del docente/">Ver archivos en la carpeta</a>
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="infomación del docente/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
+        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
+      </a>
     </div>
   </main>
 
   <footer>
-    <p><strong>Jimmy Alejandro Herrera Guerrero</strong>  Portafolio Acadmico ESPOCH  Gastronoma  2026</p>
+    <p><strong>Jimmy Alejandro Herrera Guerrero</strong> &nbsp;·&nbsp; Portafolio Académico ESPOCH &nbsp;·&nbsp; Gastronomía &nbsp;·&nbsp; 2026</p>
   </footer>
 </body>
 </html>
-
-

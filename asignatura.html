@@ -3,100 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informacin de la Asignatura | Portafolio</title>
+  <title>Información de la Asignatura | Portafolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
-    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; }
+    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
-    body { font-family:"DM Sans", sans-serif; background:var(--navy); color:var(--cream); line-height:1.7; }
+    body { font-family:"DM Sans", sans-serif; background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.7; }
     h1, h2, h3, h4 { font-family:"Cormorant Garamond", serif; }
     body::before { content:""; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:999; padding:0 2rem; height:70px; display:flex; align-items:center; justify-content:space-between; background:rgba(13,27,42,0.92); border-bottom:1px solid var(--border); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:999; padding:0 2rem; height:70px; display:flex; align-items:center; justify-content:space-between; background:rgba(13,27,42,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
     .nav-brand { font-family:"Cormorant Garamond", serif; font-size:1.3rem; font-weight:600; color:var(--gold); text-decoration:none; }
     .nav-brand span { color:var(--cream); }
     nav a { color:var(--text-dim); text-decoration:none; font-size:0.75rem; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; padding:0.4rem 0.7rem; border-radius:6px; transition:all 0.3s; }
     nav a:hover { color:var(--gold); background:rgba(201,168,76,0.08); }
-    main { padding-top:100px; padding-bottom:50px; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+    main { padding-top:100px; padding-bottom:80px; max-width:1100px; margin:0 auto; position:relative; z-index:1; padding-left:1.5rem; padding-right:1.5rem; }
     .page-header { text-align:center; margin-bottom:3rem; }
     .page-tag { font-family:"Space Mono", monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:1rem; }
-    .page-title { font-size:clamp(2.2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; margin-bottom:1rem; }
+    .page-title { font-size:clamp(2.2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; }
     .page-title strong { color:var(--gold); font-weight:600; }
     .page-line { width:50px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); margin:1.5rem auto 0; border-radius:2px; }
-    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; margin-bottom:2rem; }
+    .course-banner { background:linear-gradient(135deg, rgba(201,168,76,0.12), rgba(30,51,86,0.7)); border:1px solid rgba(201,168,76,0.4); border-radius:16px; padding:3rem 2rem; text-align:center; margin-bottom:2rem; }
+    .course-banner h2 { font-size:clamp(1.8rem, 4vw, 2.5rem); color:var(--gold); margin-bottom:0.5rem; }
+    .course-banner p { font-size:0.95rem; color:var(--text-dim); }
+    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; margin-bottom:1.5rem; }
     .card:hover { transform:translateY(-3px); border-color:rgba(201,168,76,0.45); }
-    .card h3 { font-size:1.2rem; font-weight:600; color:var(--cream); margin-bottom:1rem; }
-    .card p { font-size:0.95rem; color:var(--text-dim); }
-    .card ul { list-style:none; padding:0; }
-    .card li { padding:0.5rem 0; padding-left:1.2rem; position:relative; }
-    .card li::before { content:""; position:absolute; left:0; color:var(--gold); }
-    .grid-3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-bottom:2rem; }
-    .folder-link { text-align:center; margin-top:2rem; }
-    .folder-link a { color:var(--gold); text-decoration:none; font-weight:600; }
+    .card h3 { font-family:"Cormorant Garamond", serif; font-size:1.25rem; font-weight:600; color:var(--cream); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+    .card p { font-size:0.93rem; color:rgba(245,240,232,0.82); line-height:1.8; }
+    .card ul { list-style:none; }
+    .card li { padding:0.45rem 0 0.45rem 1.4rem; position:relative; font-size:0.9rem; color:rgba(245,240,232,0.82); border-bottom:1px solid rgba(255,255,255,0.04); }
+    .card li:last-child { border-bottom:none; }
+    .card li::before { content:"›"; position:absolute; left:0; color:var(--gold); font-weight:700; font-size:1rem; top:0.4rem; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-bottom:1.5rem; }
+    .unit-card { background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:1.25rem; transition:0.3s; }
+    .unit-card:hover { border-color:var(--gold); background:rgba(201,168,76,0.12); }
+    .unit-num { font-family:"Space Mono", monospace; font-size:0.58rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem; display:block; }
+    .unit-card h4 { font-family:"Cormorant Garamond", serif; font-size:1.05rem; font-weight:600; color:var(--cream); margin-bottom:0.5rem; }
+    .unit-card p { font-size:0.83rem; color:var(--text-dim); line-height:1.6; }
+    .btn-next { display:inline-block; padding:0.75rem 1.75rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:8px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase; }
+    .btn-next:hover { background:var(--gold-light); transform:translateY(-2px); }
     footer { position:fixed; bottom:0; width:100%; border-top:1px solid var(--border); padding:0.75rem 2rem; text-align:center; font-size:0.7rem; color:var(--text-dim); background:rgba(13,27,42,0.9); }
-    @media (max-width:600px) { main { padding:6rem 1.25rem 50px; } .card { padding:1.5rem; } nav a { font-size:0.65rem; } .grid-3 { grid-template-columns:1fr; } }
+    @media (max-width:700px) { main { padding:6rem 1.25rem 80px; } .grid-3 { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <nav>
     <a class="nav-brand" href="index.html">J.<span>Herrera</span></a>
-    <div style="display:flex; gap:0.3rem;">
+    <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
       <a href="personal.html">Personal</a>
       <a href="docente.html">Docente</a>
       <a href="asignatura.html">Asignatura</a>
       <a href="medio-ciclo.html">Medio</a>
-      <a href="contacto-docente.html">Docente</a>
-      <a href="practico.html">Prctico</a>
-      <a href="autonomo.html">Autnomo</a>
-      <a href="logros.html">Logros</a><a href="bibliografia.html">Bibliografa</a>
+      <a href="contacto-docente.html">Con Docente</a>
+      <a href="practico.html">Práctico</a>
+      <a href="autonomo.html">Autónomo</a>
+      <a href="logros.html">Logros</a>
+      <a href="bibliografia.html">Bibliografía</a>
     </div>
   </nav>
 
   <main>
     <div class="page-header">
-      <span class="page-tag">03  La Materia</span>
-      <h1 class="page-title">Informacin de la <strong>Asignatura</strong></h1>
+      <span class="page-tag">03 — La Materia</span>
+      <h1 class="page-title">Información de la <strong>Asignatura</strong></h1>
       <div class="page-line"></div>
     </div>
 
-    <div class="card" style="text-align:center; background:linear-gradient(135deg, var(--navy-mid), rgba(30,51,86,0.6)); padding:3rem;">
-      <h2 style="font-size:2rem; color:var(--gold); margin-bottom:0.5rem;"> Nombre de la Asignatura </h2>
-      <p style="color:var(--text-dim);">Carrera de Gastronoma  ESPOCH</p>
+    <div class="course-banner">
+      <h2>Marketing Gastronómico</h2>
+      <p>Carrera de Gastronomía &nbsp;·&nbsp; ESPOCH &nbsp;·&nbsp; Período Abril – Agosto 2026</p>
+      <p style="margin-top:0.5rem; font-size:0.82rem; color:rgba(201,168,76,0.7);">Docente: Mg. Giovanny Lenin Haro Sosa</p>
     </div>
 
+    <!-- Objetivo general + específicos + descripción -->
     <div class="grid-3">
       <div class="card">
-        <h3><i class="fas fa-bullseye" style="color:var(--gold); margin-right:0.75rem;"></i>Objetivo General</h3>
-        <p> Describe aqu el objetivo general de la asignatura segn el slabo o gua docente. </p>
+        <h3><i class="fas fa-bullseye" style="color:var(--gold);"></i> Objetivo General</h3>
+        <p>Desarrollar en el estudiante competencias para diseñar, aplicar y evaluar estrategias de marketing orientadas al sector gastronómico, integrando herramientas del marketing moderno con la identidad cultural y culinaria del Ecuador.</p>
       </div>
       <div class="card">
-        <h3><i class="fas fa-list-check" style="color:var(--gold); margin-right:0.75rem;"></i>Objetivos Especficos</h3>
+        <h3><i class="fas fa-list-check" style="color:var(--gold);"></i> Objetivos Específicos</h3>
         <ul>
-          <li>Objetivo especfico 1</li>
-          <li>Objetivo especfico 2</li>
-          <li>Objetivo especfico 3</li>
+          <li>Identificar y analizar el mercado gastronómico local e internacional</li>
+          <li>Aplicar metodologías de marketing (SMART, 4P, variables intervinientes) al sector de alimentos y bebidas</li>
+          <li>Desarrollar un producto gastronómico innovador con estrategia de mercado</li>
+          <li>Elaborar planes de marketing para emprendimientos gastronómicos</li>
+          <li>Analizar casos de éxito de marcas nacionales e internacionales</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fas fa-book-open" style="color:var(--gold); margin-right:0.75rem;"></i>Contenido Acadmico</h3>
-        <p> Breve descripcin del contenido temtico de la asignatura: unidades, temas principales, etc. </p>
+        <h3><i class="fas fa-book-open" style="color:var(--gold);"></i> Descripción General</h3>
+        <p>La asignatura integra fundamentos teóricos del marketing con su aplicación práctica en el ámbito gastronómico. Los estudiantes desarrollan un producto innovador (Proyecto Wayta), estudian casos empresariales reales y aplican herramientas de marketing para el posicionamiento de productos y servicios gastronómicos en el mercado ecuatoriano.</p>
+      </div>
+    </div>
+
+    <!-- Contenido temático por unidades -->
+    <div class="card">
+      <h3><i class="fas fa-layer-group" style="color:var(--gold);"></i> Contenido Académico — Unidades del Ciclo</h3>
+      <div class="grid-3" style="margin-top:1rem; margin-bottom:0;">
+        <div class="unit-card">
+          <span class="unit-num">Unidad 01</span>
+          <h4>Fundamentos de Marketing</h4>
+          <p>Conceptos esenciales, mezcla de marketing (4P / 7P), investigación de mercados y segmentación aplicada al sector gastronómico.</p>
+        </div>
+        <div class="unit-card">
+          <span class="unit-num">Unidad 02</span>
+          <h4>Marketing Personal y de Marca</h4>
+          <p>Construcción de marca personal en gastronomía, identidad digital del profesional culinario y posicionamiento en el mercado laboral.</p>
+        </div>
+        <div class="unit-card">
+          <span class="unit-num">Unidad 03</span>
+          <h4>Producto Gastronómico Innovador</h4>
+          <p>Diseño y desarrollo de un producto de innovación gastronómica (Proyecto Wayta): concepto, variables intervinientes y propuesta de valor.</p>
+        </div>
+        <div class="unit-card">
+          <span class="unit-num">Unidad 04</span>
+          <h4>Planificación Estratégica SMART</h4>
+          <p>Establecimiento de objetivos SMART, indicadores de gestión y evaluación del desempeño en proyectos de emprendimiento gastronómico.</p>
+        </div>
+        <div class="unit-card">
+          <span class="unit-num">Unidad 05</span>
+          <h4>Casos Prácticos Empresariales</h4>
+          <p>Análisis de casos de marcas internacionales (Caso Ducati) aplicando conceptos de marketing a sectores de alta gama y experiencias de marca.</p>
+        </div>
+        <div class="unit-card">
+          <span class="unit-num">Unidad 06</span>
+          <h4>Marketing Digital Gastronómico</h4>
+          <p>Estrategias de presencia digital, gestión de redes sociales, fotografía gastronómica y e-commerce para negocios de alimentos y bebidas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metodología de enseñanza -->
+    <div class="card">
+      <h3><i class="fas fa-graduation-cap" style="color:var(--gold);"></i> Metodología de Enseñanza</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-top:0.5rem;">
+        <div style="background:rgba(201,168,76,0.07); border-radius:10px; padding:1rem; border:1px solid rgba(201,168,76,0.18);">
+          <i class="fas fa-chalkboard" style="color:var(--gold); margin-bottom:0.5rem; display:block; font-size:1.2rem;"></i>
+          <strong style="font-size:0.88rem; color:var(--cream);">Clases magistrales</strong>
+          <p style="font-size:0.8rem; color:var(--text-dim); margin-top:0.25rem; line-height:1.5;">Exposición de contenidos teóricos con material didáctico y casos de estudio reales.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.07); border-radius:10px; padding:1rem; border:1px solid rgba(201,168,76,0.18);">
+          <i class="fas fa-users" style="color:var(--gold); margin-bottom:0.5rem; display:block; font-size:1.2rem;"></i>
+          <strong style="font-size:0.88rem; color:var(--cream);">Trabajo colaborativo</strong>
+          <p style="font-size:0.8rem; color:var(--text-dim); margin-top:0.25rem; line-height:1.5;">Discusiones grupales, análisis de casos y co-creación del producto innovador Wayta.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.07); border-radius:10px; padding:1rem; border:1px solid rgba(201,168,76,0.18);">
+          <i class="fas fa-flask" style="color:var(--gold); margin-bottom:0.5rem; display:block; font-size:1.2rem;"></i>
+          <strong style="font-size:0.88rem; color:var(--cream);">Aprendizaje práctico</strong>
+          <p style="font-size:0.8rem; color:var(--text-dim); margin-top:0.25rem; line-height:1.5;">Aplicación de herramientas de marketing (SMART, variables) a proyectos gastronómicos reales.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.07); border-radius:10px; padding:1rem; border:1px solid rgba(201,168,76,0.18);">
+          <i class="fas fa-lightbulb" style="color:var(--gold); margin-bottom:0.5rem; display:block; font-size:1.2rem;"></i>
+          <strong style="font-size:0.88rem; color:var(--cream);">Investigación autónoma</strong>
+          <p style="font-size:0.8rem; color:var(--text-dim); margin-top:0.25rem; line-height:1.5;">Lectura crítica, investigación independiente y elaboración de informes y presentaciones.</p>
+        </div>
       </div>
     </div>
 
     <div style="text-align:center; margin:2rem 0;">
-      <a href="medio-ciclo.html" style="display:inline-block; padding:0.75rem 1.5rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:6px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase;">Siguiente</a>
+      <a href="medio-ciclo.html" class="btn-next">Siguiente: Medio Ciclo &rarr;</a>
     </div>
 
-    <div class="folder-link">
-      ?? <a href="Informacin de la Asignatura/">Ver archivos en la carpeta</a>
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="Información de la Asignatura/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
+        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
+      </a>
     </div>
   </main>
 
   <footer>
-    <p><strong>Jimmy Alejandro Herrera Guerrero</strong>  Portafolio Acadmico ESPOCH  2026</p>
+    <p><strong>Jimmy Alejandro Herrera Guerrero</strong> &nbsp;·&nbsp; Portafolio Académico ESPOCH &nbsp;·&nbsp; 2026</p>
   </footer>
 </body>
 </html>
-
-

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informacin Personal | Portafolio Acadmico</title>
+  <title>Información Personal | Portafolio Académico</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
-    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; --transition:0.4s; }
+    :root { --navy:#0d1b2a; --navy-mid:#152540; --navy-soft:#1e3356; --gold:#c9a84c; --gold-light:#e6c97a; --cream:#f5f0e8; --cream-dark:#e8e0cc; --white:#ffffff; --text-dim:#8a9bb5; --card-bg:rgba(21,37,64,0.85); --border:rgba(201,168,76,0.25); --radius:14px; }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { font-family:"DM Sans", sans-serif; background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.7; }
@@ -18,104 +18,217 @@
     .nav-brand span { color:var(--cream); }
     nav a { color:var(--text-dim); text-decoration:none; font-size:0.75rem; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; padding:0.4rem 0.7rem; border-radius:6px; transition:all 0.3s; }
     nav a:hover { color:var(--gold); background:rgba(201,168,76,0.08); }
-    main { padding-top:100px; padding-bottom:50px; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+    main { padding-top:100px; padding-bottom:80px; max-width:1100px; margin:0 auto; position:relative; z-index:1; padding-left:1.5rem; padding-right:1.5rem; }
     .page-header { text-align:center; margin-bottom:3rem; }
     .page-tag { font-family:"Space Mono", monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:1rem; }
     .page-title { font-size:clamp(2.2rem, 4vw, 3rem); font-weight:300; color:var(--cream); line-height:1.2; margin-bottom:1rem; }
     .page-title strong { color:var(--gold); font-weight:600; }
     .page-line { width:50px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); margin:1.5rem auto 0; border-radius:2px; }
-    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; }
+    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:2rem; backdrop-filter:blur(10px); transition:all 0.35s; margin-bottom:1.5rem; }
     .card:hover { transform:translateY(-3px); border-color:rgba(201,168,76,0.45); }
-    .card h3 { font-size:1.2rem; font-weight:600; color:var(--cream); margin-bottom:0.75rem; }
-    .info-field { margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.05); }
-    .info-field:last-child { border-bottom:none; }
+    .card h3 { font-size:1.25rem; font-weight:600; color:var(--cream); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.6rem; }
+    .info-field { margin-bottom:0.9rem; padding-bottom:0.9rem; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .info-field:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
     .info-label { font-family:"Space Mono", monospace; font-size:0.62rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; display:block; margin-bottom:0.3rem; }
     .info-value { font-size:0.95rem; color:var(--cream); }
-    .folder-link { text-align:center; margin-top:2rem; }
-    .folder-link a { color:var(--gold); text-decoration:none; font-weight:600; }
-    .folder-link a:hover { text-decoration:underline; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem; margin-bottom:1.5rem; }
+    .highlight-card { background:linear-gradient(135deg, rgba(201,168,76,0.1), rgba(21,37,64,0.9)); border:1px solid rgba(201,168,76,0.4); border-radius:14px; padding:2rem; margin-bottom:1.5rem; }
+    .highlight-card h3 { font-size:1.25rem; font-weight:600; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+    .highlight-card p { font-size:0.97rem; color:var(--cream); line-height:1.8; }
+    .goal-item { display:flex; align-items:flex-start; gap:1rem; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .goal-item:last-child { border-bottom:none; }
+    .goal-icon { width:36px; height:36px; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem; }
+    .goal-icon i { color:var(--gold); font-size:0.85rem; }
+    .goal-text h4 { font-family:"DM Sans", sans-serif; font-size:0.9rem; font-weight:600; color:var(--cream); margin-bottom:0.2rem; }
+    .goal-text p { font-size:0.85rem; color:var(--text-dim); line-height:1.6; }
+    .profile-img { width:100%; max-width:280px; height:320px; object-fit:cover; border-radius:14px; border:1px solid var(--border); display:block; margin:0 auto; }
+    .profile-placeholder { width:100%; max-width:280px; height:320px; background:rgba(201,168,76,0.08); border:2px dashed rgba(201,168,76,0.3); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto; }
+    .profile-placeholder i { font-size:4rem; color:rgba(201,168,76,0.35); margin-bottom:1rem; }
+    .profile-placeholder p { font-size:0.8rem; color:var(--text-dim); text-align:center; padding:0 1rem; }
+    .btn-next { display:inline-block; padding:0.75rem 1.75rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:8px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase; }
+    .btn-next:hover { background:var(--gold-light); transform:translateY(-2px); }
     footer { position:fixed; bottom:0; width:100%; border-top:1px solid var(--border); padding:0.75rem 2rem; text-align:center; font-size:0.7rem; color:var(--text-dim); background:rgba(13,27,42,0.9); }
-    @media (max-width:600px) { main { padding:6rem 1.25rem 50px; } .card { padding:1.5rem; } nav a { font-size:0.65rem; padding:0.3rem 0.4rem; } }
+    @media (max-width:700px) { main { padding:6rem 1.25rem 80px; } .grid-2 { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <nav>
     <a class="nav-brand" href="index.html">J.<span>Herrera</span></a>
-    <div style="display:flex; gap:0.3rem;">
+    <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
       <a href="personal.html">Personal</a>
       <a href="docente.html">Docente</a>
       <a href="asignatura.html">Asignatura</a>
       <a href="medio-ciclo.html">Medio</a>
-      <a href="contacto-docente.html">Docente</a>
-      <a href="practico.html">Prctico</a>
-      <a href="autonomo.html">Autnomo</a>
-      <a href="logros.html">Logros</a><a href="bibliografia.html">Bibliografa</a>
+      <a href="contacto-docente.html">Con Docente</a>
+      <a href="practico.html">Práctico</a>
+      <a href="autonomo.html">Autónomo</a>
+      <a href="logros.html">Logros</a>
+      <a href="bibliografia.html">Bibliografía</a>
     </div>
   </nav>
 
   <main>
     <div class="page-header">
-      <span class="page-tag">01  Quin soy</span>
-      <h1 class="page-title">Informacin <strong>Personal</strong></h1>
+      <span class="page-tag">01 — Quién soy</span>
+      <h1 class="page-title">Información <strong>Personal</strong></h1>
       <div class="page-line"></div>
     </div>
 
-    <div class="card">
-      <h3><i class="fas fa-user" style="color:var(--gold); margin-right:0.75rem;"></i>Datos del Estudiante</h3>
-      
-      <div class="info-field">
-        <span class="info-label">Nombre Completo</span>
-        <span class="info-value">Jimmy Alejandro Herrera Guerrero</span>
+    <!-- Datos del estudiante + foto -->
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fas fa-user" style="color:var(--gold);"></i> Datos del Estudiante</h3>
+
+        <div class="info-field">
+          <span class="info-label">Nombre Completo</span>
+          <span class="info-value">Jimmy Alejandro Herrera Guerrero</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Institución</span>
+          <span class="info-value">Escuela Superior Politécnica de Chimborazo (ESPOCH)</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Facultad</span>
+          <span class="info-value">Facultad de Salud Pública</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Carrera</span>
+          <span class="info-value">Gastronomía</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Semestre / Paralelo</span>
+          <span class="info-value">Sexto Semestre — Paralelo "A"</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Período Académico</span>
+          <span class="info-value">Abril – Agosto 2026</span>
+        </div>
+        <div class="info-field">
+          <span class="info-label">Asignatura del Portafolio</span>
+          <span class="info-value">Marketing Gastronómico</span>
+        </div>
       </div>
-      
-      <div class="info-field">
-        <span class="info-label">Institucin</span>
-        <span class="info-value">Escuela Superior Politcnica de Chimborazo (ESPOCH)</span>
+
+      <div class="card" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <img
+          src="Informacón personal/WhatsApp Image 2026-04-20 at 8.24.30 AM.jpeg"
+          alt="Jimmy Alejandro Herrera Guerrero"
+          class="profile-img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="profile-placeholder" style="display:none;">
+          <i class="fas fa-user-circle"></i>
+          <p>Foto del estudiante<br><small>Agregar imagen personal</small></p>
+        </div>
       </div>
-      
-      <div class="info-field">
-        <span class="info-label">Facultad</span>
-        <span class="info-value">Facultad de Salud Pblica</span>
+    </div>
+
+    <!-- Presentación personal -->
+    <div class="highlight-card">
+      <h3><i class="fas fa-pen-fancy"></i> Presentación Personal</h3>
+      <p>
+        Soy Jimmy Alejandro Herrera Guerrero, estudiante de Gastronomía en la ESPOCH, actualmente cursando el
+        sexto semestre. Mi camino en la gastronomía comenzó desde temprana edad, influenciado por el amor que
+        mi familia tiene hacia la buena mesa y la tradición culinaria ecuatoriana. Con el paso de los años,
+        ese interés se convirtió en vocación y decidí profesionalizar mi pasión.
+      </p>
+      <br>
+      <p>
+        A lo largo de mi formación académica he desarrollado habilidades técnicas en diversas áreas de la
+        gastronomía, desde técnicas clásicas de cocina hasta la elaboración de productos de confitería y
+        chocolatería. Este portafolio recoge fielmente mi aprendizaje durante el período Abril – Agosto 2026,
+        mostrando tanto los retos superados como los logros alcanzados.
+      </p>
+    </div>
+
+    <!-- Motivación y Metas -->
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fas fa-heart" style="color:var(--gold);"></i> Mi Motivación</h3>
+        <p style="font-size:0.95rem; color:var(--text-dim); margin-bottom:1rem; line-height:1.8;">
+          Mi motivación para estudiar Gastronomía surge de tres fuentes fundamentales:
+        </p>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-home"></i></div>
+          <div class="goal-text">
+            <h4>Herencia Familiar</h4>
+            <p>Crecer observando a mi familia preparar recetas tradicionales me inculcó desde niño el respeto y el amor por la cocina como forma de expresión cultural y afectiva.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-fire-flame-curved"></i></div>
+          <div class="goal-text">
+            <h4>Pasión por la Creatividad</h4>
+            <p>La gastronomía me permite combinar ciencia, arte y cultura. Cada práctica en el laboratorio me recuerda que la cocina es un espacio de creación e innovación constante.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-globe"></i></div>
+          <div class="goal-text">
+            <h4>Visión Profesional</h4>
+            <p>Ecuador tiene una riqueza gastronómica enorme. Mi motivación es contribuir a elevar y posicionar esa cocina a nivel nacional e internacional a través del marketing gastronómico.</p>
+          </div>
+        </div>
       </div>
-      
-      <div class="info-field">
-        <span class="info-label">Carrera</span>
-        <span class="info-value">Gastronoma</span>
+
+      <div class="card">
+        <h3><i class="fas fa-bullseye" style="color:var(--gold);"></i> Mis Metas en Este Curso</h3>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-chocolate-bar" style="font-size:0.8rem;"></i><i class="fas fa-layer-group"></i></div>
+          <div class="goal-text">
+            <h4>Dominar Técnicas de Confitería</h4>
+            <p>Perfeccionar el templado de chocolate, la elaboración de bombones, trufas y productos derivados del cacao con estándares de calidad profesional.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="goal-text">
+            <h4>Aplicar el Marketing al Producto</h4>
+            <p>Aprender a diseñar estrategias de mercadeo para productos gastronómicos: identidad de marca, presentación, valor diferencial y posicionamiento en el mercado local.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-file-pen"></i></div>
+          <div class="goal-text">
+            <h4>Documentar mi Aprendizaje</h4>
+            <p>Desarrollar la capacidad de elaborar informes técnicos detallados que evidencien mi proceso de aprendizaje, metodología aplicada y resultados obtenidos.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon"><i class="fas fa-users"></i></div>
+          <div class="goal-text">
+            <h4>Crecer como Profesional</h4>
+            <p>Fortalecer mis competencias para emprender en el sector gastronómico y aportar con propuestas innovadoras que impulsen la economía local.</p>
+          </div>
+        </div>
       </div>
-      
-      <div class="info-field">
-        <span class="info-label">Semestre / Paralelo</span>
-        <span class="info-value"> Editar segn corresponda </span>
-      </div>
-      
-      <div class="info-field">
-        <span class="info-label">Perodo Acadmico</span>
-        <span class="info-value"> Editar perodo lectivo </span>
-      </div>
-      
-      <div class="info-field" style="border-bottom:none;">
-        <span class="info-label">Presentacin Personal</span>
-        <span class="info-value">Soy estudiante de Gastronoma comprometido con mi formacin acadmica. Este portafolio representa mi progreso, dedicacin y aprendizaje durante el ciclo acadmico.</span>
-      </div>
-      
-      <div style="text-align:center; margin-top:2rem;">
-        <img src="Informacn personal/WhatsApp Image 2026-04-20 at 8.24.30 AM.jpeg" alt="Imagen personal" style="max-width:100%; height:auto; border-radius:14px; border:1px solid var(--border);">
-      </div>
+    </div>
+
+    <!-- Reflexión introductoria -->
+    <div class="card" style="background:linear-gradient(135deg, var(--navy-soft), var(--navy-mid)); border-color:rgba(201,168,76,0.3);">
+      <h3><i class="fas fa-quote-left" style="color:var(--gold);"></i> Reflexión Introductoria</h3>
+      <p style="font-size:1rem; color:var(--cream); line-height:1.9; font-style:italic; font-family:'Cormorant Garamond', serif; font-size:1.15rem;">
+        "Iniciar este ciclo académico con el compromiso de documentar cada paso de mi aprendizaje me ha
+        permitido tomar conciencia de mi propio proceso. Cada práctica, cada clase y cada investigación
+        autónoma quedan registradas en este portafolio como testimonio de mi esfuerzo y dedicación.
+        Aspiro a que al final del ciclo, este documento refleje no solo lo que aprendí, sino cómo crecí
+        como persona y como futuro profesional de la gastronomía."
+      </p>
     </div>
 
     <div style="text-align:center; margin:2rem 0;">
-      <a href="docente.html" style="display:inline-block; padding:0.75rem 1.5rem; background:var(--gold); color:var(--navy); text-decoration:none; border-radius:6px; font-weight:600; transition:0.3s; font-size:0.9rem; letter-spacing:0.07em; text-transform:uppercase;">Siguiente</a>
+      <a href="docente.html" class="btn-next">Siguiente: Docente &rarr;</a>
     </div>
 
-    <div class="folder-link">
-      ?? <a href="Informacn personal/">Ver archivos en la carpeta</a>
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="Informacón personal/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
+        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
+      </a>
     </div>
   </main>
 
   <footer>
-    <p><strong>Jimmy Alejandro Herrera Guerrero</strong>  Portafolio Acadmico ESPOCH  Gastronoma  2026</p>
+    <p><strong>Jimmy Alejandro Herrera Guerrero</strong> &nbsp;·&nbsp; Portafolio Académico ESPOCH &nbsp;·&nbsp; Gastronomía &nbsp;·&nbsp; 2026</p>
   </footer>
 </body>
 </html>
-
-
