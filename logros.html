@@ -29,13 +29,11 @@
     .card:hover { transform:translateY(-3px); border-color:rgba(201,168,76,0.45); }
     .card h3 { font-family:"Cormorant Garamond", serif; font-size:1.3rem; font-weight:600; color:var(--cream); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.6rem; }
 
-    /* Stats banner */
     .stats-banner { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:1rem; margin-bottom:1.5rem; }
     .stat-box { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.22); border-radius:12px; padding:1.25rem; text-align:center; }
     .stat-box .num { font-family:"Cormorant Garamond", serif; font-size:2.4rem; font-weight:600; color:var(--gold); line-height:1; }
     .stat-box .lbl { font-family:"Space Mono", monospace; font-size:0.58rem; color:var(--text-dim); letter-spacing:0.12em; text-transform:uppercase; margin-top:0.3rem; }
 
-    /* Competency bars */
     .competency-item { margin-bottom:1.5rem; }
     .competency-item:last-child { margin-bottom:0; }
     .comp-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.35rem; }
@@ -45,7 +43,6 @@
     .progress-track { background:rgba(255,255,255,0.06); height:5px; border-radius:3px; overflow:hidden; }
     .progress-fill { background:linear-gradient(90deg, var(--gold), var(--gold-light)); height:100%; border-radius:3px; }
 
-    /* Achievement cards */
     .achievement-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1rem; margin-top:1rem; }
     .achievement-card { background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:1.25rem; transition:0.3s; }
     .achievement-card:hover { border-color:var(--gold); background:rgba(201,168,76,0.12); }
@@ -54,7 +51,6 @@
     .achievement-card h4 { font-family:"DM Sans", sans-serif; font-size:0.9rem; font-weight:600; color:var(--cream); margin-bottom:0.35rem; }
     .achievement-card p { font-size:0.82rem; color:var(--text-dim); line-height:1.6; }
 
-    /* Impact section */
     .impact-col { padding:1.5rem; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:12px; }
     .impact-col h4 { font-family:"Cormorant Garamond", serif; font-size:1.1rem; font-weight:600; color:var(--gold); margin-bottom:0.75rem; }
     .impact-col ul { list-style:none; }
@@ -63,7 +59,6 @@
     .impact-col li::before { content:"✓"; position:absolute; left:0; color:var(--gold); font-size:0.75rem; top:0.5rem; }
     .grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.25rem; margin-top:1rem; }
 
-    /* Final reflection */
     .final-reflection { background:linear-gradient(135deg, rgba(201,168,76,0.1), rgba(21,37,64,0.95)); border:1px solid rgba(201,168,76,0.4); border-radius:16px; padding:2.5rem; margin-bottom:1.5rem; text-align:center; }
     .final-reflection blockquote { font-family:"Cormorant Garamond", serif; font-style:italic; font-size:clamp(1.1rem, 2.5vw, 1.35rem); color:var(--cream); line-height:1.85; max-width:780px; margin:0 auto 1.5rem; }
     .final-reflection cite { font-family:"Space Mono", monospace; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; }
@@ -96,104 +91,104 @@
       <h1 class="page-title">Resultados y <strong>Logros de Aprendizaje</strong></h1>
       <div class="page-line"></div>
       <p class="page-desc">
-        Síntesis de los resultados académicos obtenidos, competencias desarrolladas y reflexión final sobre
-        el impacto del ciclo en mi formación personal y profesional.
+        Síntesis de los resultados académicos obtenidos en Marketing Gastronómico, competencias desarrolladas
+        y reflexión final sobre el impacto del ciclo en mi formación personal y profesional.
       </p>
     </div>
 
     <!-- Estadísticas generales -->
     <div class="stats-banner">
       <div class="stat-box">
-        <div class="num">6</div>
-        <div class="lbl">Prácticas completadas</div>
+        <div class="num">2</div>
+        <div class="lbl">Trabajos prácticos</div>
       </div>
       <div class="stat-box">
-        <div class="num">5</div>
-        <div class="lbl">Informes entregados</div>
-      </div>
-      <div class="stat-box">
-        <div class="num">8</div>
-        <div class="lbl">Tiempos del menú</div>
+        <div class="num">3</div>
+        <div class="lbl">Actividades con docente</div>
       </div>
       <div class="stat-box">
         <div class="num">1</div>
-        <div class="lbl">Recetario personal</div>
+        <div class="lbl">Proyecto Wayta</div>
       </div>
       <div class="stat-box">
         <div class="num">4</div>
         <div class="lbl">Investigaciones autónomas</div>
       </div>
       <div class="stat-box">
-        <div class="num">100%</div>
-        <div class="lbl">Asistencia al laboratorio</div>
+        <div class="num">2</div>
+        <div class="lbl">PDF documentados</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">2</div>
+        <div class="lbl">Presentaciones entregadas</div>
       </div>
     </div>
 
-    <!-- Competencias adquiridas -->
+    <!-- Competencias de marketing adquiridas -->
     <div class="card">
-      <h3><i class="fas fa-chart-line" style="color:var(--gold);"></i> Competencias Técnicas Adquiridas</h3>
+      <h3><i class="fas fa-chart-line" style="color:var(--gold);"></i> Competencias de Marketing Adquiridas</h3>
 
       <div class="competency-item">
         <div class="comp-header">
-          <span class="comp-name">Templado y trabajo con chocolate</span>
-          <span class="comp-percent">92%</span>
-        </div>
-        <p class="comp-desc">Dominio del método de tablado y sembrado para las tres temperaturas de trabajo (fundición, enfriado, trabajo). Reconocimiento visual y táctil del punto de templado correcto.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:92%"></div></div>
-      </div>
-
-      <div class="competency-item">
-        <div class="comp-header">
-          <span class="comp-name">Elaboración de ganaches y rellenos</span>
-          <span class="comp-percent">88%</span>
-        </div>
-        <p class="comp-desc">Preparación de ganaches clásicos, de infusión con especias y frutas, y ganaches de avellanas. Control de la emulsión y del punto de cristalización para aplicaciones en moldes y trufas.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:88%"></div></div>
-      </div>
-
-      <div class="competency-item">
-        <div class="comp-header">
-          <span class="comp-name">Producción de bocaditos tipo Ferrero</span>
-          <span class="comp-percent">85%</span>
-        </div>
-        <p class="comp-desc">Elaboración del praliné de avellanas, construcción del producto en capas (núcleo, barquillo, ganache, cobertura y exterior crocante) con acabados uniformes y presentación de nivel profesional.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
-      </div>
-
-      <div class="competency-item">
-        <div class="comp-header">
-          <span class="comp-name">Procesamiento de granos de cacao</span>
-          <span class="comp-percent">80%</span>
-        </div>
-        <p class="comp-desc">Evaluación de granos por prueba de corte, tostado artesanal, descascarillado, molienda y obtención de pasta de cacao. Identificación organoléptica de variedades y origen.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
-      </div>
-
-      <div class="competency-item">
-        <div class="comp-header">
-          <span class="comp-name">Elaboración de patés y terrinas</span>
-          <span class="comp-percent">78%</span>
-        </div>
-        <p class="comp-desc">Preparación de farsa, cocción al baño maría, prensado en frío y presentación de terrinas artesanales con garnitures. Elaboración de fichas técnicas con costo-porción.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:78%"></div></div>
-      </div>
-
-      <div class="competency-item">
-        <div class="comp-header">
-          <span class="comp-name">Documentación técnica e informes</span>
+          <span class="comp-name">Planificación estratégica con metodología SMART</span>
           <span class="comp-percent">90%</span>
         </div>
-        <p class="comp-desc">Elaboración de informes de prácticas con estructura técnica: objetivos, materiales, procedimiento, resultados, análisis y conclusiones. Uso del formato institucional ESPOCH.</p>
+        <p class="comp-desc">Definición de objetivos Específicos, Medibles, Alcanzables, Relevantes y Temporales aplicados al proyecto gastronómico Wayta, con indicadores de seguimiento y fases de implementación.</p>
         <div class="progress-track"><div class="progress-fill" style="width:90%"></div></div>
       </div>
 
       <div class="competency-item">
         <div class="comp-header">
-          <span class="comp-name">Diseño de menús y marketing gastronómico</span>
-          <span class="comp-percent">83%</span>
+          <span class="comp-name">Construcción de marca personal gastronómica</span>
+          <span class="comp-percent">88%</span>
         </div>
-        <p class="comp-desc">Diseño de menú de ocho tiempos con concepto narrativo, análisis de costos y estrategia de posicionamiento. Aplicación de principios de marketing experiencial a productos gastronómicos artesanales.</p>
-        <div class="progress-track"><div class="progress-fill" style="width:83%"></div></div>
+        <p class="comp-desc">Diseño de propuesta de valor personal, identificación de diferenciadores como futuro profesional gastronómico y desarrollo de estrategia de presencia digital para el mercado laboral.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:88%"></div></div>
+      </div>
+
+      <div class="competency-item">
+        <div class="comp-header">
+          <span class="comp-name">Análisis de casos empresariales de marketing</span>
+          <span class="comp-percent">85%</span>
+        </div>
+        <p class="comp-desc">Estudio del Caso Ducati: análisis de las 4P, posicionamiento premium, comunidad de marca y transferencia de principios del marketing de lujo al sector gastronómico artesanal.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="competency-item">
+        <div class="comp-header">
+          <span class="comp-name">Desarrollo de producto gastronómico innovador</span>
+          <span class="comp-percent">85%</span>
+        </div>
+        <p class="comp-desc">Diseño y planificación del Proyecto Wayta: concepto, variables intervinientes, propuesta de valor con identidad andina y estrategia de posicionamiento en el mercado gastronómico ecuatoriano.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="competency-item">
+        <div class="comp-header">
+          <span class="comp-name">Investigación de mercado gastronómico</span>
+          <span class="comp-percent">82%</span>
+        </div>
+        <p class="comp-desc">Análisis del comportamiento del consumidor gastronómico ecuatoriano, estudio de tendencias de mercado y aplicación de metodologías de investigación para validar propuestas de emprendimiento.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:82%"></div></div>
+      </div>
+
+      <div class="competency-item">
+        <div class="comp-header">
+          <span class="comp-name">Marketing digital y comunicación de marca</span>
+          <span class="comp-percent">80%</span>
+        </div>
+        <p class="comp-desc">Estrategias de presencia digital para gastrónomos: gestión de contenido en redes sociales, fotografía gastronómica, storytelling de marca y herramientas de comunicación para emprendimientos.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+      </div>
+
+      <div class="competency-item">
+        <div class="comp-header">
+          <span class="comp-name">Presentación y documentación de proyectos</span>
+          <span class="comp-percent">87%</span>
+        </div>
+        <p class="comp-desc">Elaboración de trabajos académicos con estructura profesional: presentaciones PowerPoint, documentos PDF y sustentación oral de proyectos de marketing ante el docente.</p>
+        <div class="progress-track"><div class="progress-fill" style="width:87%"></div></div>
       </div>
     </div>
 
@@ -202,34 +197,34 @@
       <h3><i class="fas fa-trophy" style="color:var(--gold);"></i> Logros Académicos Destacados</h3>
       <div class="achievement-grid">
         <div class="achievement-card">
-          <div class="icon"><i class="fas fa-flask"></i></div>
-          <h4>6 Prácticas Completadas</h4>
-          <p>Todas las prácticas del ciclo entregadas con informe técnico completo y dentro del plazo establecido.</p>
-        </div>
-        <div class="achievement-card">
-          <div class="icon"><i class="fas fa-book"></i></div>
-          <h4>Recetario Personal Creado</h4>
-          <p>Elaboré un recetario de chocolatería de 9 fichas técnicas propias, más glosario y tablas de referencia.</p>
-        </div>
-        <div class="achievement-card">
-          <div class="icon"><i class="fas fa-utensils"></i></div>
-          <h4>Menú de 8 Tiempos Original</h4>
-          <p>Diseñé el menú "Pachamama en Chocolate" con concepto narrativo y análisis de costos completo.</p>
-        </div>
-        <div class="achievement-card">
-          <div class="icon"><i class="fas fa-star"></i></div>
-          <h4>Bocadito Tipo Ferrero Propio</h4>
-          <p>Elaboré y perfeccioné una versión propia del bocadito Ferrero con praliné de avellanas ecuatorianas.</p>
-        </div>
-        <div class="achievement-card">
           <div class="icon"><i class="fas fa-seedling"></i></div>
-          <h4>Comprensión Bean to Bar</h4>
-          <p>Adquirí conocimiento integral del proceso bean to bar: desde la fermentación del grano hasta el producto terminado.</p>
+          <h4>Proyecto Wayta Desarrollado</h4>
+          <p>Diseñé y planifiqué el producto gastronómico innovador "Wayta" (kichwa: flor) con identidad andina ecuatoriana y estrategia de marketing completa.</p>
         </div>
         <div class="achievement-card">
-          <div class="icon"><i class="fas fa-lightbulb"></i></div>
-          <h4>Investigación de Emprendimiento</h4>
-          <p>Investigué la viabilidad de una microfábrica de chocolate artesanal como proyecto de emprendimiento futuro.</p>
+          <div class="icon"><i class="fas fa-motorcycle"></i></div>
+          <h4>Caso Ducati Analizado</h4>
+          <p>Realicé un análisis profundo de la estrategia de marketing premium de Ducati y generé propuestas de aplicación al sector gastronómico ecuatoriano.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Plan SMART Wayta Completado</h4>
+          <p>Elaboré la planificación estratégica completa del proyecto Wayta con 5 objetivos SMART, indicadores de gestión y fases de implementación medibles.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="icon"><i class="fas fa-user-tag"></i></div>
+          <h4>Marketing Personal Consolidado</h4>
+          <p>Construí mi propuesta de valor personal como futuro profesional gastronómico con estrategia de posicionamiento y presencia en el mercado laboral.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="icon"><i class="fas fa-diagram-project"></i></div>
+          <h4>Variables Intervinientes — Wayta</h4>
+          <p>Analicé y documenté las variables intervinientes del producto Wayta: materia prima, proceso, mercado objetivo, competencia y canales de distribución.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h4>4 Investigaciones de Marketing</h4>
+          <p>Realicé investigaciones autónomas sobre tendencias del consumidor, marketing digital, modelo 4P en gastronomía y posicionamiento de marcas premium.</p>
         </div>
       </div>
     </div>
@@ -241,23 +236,23 @@
         <div class="impact-col">
           <h4>Crecimiento Personal</h4>
           <ul>
-            <li>Mayor disciplina y atención al detalle en cada tarea</li>
-            <li>Desarrollo de la paciencia como valor técnico y personal</li>
-            <li>Fortalecimiento de la autoconfianza para abordar retos complejos</li>
-            <li>Aprendizaje de la retroalimentación como herramienta de mejora</li>
-            <li>Valoración más profunda de la cultura gastronómica ecuatoriana</li>
-            <li>Hábitos de estudio autónomo más sólidos y constantes</li>
+            <li>Mayor claridad sobre mi identidad como futuro profesional gastronómico</li>
+            <li>Capacidad de pensar estratégicamente y no solo técnicamente</li>
+            <li>Confianza para presentar y sustentar proyectos ante audiencias</li>
+            <li>Hábito de investigación autónoma y aprendizaje continuo</li>
+            <li>Valoración más profunda del emprendimiento como camino profesional</li>
+            <li>Visión más amplia del mercado gastronómico ecuatoriano e internacional</li>
           </ul>
         </div>
         <div class="impact-col">
           <h4>Crecimiento Profesional</h4>
           <ul>
-            <li>Dominio de técnicas de chocolatería artesanal de nivel intermedio-avanzado</li>
-            <li>Capacidad de elaborar informes técnicos profesionales</li>
-            <li>Comprensión del marketing aplicado a productos gastronómicos</li>
-            <li>Conocimiento del mercado de chocolate artesanal en Ecuador</li>
-            <li>Habilidades para el diseño de menús con concepto narrativo</li>
-            <li>Base sólida para emprender en el sector confitería artesanal</li>
+            <li>Comprensión sólida del marketing aplicado a productos gastronómicos</li>
+            <li>Capacidad de diseñar y planificar un emprendimiento gastronómico real</li>
+            <li>Dominio de la metodología SMART para la gestión de proyectos</li>
+            <li>Habilidades de análisis de mercado y segmentación de clientes</li>
+            <li>Base para construir y comunicar una marca gastronómica con identidad</li>
+            <li>Conocimiento de herramientas de marketing digital para negocios de A&B</li>
           </ul>
         </div>
       </div>
@@ -266,31 +261,24 @@
     <!-- Reflexión final -->
     <div class="final-reflection">
       <blockquote>
-        "Este ciclo académico ha sido uno de los más significativos en mi formación. Al inicio, el chocolate me
-        parecía un producto sencillo; al terminar, entiendo que es una disciplina compleja, fascinante y llena
-        de posibilidades. Cada práctica me enseñó no solo técnica, sino también a observar con detalle, a ser
-        perseverante ante los errores y a celebrar los logros con humildad.
+        "Este ciclo de Marketing Gastronómico cambió la forma en que entiendo la gastronomía. Antes
+        pensaba únicamente en recetas y técnicas; ahora entiendo que un producto gastronómico solo
+        alcanza su verdadero valor cuando está respaldado por una estrategia clara de marketing,
+        una narrativa auténtica y una comprensión profunda del mercado al que se dirige.
         <br><br>
-        El menú de ocho tiempos fue mi mayor proyecto personal del ciclo: me obligó a pensar como chef,
-        como marketero y como emprendedor al mismo tiempo. Y el recetario se convirtió en algo que va más allá
-        de las notas de clase: es mi primer paso hacia una colección de conocimiento que seguiré construyendo
-        toda mi vida.
+        El proyecto Wayta fue mi mayor aprendizaje del período: me obligó a pensar como emprendedor,
+        a traducir una idea gastronómica en objetivos concretos y medibles, y a entender que el
+        nombre, la historia y la identidad de un producto son tan importantes como su sabor.
         <br><br>
-        Llego al final de este período con la convicción de que la gastronomía ecuatoriana tiene un futuro
-        brillante, y que yo quiero ser parte de ese futuro. El cacao, la confitería artesanal y el marketing
-        gastronómico son mis herramientas. Ahora toca perfeccionarlas."
+        Llego al final de este período con la convicción de que quiero emprender en gastronomía
+        y que el marketing no es un accesorio, sino el motor que convierte una pasión en un
+        negocio sostenible. Ahora toca aplicar lo aprendido."
       </blockquote>
       <cite>— Jimmy Alejandro Herrera Guerrero · ESPOCH · Gastronomía · Abril – Agosto 2026</cite>
     </div>
 
     <div style="text-align:center; margin:2rem 0;">
       <a href="index.html" class="btn-home">&larr; Volver al Inicio</a>
-    </div>
-
-    <div style="text-align:center; margin-top:1rem;">
-      <a href="resultado o logro de aprendizaje/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
-        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
-      </a>
     </div>
   </main>
 

@@ -104,10 +104,28 @@
           <span class="info-value">Abril – Agosto 2026</span>
         </div>
 
-        <div class="evidence-row" style="margin-top:1.5rem;">
-          <a href="infomación del docente/HARO SOSA GIOVANNY LENIN - HOJA DE VIDA.pdf" class="evidence-chip">
-            <i class="fas fa-file-pdf"></i> Hoja de Vida — Mg. Haro Sosa
-          </a>
+        <!-- Hoja de vida con vista previa y descarga -->
+        <div style="margin-top:1.5rem; border:1px solid rgba(201,168,76,0.35); border-radius:12px; overflow:hidden;">
+          <div style="background:rgba(201,168,76,0.1); padding:1rem 1.25rem; border-bottom:1px solid rgba(201,168,76,0.25); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <i class="fas fa-file-pdf" style="color:#e74c3c; font-size:1.6rem; flex-shrink:0;"></i>
+              <div>
+                <div style="font-size:0.95rem; font-weight:600; color:var(--cream);">Hoja de Vida — Mg. Giovanny Lenin Haro Sosa</div>
+                <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase;">Currículum Vitae oficial · PDF</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <button onclick="toggleCv()" id="cv-btn" style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:var(--gold); font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; transition:0.25s;">
+                <i class="fas fa-eye"></i> Vista previa
+              </button>
+              <a href="infomación del docente/HARO SOSA GIOVANNY LENIN - HOJA DE VIDA.pdf" download style="display:inline-flex; align-items:center; gap:0.4rem; background:var(--gold); color:var(--navy); font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:0.45rem 0.9rem; border-radius:6px; text-decoration:none; transition:0.25s;">
+                <i class="fas fa-download"></i> Descargar
+              </a>
+            </div>
+          </div>
+          <div id="cv-preview" style="display:none;">
+            <iframe src="infomación del docente/HARO SOSA GIOVANNY LENIN - HOJA DE VIDA.pdf" style="width:100%; height:560px; border:none; display:block; background:#fff;" title="Hoja de Vida Mg. Haro Sosa"></iframe>
+          </div>
         </div>
       </div>
 
@@ -149,15 +167,24 @@
       <a href="asignatura.html" class="btn-next">Siguiente: Asignatura &rarr;</a>
     </div>
 
-    <div style="text-align:center; margin-top:1rem;">
-      <a href="infomación del docente/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
-        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
-      </a>
-    </div>
   </main>
 
   <footer>
     <p><strong>Jimmy Alejandro Herrera Guerrero</strong> &nbsp;·&nbsp; Portafolio Académico ESPOCH &nbsp;·&nbsp; Gastronomía &nbsp;·&nbsp; 2026</p>
   </footer>
+
+  <script>
+    function toggleCv() {
+      var el = document.getElementById('cv-preview');
+      var btn = document.getElementById('cv-btn');
+      if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.innerHTML = '<i class="fas fa-eye-slash"></i> Ocultar';
+      } else {
+        el.style.display = 'none';
+        btn.innerHTML = '<i class="fas fa-eye"></i> Vista previa';
+      }
+    }
+  </script>
 </body>
 </html>
