@@ -52,6 +52,28 @@
     .evidence-chip { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(201,168,76,0.09); border:1px solid rgba(201,168,76,0.25); color:var(--gold); font-family:"Space Mono", monospace; font-size:0.6rem; letter-spacing:0.1em; padding:0.3rem 0.7rem; border-radius:6px; text-decoration:none; transition:0.25s; }
     .evidence-chip:hover { background:rgba(201,168,76,0.18); border-color:var(--gold); }
 
+    /* Document preview & download */
+    .doc-block { border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:0.75rem; }
+    .doc-block + .doc-block { margin-top:1rem; }
+    .doc-bar { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.85rem 1.1rem; background:rgba(201,168,76,0.08); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+    .doc-bar:last-child { border-bottom:none; }
+    .doc-info { display:flex; align-items:center; gap:0.75rem; }
+    .doc-icon { font-size:1.4rem; flex-shrink:0; }
+    .doc-icon.pdf { color:#e74c3c; }
+    .doc-icon.ppt { color:#d35400; }
+    .doc-name { font-size:0.88rem; font-weight:600; color:var(--cream); }
+    .doc-type { font-family:"Space Mono",monospace; font-size:0.58rem; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase; }
+    .doc-actions { display:flex; gap:0.5rem; flex-shrink:0; }
+    .btn-download { display:inline-flex; align-items:center; gap:0.4rem; background:var(--gold); color:var(--navy); font-family:"Space Mono",monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:0.45rem 0.9rem; border-radius:6px; text-decoration:none; transition:0.25s; }
+    .btn-download:hover { background:var(--gold-light); transform:translateY(-1px); }
+    .btn-preview { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:var(--gold); font-family:"Space Mono",monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.45rem 0.9rem; border-radius:6px; text-decoration:none; transition:0.25s; cursor:pointer; }
+    .btn-preview:hover { background:rgba(201,168,76,0.22); border-color:var(--gold); }
+    .pdf-embed { width:100%; height:520px; border:none; display:block; background:#fff; }
+    .pdf-collapsed { display:none; }
+    .pptx-note { padding:2rem 1.5rem; text-align:center; background:rgba(201,168,76,0.04); }
+    .pptx-note i { font-size:2.5rem; color:rgba(201,168,76,0.3); margin-bottom:0.75rem; display:block; }
+    .pptx-note p { font-size:0.83rem; color:var(--text-dim); margin-bottom:0.75rem; }
+
     /* Reflection box */
     .reflection { background:rgba(201,168,76,0.06); border-left:3px solid var(--gold); border-radius:0 10px 10px 0; padding:1rem 1.25rem; margin-top:1rem; }
     .reflection p { font-family:"Cormorant Garamond", serif; font-style:italic; font-size:1rem; color:var(--cream-dark); line-height:1.75; }
@@ -121,42 +143,88 @@
       </div>
     </div>
 
-    <!-- Documentos reales de la carpeta -->
+    <!-- Documentos con vista previa y descarga -->
     <div class="card" style="background:linear-gradient(135deg, rgba(201,168,76,0.08), rgba(21,37,64,0.9)); border-color:rgba(201,168,76,0.35); margin-bottom:2rem;">
-      <h3><i class="fas fa-folder-open" style="color:var(--gold); margin-right:0.5rem;"></i> Evidencias en la Carpeta "Aprendizaje con el Docente"</h3>
+      <h3><i class="fas fa-file-alt" style="color:var(--gold); margin-right:0.5rem;"></i> Documentos del Aprendizaje con el Docente</h3>
       <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:1.25rem;">
-        Documentos y trabajos entregados al docente Mg. Giovanny Haro Sosa durante el período académico, almacenados en la carpeta correspondiente del portafolio.
+        Trabajos entregados al Mg. Giovanny Haro Sosa durante el período académico. Vista previa y descarga disponibles.
       </p>
-      <div style="display:flex; flex-direction:column; gap:0.75rem;">
-        <div style="display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; background:rgba(201,168,76,0.07); border-radius:10px; border:1px solid rgba(201,168,76,0.18);">
-          <i class="fas fa-file-pdf" style="color:#e74c3c; font-size:1.5rem; flex-shrink:0;"></i>
-          <div style="flex:1;">
-            <strong style="font-size:0.9rem; color:var(--cream); display:block;">Marketing Personal — Herrera Jimmy</strong>
-            <span style="font-size:0.8rem; color:var(--text-dim);">Documento de marketing personal desarrollado como actividad con el docente</span>
+
+      <!-- PDF 1: Marketing Personal -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-pdf doc-icon pdf"></i>
+            <div>
+              <div class="doc-name">Marketing Personal — Herrera Jimmy</div>
+              <div class="doc-type">Actividad guiada con el docente · PDF</div>
+            </div>
           </div>
-          <a href="aprendizaje con el docente/Marketing Personal - Herrera Jimmy.pdf" class="evidence-chip">
-            <i class="fas fa-external-link-alt"></i> Abrir
-          </a>
+          <div class="doc-actions">
+            <button class="btn-preview" onclick="togglePdf('docpdf1')">
+              <i class="fas fa-eye"></i> Vista previa
+            </button>
+            <a href="aprendizaje con el docente/Marketing Personal - Herrera Jimmy.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
         </div>
-        <div style="display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; background:rgba(201,168,76,0.07); border-radius:10px; border:1px solid rgba(201,168,76,0.18);">
-          <i class="fas fa-file-pdf" style="color:#e74c3c; font-size:1.5rem; flex-shrink:0;"></i>
-          <div style="flex:1;">
-            <strong style="font-size:0.9rem; color:var(--cream); display:block;">Tutorías Marketing</strong>
-            <span style="font-size:0.8rem; color:var(--text-dim);">Registro y evidencia de tutorías recibidas del Mg. Giovanny Haro Sosa sobre Marketing Gastronómico</span>
-          </div>
-          <a href="aprendizaje con el docente/Tutorías Matketing.pdf" class="evidence-chip">
-            <i class="fas fa-external-link-alt"></i> Abrir
-          </a>
+        <div id="docpdf1" class="pdf-collapsed">
+          <iframe
+            src="aprendizaje con el docente/Marketing Personal - Herrera Jimmy.pdf"
+            class="pdf-embed"
+            title="Marketing Personal — Herrera Jimmy">
+          </iframe>
         </div>
-        <div style="display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; background:rgba(201,168,76,0.07); border-radius:10px; border:1px solid rgba(201,168,76,0.18);">
-          <i class="fas fa-file-powerpoint" style="color:#d35400; font-size:1.5rem; flex-shrink:0;"></i>
-          <div style="flex:1;">
-            <strong style="font-size:0.9rem; color:var(--cream); display:block;">Variables Intervinientes — Producto Innovador Wayta</strong>
-            <span style="font-size:0.8rem; color:var(--text-dim);">Presentación en PowerPoint del análisis de variables intervinientes para el producto gastronómico innovador "Wayta"</span>
+      </div>
+
+      <!-- PDF 2: Tutorías Marketing -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-pdf doc-icon pdf"></i>
+            <div>
+              <div class="doc-name">Tutorías Marketing</div>
+              <div class="doc-type">Registro de tutorías con el docente · PDF</div>
+            </div>
           </div>
-          <a href="aprendizaje con el docente/Variables Intervinientes - Producto Innovador - Wayta - Herrera Jimmy.pptx" class="evidence-chip">
-            <i class="fas fa-external-link-alt"></i> Abrir
-          </a>
+          <div class="doc-actions">
+            <button class="btn-preview" onclick="togglePdf('docpdf2')">
+              <i class="fas fa-eye"></i> Vista previa
+            </button>
+            <a href="aprendizaje con el docente/Tutorías Matketing.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
+        </div>
+        <div id="docpdf2" class="pdf-collapsed">
+          <iframe
+            src="aprendizaje con el docente/Tutorías Matketing.pdf"
+            class="pdf-embed"
+            title="Tutorías Marketing">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- PPTX: Variables Intervinientes Wayta -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-powerpoint doc-icon ppt"></i>
+            <div>
+              <div class="doc-name">Variables Intervinientes — Producto Innovador Wayta</div>
+              <div class="doc-type">Presentación PowerPoint · .pptx</div>
+            </div>
+          </div>
+          <div class="doc-actions">
+            <a href="aprendizaje con el docente/Variables Intervinientes - Producto Innovador - Wayta - Herrera Jimmy.pptx" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
+        </div>
+        <div class="pptx-note">
+          <i class="fas fa-file-powerpoint"></i>
+          <p>Los archivos PowerPoint no tienen vista previa en el navegador.<br>Usa el botón de descarga para abrir la presentación.</p>
         </div>
       </div>
     </div>
@@ -189,8 +257,8 @@
           <p>El Mg. Haro Sosa subrayó que en el mercado actual, el profesional gastronómico no solo vende comida: vende una experiencia, una historia y una identidad. La marca personal es tan importante como las habilidades técnicas para diferenciarse en un mercado competitivo.</p>
 
           <div class="evidence-row">
-            <a href="aprendizaje con el docente/Marketing Personal - Herrera Jimmy.pdf" class="evidence-chip">
-              <i class="fas fa-file-pdf"></i> Marketing Personal — Herrera Jimmy
+            <a href="aprendizaje con el docente/Marketing Personal - Herrera Jimmy.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar documento
             </a>
           </div>
 
@@ -226,8 +294,8 @@
           <p>El Mg. Haro Sosa indicó reforzar el análisis del público objetivo del producto Wayta y profundizar en la justificación de las variables intervinientes seleccionadas. También destacó la importancia de conectar la propuesta de innovación con las tendencias actuales del mercado gastronómico ecuatoriano.</p>
 
           <div class="evidence-row">
-            <a href="aprendizaje con el docente/Tutorías Matketing.pdf" class="evidence-chip">
-              <i class="fas fa-file-pdf"></i> Registro de Tutorías Marketing
+            <a href="aprendizaje con el docente/Tutorías Matketing.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar documento
             </a>
           </div>
 
@@ -263,8 +331,8 @@
           <p>El Mg. Haro Sosa destacó que un producto gastronómico innovador debe tener una historia que contar y un propósito claro. La identidad andina del nombre "Wayta" (que en kichwa significa flor) representa una fortaleza de posicionamiento en un mercado que valora la autenticidad y el origen cultural de los productos.</p>
 
           <div class="evidence-row">
-            <a href="aprendizaje con el docente/Variables Intervinientes - Producto Innovador - Wayta - Herrera Jimmy.pptx" class="evidence-chip">
-              <i class="fas fa-file-powerpoint"></i> Presentación Wayta — Variables Intervinientes
+            <a href="aprendizaje con el docente/Variables Intervinientes - Producto Innovador - Wayta - Herrera Jimmy.pptx" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar presentación
             </a>
           </div>
 
@@ -300,15 +368,15 @@
         <div class="media-item">
           <img
             src="infomación del docente/WhatsApp Image 2026-04-21 at 10.02.31 PM.jpeg"
-            alt="Actividad en laboratorio — Práctica de chocolatería"
-            onerror="this.parentElement.innerHTML='<div style=\'height:160px;background:rgba(201,168,76,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:0.8rem;text-align:center;padding:1rem;\'>Fotografía de actividad<br>en laboratorio</div>'"
+            alt="Actividad académica — Período Abril 2026"
+            onerror="this.parentElement.innerHTML='<div style=\'height:160px;background:rgba(201,168,76,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:0.8rem;text-align:center;padding:1rem;\'>Fotografía de actividad</div>'"
           />
         </div>
         <div class="media-item">
           <img
             src="infomación del docente/WhatsApp Image 2026-04-21 at 10.02.31 PM (1).jpeg"
-            alt="Actividad en laboratorio — Resultado de práctica"
-            onerror="this.parentElement.innerHTML='<div style=\'height:160px;background:rgba(201,168,76,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:0.8rem;text-align:center;padding:1rem;\'>Fotografía del resultado<br>de práctica</div>'"
+            alt="Evidencia fotográfica — Período Abril 2026"
+            onerror="this.parentElement.innerHTML='<div style=\'height:160px;background:rgba(201,168,76,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:0.8rem;text-align:center;padding:1rem;\'>Fotografía de actividad</div>'"
           />
         </div>
       </div>
@@ -317,16 +385,23 @@
     <div style="text-align:center; margin:2rem 0;">
       <a href="practico.html" class="btn-next">Siguiente: Aprendizaje Práctico &rarr;</a>
     </div>
-
-    <div style="text-align:center; margin-top:1rem;">
-      <a href="aprendizaje con el docente/" style="color:var(--gold); text-decoration:none; font-weight:600; font-size:0.85rem;">
-        <i class="fas fa-folder-open" style="margin-right:0.4rem;"></i>Ver archivos en la carpeta
-      </a>
-    </div>
   </main>
 
   <footer>
     <p><strong>Jimmy Alejandro Herrera Guerrero</strong> &nbsp;·&nbsp; 2026</p>
   </footer>
+
+  <script>
+    function togglePdf(id) {
+      var el = document.getElementById(id);
+      var isHidden = el.classList.contains('pdf-collapsed');
+      el.classList.toggle('pdf-collapsed', !isHidden);
+      el.classList.toggle('pdf-open', isHidden);
+      var btn = el.previousElementSibling.querySelector('.btn-preview');
+      btn.innerHTML = isHidden
+        ? '<i class="fas fa-eye-slash"></i> Ocultar'
+        : '<i class="fas fa-eye"></i> Vista previa';
+    }
+  </script>
 </body>
 </html>
