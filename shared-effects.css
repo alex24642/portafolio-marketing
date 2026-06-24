@@ -1,6 +1,146 @@
 /* ================================================================
-   shared-effects.css  —  Cursor glow, load animations, scroll-reveal
+   shared-effects.css  —  Cursor glow, load animations, scroll-reveal,
+   liquid-glass system, cinematic sections, FadingVideo
    ================================================================ */
+
+/* ── Fonts ─────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap');
+
+/* ── Liquid glass ──────────────────────────────────────────────── */
+.liquid-glass {
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Nav-specific overrides when liquid-glass is applied */
+nav.liquid-glass {
+  position: fixed;
+  background: rgba(13,27,42,0.6);
+}
+
+.liquid-glass-strong {
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass-strong::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.2) 80%, rgba(255,255,255,0.5) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Cinematic video section ───────────────────────────────────── */
+.cinematic-section {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 380px;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(201,168,76,0.25);
+}
+.cinematic-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(13,27,42,0.82) 0%,
+    rgba(13,27,42,0.28) 45%,
+    transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 2.5rem;
+}
+.cinematic-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.6rem;
+  color: rgba(201,168,76,0.9);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.cinematic-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 300;
+  color: #f5f0e8;
+  line-height: 1.2;
+}
+
+/* ── Fin de Ciclo / section dividers ──────────────────────────── */
+.fc-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0 1.25rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(231,76,60,0.07);
+  border-left: 3px solid rgba(231,76,60,0.55);
+  border-radius: 0 10px 10px 0;
+}
+.fc-divider i { color: rgba(231,76,60,0.85); font-size: 1rem; flex-shrink: 0; }
+.fc-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.58rem;
+  color: rgba(231,76,60,0.9);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+}
+.fc-desc {
+  font-size: 0.82rem;
+  color: rgba(138,155,181,0.9);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2.5rem 0 2rem;
+}
+.section-divider .sd-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent); }
+.section-divider .sd-label { font-family: "Space Mono", monospace; font-size: 0.6rem; color: rgba(201,168,76,0.8); letter-spacing: 0.25em; text-transform: uppercase; white-space: nowrap; }
+.section-divider .sd-line-r { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4)); }
 
 /* ── Page-load animations ─────────────────────────────────────── */
 @keyframes heroReveal {
@@ -35,6 +175,7 @@
 
 /* ── Accessibility: respect reduced-motion ────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-anim     { animation: none !important; opacity: 1 !important; }
-  .fade-in-card  { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-anim          { animation: none !important; opacity: 1 !important; }
+  .fade-in-card       { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .cinematic-section video { opacity: 1 !important; }
 }

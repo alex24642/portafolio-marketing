@@ -91,4 +91,60 @@
     pageDesc.style.animationDelay = '0.42s';
   }
 
+  /* ── 4. FadingVideo crossfade ──────────────────────────────────
+     Smooth rAF-based fade-in/fade-out loop for <video class="fading-vid">.
+     No loop attribute — looping is handled manually via the ended event.
+  ─────────────────────────────────────────────────────────────── */
+  var FADE_MS       = 500;
+  var FADE_OUT_LEAD = 0.55;
+  var fadingVids    = document.querySelectorAll('video.fading-vid');
+  fadingVids.forEach(function (video) {
+    var rafId     = null;
+    var fadingOut = false;
+    video.style.opacity = 0;
+    function fadeTo(target) {
+      var start = parseFloat(video.style.opacity) || 0;
+      var t0    = null;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(function tick(now) {
+        if (!t0) t0 = now;
+        var p = Math.min((now - t0) / FADE_MS, 1);
+        video.style.opacity = (start + (target - start) * p).toFixed(3);
+        if (p < 1) rafId = requestAnimationFrame(tick);
+      });
+    }
+    video.addEventListener('loadeddata', function () {
+      video.style.opacity = 0;
+      video.play().catch(function () {});
+      fadeTo(1);
+    });
+    video.addEventListener('timeupdate', function () {
+      if (!fadingOut && video.duration &&
+          (video.duration - video.currentTime) <= FADE_OUT_LEAD &&
+          (video.duration - video.currentTime) > 0) {
+        fadingOut = true;
+        fadeTo(0);
+      }
+    });
+    video.addEventListener('ended', function () {
+      video.style.opacity = 0;
+      fadingOut = false;
+      setTimeout(function () {
+        video.currentTime = 0;
+        video.play().catch(function () {});
+        fadeTo(1);
+      }, 100);
+    });
+  });
+
+  /* ── 5. Liquid-glass nav ───────────────────────────────────────
+     Applies .liquid-glass (defined in shared-effects.css) to every
+     page nav. nav.liquid-glass in shared-effects.css keeps position:fixed
+     and sets the correct dark background.
+  ─────────────────────────────────────────────────────────────── */
+  var navEl = document.querySelector('nav');
+  if (navEl && !navEl.classList.contains('liquid-glass')) {
+    navEl.classList.add('liquid-glass');
+  }
+
 }());
