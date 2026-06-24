@@ -125,7 +125,7 @@
       <h3><i class="fas fa-chart-bar" style="color:var(--gold); margin-right:0.5rem;"></i> Resumen de Participación</h3>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.25rem; margin-top:1rem;">
         <div style="text-align:center; padding:1rem; background:rgba(201,168,76,0.07); border-radius:10px; border:1px solid rgba(201,168,76,0.2);">
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; color:var(--gold);">3</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; color:var(--gold);">6</div>
           <div style="font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase;">Documentos entregados</div>
         </div>
         <div style="text-align:center; padding:1rem; background:rgba(201,168,76,0.07); border-radius:10px; border:1px solid rgba(201,168,76,0.2);">
@@ -225,6 +225,78 @@
         <div class="pptx-note">
           <i class="fas fa-file-powerpoint"></i>
           <p>Los archivos PowerPoint no tienen vista previa en el navegador.<br>Usa el botón de descarga para abrir la presentación.</p>
+        </div>
+      </div>
+
+      <!-- PDF 3: Participaciones en Clase FC -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-pdf doc-icon pdf"></i>
+            <div>
+              <div class="doc-name">Participaciones en Clase FC</div>
+              <div class="doc-type">Participaciones de fin de ciclo · PDF</div>
+            </div>
+          </div>
+          <div class="doc-actions">
+            <button class="btn-preview" onclick="togglePdf('docpdf3')">
+              <i class="fas fa-eye"></i> Vista previa
+            </button>
+            <a href="aprendizaje con el docente/ParticipacionesenClase FC.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
+        </div>
+        <div id="docpdf3" class="pdf-collapsed">
+          <iframe src="aprendizaje con el docente/ParticipacionesenClase FC.pdf" class="pdf-embed" title="Participaciones en Clase FC"></iframe>
+        </div>
+      </div>
+
+      <!-- PDF 4: Tutorías FC -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-pdf doc-icon pdf"></i>
+            <div>
+              <div class="doc-name">Tutorías FC</div>
+              <div class="doc-type">Tutorías de fin de ciclo · PDF</div>
+            </div>
+          </div>
+          <div class="doc-actions">
+            <button class="btn-preview" onclick="togglePdf('docpdf4')">
+              <i class="fas fa-eye"></i> Vista previa
+            </button>
+            <a href="aprendizaje con el docente/Tutorías FC.pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
+        </div>
+        <div id="docpdf4" class="pdf-collapsed">
+          <iframe src="aprendizaje con el docente/Tutorías FC.pdf" class="pdf-embed" title="Tutorías FC"></iframe>
+        </div>
+      </div>
+
+      <!-- PDF 5: Tutorías FC (1) -->
+      <div class="doc-block">
+        <div class="doc-bar">
+          <div class="doc-info">
+            <i class="fas fa-file-pdf doc-icon pdf"></i>
+            <div>
+              <div class="doc-name">Tutorías FC (1)</div>
+              <div class="doc-type">Tutorías de fin de ciclo — versión 2 · PDF</div>
+            </div>
+          </div>
+          <div class="doc-actions">
+            <button class="btn-preview" onclick="togglePdf('docpdf5')">
+              <i class="fas fa-eye"></i> Vista previa
+            </button>
+            <a href="aprendizaje con el docente/Tutorías FC (1).pdf" download class="btn-download">
+              <i class="fas fa-download"></i> Descargar
+            </a>
+          </div>
+        </div>
+        <div id="docpdf5" class="pdf-collapsed">
+          <iframe src="aprendizaje con el docente/Tutorías FC (1).pdf" class="pdf-embed" title="Tutorías FC (1)"></iframe>
         </div>
       </div>
     </div>
